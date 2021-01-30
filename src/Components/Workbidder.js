@@ -16,7 +16,7 @@ function Workbidder() {
     const [status, setStatus] = useState("")
     const [UUsername, setUUsername] = useState([])
     const [WUsername, setWUsername] = useState([])
-    // const [bidder, setBidder] = useState([])
+    
     // state = {
     //     Wid: useParams,
     //     receiverId: '',
@@ -29,11 +29,11 @@ function Workbidder() {
 
     // }
 
-    useEffect(() => {
-        const getdata = async () => {
+    useEffect(async() => {
             try {
                 const response = await axios.get("http://localhost:550/works/bidder/" + id._id)
                 setBidder(response.data)
+                console.log("hi")
 
                 const res = await axios.get("http://localhost:550/work/single/" + id._id)
                 setStatus(res.data.status)
@@ -47,8 +47,8 @@ function Workbidder() {
             catch (err) {
                 console.log(err)
             }
-        }
-        getdata()
+        
+
     }, [])
 
 
@@ -73,14 +73,14 @@ function Workbidder() {
     const getWUsername = async (WUsername) => {
         try {
             await axios.get('http://localhost:550/worker/one/' + WUsername)
-            .then((res)=>{
-                setReceiverId(res.data._id)
-                startconversation(WUsername)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-           
+                .then((res) => {
+                    setReceiverId(res.data._id)
+                    startconversation(WUsername)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+
         }
         catch (err) {
             console.log(err)
@@ -97,8 +97,8 @@ function Workbidder() {
         data.append('receiverId', receiverId)
 
         await axios.post('http://localhost:550/conversation', data)
-            console.log('conversation started')
-            startmessage(WUsername, receiverId, _id)
+        console.log('conversation started')
+        startmessage(WUsername, receiverId, _id)
 
 
 
@@ -153,7 +153,6 @@ function Workbidder() {
 
     return (
         <div className="alignment">
-            <br></br><br></br><br></br><br></br>
             {
                 bidder.map((mybidder) => {
                     return (

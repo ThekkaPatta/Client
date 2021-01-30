@@ -1,6 +1,8 @@
 import { Component } from "react";
 import axios from 'axios';
 import '../assets/css/Login.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Loginuser extends Component {
     state = {
@@ -20,40 +22,31 @@ class Loginuser extends Component {
                 window.location.href = "/userlanding";
                 this.setState({
                     loginChk: true
-                })
-
+                  
+                }
+               )
+               
             })
             .catch((err) => {
                 console.log(err.response)
-                alert("Invalid Credential")
+                this.notify()
             })
+    }
+
+    notify=()=>{
+      toast.error('Error username or password', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
     }
 
     render() {
         return (
-        //     <div class="lw">
-        //     <div class="wrapper">
-        //         <div class="circle circle1"></div>
-        //         <div class="circle circle2"></div>
-        //         <div class="form">
-        //             <h1>User Login</h1>
-        //             <form>
-        //                 <input type="text"  alue={this.state.UUsername} placeholder="Username"
-        //                     onChange={(event) => { this.setState({ UUsername: event.target.value }) }} />
-        //                 <input type="password"  value={this.state.UPassword} placeholder="Password"
-        //                     onChange={(event) => { this.setState({ UPassword: event.target.value }) }} />
-        //                 <button type="submit" id="login" onClick={this.sendUserData}>Login</button>
-        //                 <div class="forgot-signup">
-        //                     <a href="#">Forgot password?</a>
-        //                     <a href="/registeruser">Sign Up as User</a>
-
-        //                 </div>
-        //             </form>
-        //         </div>
-        //     </div>
-
-        //     <div class="background"></div>
-        // </div>
 
         <div class="login-page">
       <div class="form">
@@ -66,7 +59,19 @@ class Loginuser extends Component {
         <form class="login-form">
         <input type="text" placeholder="username" onChange={(event) => { this.setState({ UUsername: event.target.value }) }}/>
         <input type="password" placeholder="password" onChange={(event) => { this.setState({ UPassword: event.target.value }) }}/>
-          <button type="submit" onClick={this.sendUserData}>login</button>
+          <button className="btn" type="submit" onClick={this.sendUserData}>login</button>
+          <ToastContainer 
+position="top-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+
           <p class="message">Not registered? <a href="/registeruser">Create an account</a></p>
         </form>
       </div>

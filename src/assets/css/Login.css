@@ -37,7 +37,7 @@ margin-bottom: 26px;
   box-sizing: border-box;
   font-size: 14px;
 }
-.form button {
+.form .btn {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
