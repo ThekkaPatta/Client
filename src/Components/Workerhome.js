@@ -41,11 +41,11 @@ class Workerhome extends Component {
                                         this.state.work.map((mywork) => {
                                             return (
                                                 // <p>{myartist.FullName}</p>
-                                                <div className="col-md-4 p-3">
+                                                <div className="col-md-4 p-4">
                                                     <div className="card">
 
                                                         <div className="card-body p-0 ">
-                                                            <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:500/" + mywork.Wimage} />
+                                                            <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
                                                             <h4 className="card-title p-2">{mywork.Tags}</h4>
                                                             <h3 className="card-title p-2">{mywork.FullName}</h3>
                                                             <h5 className="card-title p-3">

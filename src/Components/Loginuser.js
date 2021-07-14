@@ -44,7 +44,7 @@ class Loginuser extends Component {
                         <button type="submit" id="login" onClick={this.sendUserData}>Login</button>
                         <div class="forgot-signup">
                             <a href="#">Forgot password?</a>
-                            <a href="/registerworker">Sign Up as User</a>
+                            <a href="/registeruser">Sign Up as User</a>
 
                         </div>
                     </form>
