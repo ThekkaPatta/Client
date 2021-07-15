@@ -4,7 +4,7 @@ import '../assets/css/Header.css'
 class Header extends Component {
     logout = () => {
         localStorage.removeItem('token')
-        localStorage.removeItem('id')
+        localStorage.removeItem('_id')
         window.location.href = '/'
     }
     render() {
@@ -24,7 +24,7 @@ class Header extends Component {
                     <div class="main_nav_container ml-auto col d-flex flex-row">
                         <ul class="main_nav_list">
                             <li class="main_nav_item"><a href="/userlanding">Home</a></li>
-                            <li class="main_nav_item"><a href="/postwork">Work Post</a></li>
+                            <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
                     </div>
