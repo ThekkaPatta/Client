@@ -36,6 +36,9 @@ class Workerhome extends Component {
                                 if (this.state.search==""){
                                     return mywork
                                 }
+                                else if(mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())){
+                                    return mywork
+                                } 
                                 else if(mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())){
                                     return mywork
                                 }
