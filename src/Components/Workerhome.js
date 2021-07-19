@@ -1,6 +1,5 @@
 import { Component } from "react";
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
 class Workerhome extends Component {
     state = {
         work: [],
