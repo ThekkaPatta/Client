@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom';
 class Workerhome extends Component {
     state = {
         work: [],
+        search:"",
         config: {
             headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
         }
@@ -24,11 +25,22 @@ class Workerhome extends Component {
     render() {
         return (
             <div className="container">
+                <br></br><br></br><br></br><br></br>
+                <input type='text' placeholder='Search Bar' value={this.state.search}
+                                    onChange={(event) => { this.setState({ search: event.target.value }) }}/>
                 <div classNamer="row p-5">
                     <div className="col p-5">
 
                         {
-                            this.state.work.map((mywork) => {
+                            this.state.work.filter((mywork)=>{
+                                if (this.state.search==""){
+                                    return mywork
+                                }
+                                else if(mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())){
+                                    return mywork
+                                }
+
+                            }).map((mywork) => {
                                 return (
                                     <div className="col-md-4 p-4">
                                         <div className="card">
