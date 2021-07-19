@@ -11,7 +11,7 @@ class Loginworker extends Component {
         e.preventDefault();
         axios.post("http://localhost:550/worker/login", this.state)
             .then((response) => {
-                console.log(response);
+                console.log(response.data.message);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
                 console.log(response)
