@@ -9,6 +9,8 @@ import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
 import Rating from "../Components/Rating";
+import Userlanding from '../Components/Userlandingpage'
+import Userlandingpage from "../Components/Userlandingpage";
 
 
 class Container extends Component{
@@ -23,12 +25,8 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-<<<<<<< HEAD
-                <Route path="/bidwork" component={Bidwork} />
-                <Route path="/rating" component={Rating}/>
-=======
+                <Route path='/userlanding' component={Userlandingpage}/>
                 
->>>>>>> development
             </div>
 
         )
