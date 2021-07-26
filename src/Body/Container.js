@@ -8,7 +8,6 @@ import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
-import Rating from "../Components/Rating";
 
 
 class Container extends Component{
@@ -23,12 +22,8 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-<<<<<<< HEAD
                 <Route path="/bidwork" component={Bidwork} />
-                <Route path="/rating" component={Rating}/>
-=======
                 
->>>>>>> development
             </div>
 
         )
