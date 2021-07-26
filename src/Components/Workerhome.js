@@ -11,7 +11,7 @@ class Workerhome extends Component {
         }
     }
     componentDidMount() {
-        axios.get("http://localhost:550/work/show")
+        axios.get("https://thekkapatta.herokuapp.com/work/show")
 
             .then((response) => {
                 console.log(response.data)
@@ -50,7 +50,7 @@ class Workerhome extends Component {
                                         }).map((mywork) => {
                                             return (
                                                 <div className="card">
-                                                    <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
+                                                    <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"https://thekkapatta.herokuapp.com/" + mywork.Wimage} />
                                                     <h4 className="card-title p-2">{mywork.Tags}</h4>                                                   
                                                     <h5 className="card-title p-3">{mywork.Workdescription}</h5>
                                                     <button className="bg-primary">Bid Now</button>
