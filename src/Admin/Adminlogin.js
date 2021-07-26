@@ -1,8 +1,9 @@
 import { Component } from "react";
 import axios from 'axios';
 import '../assets/css/Login.css';
+import { Alert } from "bootstrap";
 
-class Loginuser extends Component {
+class Adminlogin extends Component {
     state = {
         Username: "",
         Password: ""
@@ -10,13 +11,14 @@ class Loginuser extends Component {
     }
     sendUserData = (e) => {
         e.preventDefault();
-        axios.post("https://thekkapatta.herokuapp.com/user/login", this.state)
+        axios.post("https://thekkapatta.herokuapp.com/admin/login", this.state)
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
-                localStorage.setItem('userType', 'user')
+                localStorage.setItem('userType', 'admin')
                 window.location.href = "/workpost";
+                alert("Login success")
                 this.setState({
                     loginChk: true
                 })
@@ -35,12 +37,12 @@ class Loginuser extends Component {
                 <div class="circle circle1"></div>
                 <div class="circle circle2"></div>
                 <div class="form">
-                    <h1>User Login</h1>
+                    <h1>Admin Login</h1>
                     <form>
-                        <input type="text" placeholder="xyz@mail.com" alue={this.state.UUsername} placeholder="Username"
-                            onChange={(event) => { this.setState({ UUsername: event.target.value }) }} />
-                        <input type="password" placeholder="password" value={this.state.UPassword} placeholder="Password"
-                            onChange={(event) => { this.setState({ UPassword: event.target.value }) }} />
+                        <input type="text" placeholder="xyz@mail.com" alue={this.state.Username} placeholder="Username"
+                            onChange={(event) => { this.setState({ Username: event.target.value }) }} />
+                        <input type="password" placeholder="password" value={this.state.Password} placeholder="Password"
+                            onChange={(event) => { this.setState({ Password: event.target.value }) }} />
                         <button type="submit" id="login" onClick={this.sendUserData}>Login</button>
                         <div class="forgot-signup">
                             <a href="#">Forgot password?</a>
@@ -56,4 +58,4 @@ class Loginuser extends Component {
         )
     }
 }
-export default Loginuser
+export default Adminlogin
