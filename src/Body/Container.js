@@ -13,6 +13,8 @@ import register from "../Components/register";
 import Workerprofile from "../Components/Workerprofile";
 import Profile from "../Components/profile";
 import Adminlogin from "../Admin/Adminlogin";
+import userhome from "../Components/Userlandingpage";
+
 
 
 class Container extends Component{
@@ -33,6 +35,11 @@ class Container extends Component{
                 <Route path="/workerprofile" component={Workerprofile} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/adminlgn" component={Adminlogin} />
+                <Route path="/userhome" component={userhome} />
+               
+
+                
+
             </div>
         )
     }
