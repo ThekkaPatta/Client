@@ -23,12 +23,9 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-<<<<<<< HEAD
                 <Route path="/bidwork" component={Bidwork} />
                 <Route path="/rating" component={Rating}/>
-=======
                 
->>>>>>> development
             </div>
 
         )
