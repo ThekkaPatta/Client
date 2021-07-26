@@ -1,5 +1,6 @@
 import { Component } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import '../assets/css/workerhome.css'
 
 class Workerhome extends Component {
@@ -53,7 +54,7 @@ class Workerhome extends Component {
                                                     <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"https://thekkapatta.herokuapp.com/" + mywork.Wimage} />
                                                     <h4 className="card-title p-2">{mywork.Tags}</h4>                                                   
                                                     <h5 className="card-title p-3">{mywork.Workdescription}</h5>
-                                                    <button className="bg-primary">Bid Now</button>
+                                                    <h2><Link to={"/bidwork/" + mywork._id}> Bid Now </Link></h2>
                                                 </div>
 
 
