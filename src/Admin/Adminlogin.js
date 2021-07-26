@@ -11,7 +11,7 @@ class Adminlogin extends Component {
     }
     sendUserData = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:550/admin/login", this.state)
+        axios.post("https://thekkapatta.herokuapp.com/admin/login", this.state)
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)

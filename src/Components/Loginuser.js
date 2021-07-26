@@ -10,7 +10,7 @@ class Loginuser extends Component {
     }
     sendUserData = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:550/user/login", this.state)
+        axios.post("https://thekkapatta.herokuapp.com/user/login", this.state)
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)

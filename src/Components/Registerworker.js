@@ -24,7 +24,7 @@ class Registerworker extends Component {
         data.append('WUsername', this.state.WUsername)
         data.append('WPassword', this.state.WPassword)
 
-        axios.post("http://localhost:550/worker/insert", data)
+        axios.post("https://thekkapatta.herokuapp.com/worker/insert", data)
             .then((response)=>{
                 window.location.replace = "/loginworker";
                 alert('posted')

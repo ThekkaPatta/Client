@@ -16,7 +16,7 @@ class Workerprofile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("http://localhost:550/worker/single/" + this.state._id)
+                .get("https://thekkapatta.herokuapp.com/worker/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -45,7 +45,7 @@ class Workerprofile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.Wimage}`}
+                                    src={`https://thekkapatta.herokuapp.com/${this.state.Wimage}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""
