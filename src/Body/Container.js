@@ -40,8 +40,6 @@ class Container extends Component{
                 <Route path="/userhome" component={userhome} />
                
                 
-            </div>
-
                 
 
             </div>
