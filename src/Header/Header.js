@@ -1,5 +1,7 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import '../assets/css/Header.css'
+import Notification from '../Components/Notification'
+
 
 class Header extends Component {
     logout = () => {
@@ -7,7 +9,9 @@ class Header extends Component {
         localStorage.removeItem('_id')
         window.location.href = '/'
     }
+
     render() {
+        // const [openModal,setOpenModal]=useState(false);
         if (localStorage.getItem('token') && localStorage.getItem('userType') == 'admin') {
             var menu =
                 <>
@@ -18,6 +22,7 @@ class Header extends Component {
                     </div>
                 </>
         }
+
         else if (localStorage.getItem('token') && localStorage.getItem('userType') == 'user') {
             var menu =
                 <>
@@ -25,6 +30,8 @@ class Header extends Component {
                         <ul class="main_nav_list">
                             <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                             <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
+                            {/* <li class="main_nav_item" onClick={()=>{setOpenModal(true);}}>Notification</li>{openModal && <Notification></Notification>} */}
+                            <li class="main_nav_item"><Notification></Notification></li>
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
                     </div>

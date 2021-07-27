@@ -5,9 +5,23 @@ import axios from 'axios';
 class Registeruser extends Component {
     state = {
         WUsername: "",
-        Wid: "",
+        Wid: this.props.match.params._id,
         Bidprice: "",
         Worktime: ""
+    }
+    componentDidMount(){
+        var wid = localStorage.getItem('_id');
+        alert(u_id)
+        axios.get("http://localhost:550/worker/single/" +wid)
+            .then((response)=>{
+                console.log(response)
+                this.setState({
+                    WUsername : response.data.WUsername,
+                })
+            })
+            .catch((err)=>{
+                console.log(err.response)
+        })
     }
     sendUserData = (e) => {
         e.preventDefault();
@@ -36,10 +50,8 @@ class Registeruser extends Component {
                     <div class="main-agileinfo">
                         <div class="agileits-top">
                             <form method="POST" enctype="multipart/form-data">
-                                <p>Username:<input type="text" value={this.state.WUsername}
-                                    onChange={(event) => { this.setState({ WUsername: event.target.value }) }} /></p>
-                                <p>Work Id:<input type="text" value={this.state.Wid}
-                                    onChange={(event) => { this.setState({ Wid: event.target.value }) }} /></p>
+                                <p>Username:<input type="text" value={this.state.WUsername}/></p>
+                                <p>Work Id:<input type="text" value={this.state.Wid}/></p>
                                 <p>Bid Price:<input type="text" value={this.state.Bidprice}
                                     onChange={(event) => { this.setState({ Bidprice: event.target.value }) }} /></p>
                                 <p>Work Time:<input type="text" value={this.state.Worktime}

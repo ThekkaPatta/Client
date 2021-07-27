@@ -7,10 +7,11 @@ import Home from "../Components/Home";
 import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
-import Bidwork from "../Components/Bidwork";
-import Rating from "../Components/Rating";
+// import Bidwork from "../Components/Bidwork";
+// import Rating from "../Components/Rating";
 import Userlanding from '../Components/Userlandingpage'
-import Userlandingpage from "../Components/Userlandingpage";
+import Workbidder from '../Components/Workbidder'
+
 
 
 class Container extends Component{
@@ -25,7 +26,8 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-                <Route path='/userlanding' component={Userlandingpage}/>
+                <Route path='/userlanding' component={Userlanding}/>
+                <Route path='/workbidder/:_id' component={Workbidder}/>
                 
             </div>
 
