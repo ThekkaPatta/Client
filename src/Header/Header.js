@@ -27,6 +27,7 @@ class Header extends Component {
                         <ul class="main_nav_list">
                             <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                             <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
+                            <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
                     </div>

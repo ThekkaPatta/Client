@@ -7,10 +7,13 @@ import Home from "../Components/Home";
 import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
-import register from "../Components/register";
+import Bidwork from "../Components/Bidwork";
 import Workerprofile from "../Components/Workerprofile";
-import Profile from "../Components/profile";
 import Adminlogin from "../Admin/Adminlogin";
+import userhome from "../Components/Userlandingpage";
+import Userprofile from "../Components/UserProfile";
+import UserEditProfile from "../Components/UserEditProfile";
+
 
 
 class Container extends Component{
@@ -25,13 +28,16 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-                <Route path="/register" component={register} />
+                <Route path="/bidwork" component={Bidwork} />
                 <Route path="/workerprofile" component={Workerprofile} />
-                <Route path="/profile" component={Profile} />
                 <Route path="/adminlgn" component={Adminlogin} />
+                <Route path="/userhome" component={userhome} />
+                <Route path="/userprofile" component={Userprofile} />
+                <Route path="/useredit" component={UserEditProfile} />
                 
-            </div>
+                
 
+            </div>
         )
     }
 
