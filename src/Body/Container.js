@@ -8,7 +8,12 @@ import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
-import Rating from "../Components/Rating";
+import Workerprofile from "../Components/Workerprofile";
+import Adminlogin from "../Admin/Adminlogin";
+import userhome from "../Components/Userlandingpage";
+import Userprofile from "../Components/UserProfile";
+import UserEditProfile from "../Components/UserEditProfile";
+
 
 
 class Container extends Component{
@@ -24,10 +29,15 @@ class Container extends Component{
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
                 <Route path="/bidwork" component={Bidwork} />
-                <Route path="/rating" component={Rating}/>
+                <Route path="/workerprofile" component={Workerprofile} />
+                <Route path="/adminlgn" component={Adminlogin} />
+                <Route path="/userhome" component={userhome} />
+                <Route path="/userprofile" component={Userprofile} />
+                <Route path="/useredit" component={UserEditProfile} />
                 
-            </div>
+                
 
+            </div>
         )
     }
 

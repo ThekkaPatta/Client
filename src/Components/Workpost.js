@@ -5,6 +5,7 @@ import '../assets/css/workpost.css'
 
 class Workpost extends Component {
     state={
+        FullName:"",
         Username:"",
         PhoneNo:"",
         Tags:"",
@@ -15,11 +16,12 @@ class Workpost extends Component {
     componentDidMount(){
         var u_id = localStorage.getItem('_id');
         alert(u_id)
-        axios.get("http://localhost:550/user/single/" +u_id)
+        axios.get("https://thekkapatta.herokuapp.com/user/single/" +u_id)
             .then((response)=>{
                 console.log(response)
                 this.setState({
                     Username : response.data.UUsername,
+                    FullName : response.data.UFullName,
                     PhoneNo : response.data.UPhoneNo,
                 })
             })
@@ -37,14 +39,14 @@ class Workpost extends Component {
     Workpost=(e)=>{
         e.preventDefault();
         const data = new FormData() // new line
-
+        data.append('FullName', this.state.FullName)
         data.append('Username', this.state.Username)
         data.append('PhoneNo', this.state.PhoneNo)
         data.append('Tags', this.state.Tags)
         data.append('Workdescription', this.state.Workdescription)
         data.append('Wimage',this.state.Wimage)
     
-        axios.post("http://localhost:550/work/post",data)
+        axios.post("https://thekkapatta.herokuapp.com/work/post",data)
     .then((response)=>{
         console.log(response)
         alert(" Work Posted Successfully ")
@@ -70,6 +72,11 @@ class Workpost extends Component {
                                 <div class="col-md-6 form-line">
                                     <div class="form-group">
                                        <label for="exampleInputUsername">Your name</label>
+                                        <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.FullName}
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                       <label for="exampleInputUsername">Your Username</label>
                                         <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.Username}
                                         />
                                     </div>

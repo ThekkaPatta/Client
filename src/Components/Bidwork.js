@@ -18,7 +18,7 @@ class Registeruser extends Component {
         data.append('Bidprice', this.state.Bidprice)
         data.append('Worktime', this.state.Worktime)
 
-        axios.post("http://localhost:550/bid/post", data)
+        axios.post("https://thekkapatta.herokuapp.com/bid/post", data)
         .then((response)=>{
             alert(response.data.message)
             window.location.href= "/workerhome";

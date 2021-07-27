@@ -5,6 +5,7 @@ class Header extends Component {
     logout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('_id')
+        localStorage.removeItem('usertype')
         window.location.href = '/'
     }
     render() {
@@ -13,6 +14,7 @@ class Header extends Component {
                 <>
                     <div class="main_nav_container ml-auto col d-flex flex-row">
                         <ul class="main_nav_list">
+                        <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
                     </div>
@@ -25,6 +27,7 @@ class Header extends Component {
                         <ul class="main_nav_list">
                             <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                             <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
+                            <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
                     </div>
@@ -35,7 +38,8 @@ class Header extends Component {
                 <>
                     <div class="main_nav_container ml-auto col d-flex flex-row">
                         <ul class="main_nav_list">
-                            <li class="main_nav_item"><a href="/homeworker">Home</a></li>
+                            <li class="main_nav_item"><a href="/workerhome">Home</a></li>
+                            <li class="main_nav_item"><a href="/workerprofile">My Profile</a></li>
                             
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>

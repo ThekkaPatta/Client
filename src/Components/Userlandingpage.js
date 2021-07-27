@@ -1,56 +1,74 @@
 import { Component } from "react";
-import axios from 'axios'
+import axios from 'axios';
+import '../assets/css/workerhome.css'
 
-class Userlandingpage extends Component {
+class userhome extends Component {
     state = {
-        Username="",
-        works=[]
+        work: [],
+        search:"",
+        config: {
+            headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
+        }
     }
-
     componentDidMount() {
-        var u_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/user/single/" + u_id)
-            .then((response) => {
-                console.log(response)
-                this.setState({
-                    Username: response.data.UUsername,
-                })
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
+        axios.get("http://localhost:550/worker/show")
 
-        axios.get("http://localhost:550/work/posted/" + this.state.Username)
             .then((response) => {
                 console.log(response.data)
                 this.setState({
-                    works: response.data
+                    work: response.data
                 })
 
             })
-            .catch((err) => {
-                console.log(err.response)
-            })
+            .catch()
+
     }
+
     render() {
+
         return (
-            <div>
-                {
-                    this.state.works.map((myworks)=>{
-                        return(
-                            <div>
-                                <p>{myworks.Workdescription}</p>
-                                <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
-                            </div>
+            <div className="container">
+               
+                <div classNamer="row p-5">
+                    <div className="col p-5">
+                        <br></br>
+                    <input type='text' placeholder='Search Bar' value={this.state.search}
+                    onChange={(event) => { this.setState({ search: event.target.value }) }} />
+                                    <div class="wrapper">
+                                        {
+                                        this.state.work.filter((mywork) => {
+                                            if (this.state.search==""){
+                                                return mywork
+                                            }
+                                            else if(mywork.WSkills.toLowerCase().includes(this.state.search.toLowerCase())){
+                                                return mywork
+                                            } 
+                                             else if(mywork.WFullName.toLowerCase().includes(this.state.search.toLowerCase())){
+                                                return mywork
+                                            }
+                                            
+                                        }).map((mywork) => {
+                                            return (
+                                                <div className="card">
+                                                    <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
+                                                    <h4 className="card-title p-2">{mywork.WSkills}</h4>                                                   
+                                                    <h5 className="card-title p-3">{mywork.WFullName}</h5>
+                                                    <button className="bg-primary">Bid Now</button>
+                                                </div>
 
-                        )
 
-                    })
+                                            )
+                                        })
 
-                }
-            </div>
+                                        }
+                                    </div>
+                            
+                </div>
+                </div>
+            </div >
+
+
         )
     }
-
 }
-export default Userlandingpage
+export default userhome
