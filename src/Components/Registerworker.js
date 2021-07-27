@@ -26,8 +26,9 @@ class Registerworker extends Component {
 
         axios.post("https://thekkapatta.herokuapp.com/worker/insert", data)
             .then((response)=>{
-                window.location.replace = "/loginworker";
-                alert('posted')
+
+                window.location.href = "/loginworker";
+                alert('Your Account is verifying !!')
             })
             .catch(err => {
                 console.log(err)

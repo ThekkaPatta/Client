@@ -37,7 +37,8 @@ class Header extends Component {
                 <>
                     <div class="main_nav_container ml-auto col d-flex flex-row">
                         <ul class="main_nav_list">
-                            <li class="main_nav_item"><a href="/homeworker">Home</a></li>
+                            <li class="main_nav_item"><a href="/workerhome">Home</a></li>
+                            <li class="main_nav_item"><a href="/workerprofile">My Profile</a></li>
                             
                             <li class="main_nav_item"><a href="/" onClick={this.logout}>Log Out</a></li>
                         </ul>
