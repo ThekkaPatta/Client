@@ -7,6 +7,7 @@ import Home from "../Components/Home";
 import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
+import notification from "../notification/notification";
 
 class Container extends Component{
     render(){
@@ -20,6 +21,7 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
+                <Route path="/notification" component={notification} />
             </div>
 
         )
