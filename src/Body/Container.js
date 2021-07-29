@@ -10,9 +10,11 @@ import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
 import Workerprofile from "../Components/Workerprofile";
 import Adminlogin from "../Admin/Adminlogin";
-import userhome from "../Components/Userlandingpage";
+import userhome from "../Components/WorkerSearch";
 import Userprofile from "../Components/UserProfile";
 import UserEditProfile from "../Components/UserEditProfile";
+import WorkerEditProfile from "../Components/WorkerEditProfile";
+import WorkersProfile from "../Components/Worker'sProfile";
 
 
 
@@ -34,6 +36,9 @@ class Container extends Component{
                 <Route path="/userhome" component={userhome} />
                 <Route path="/userprofile" component={Userprofile} />
                 <Route path="/useredit" component={UserEditProfile} />
+                <Route path="/workeredit" component={WorkerEditProfile} />
+                <Route path="/workersprofile" component={WorkersProfile} />
+                
                 
                 
 

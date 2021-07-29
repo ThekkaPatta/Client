@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import '../assets/css/viewprofile.css'
-import Review from "./rating";
 // import '../assets/css/workpost.css'
 
-class Workerprofile extends Component {
+class WorkersProfile extends Component {
        state = {
         WFullName: "",
        WAddress: "",
-       WSkills:"",
         WPhoneNo: "",
         Wimage: [],
         _id: "",
@@ -23,7 +22,6 @@ class Workerprofile extends Component {
                     this.setState({
                         WFullName: response.data.WFullName,
                         WAddress: response.data.WAddress,
-                        WSkills: response.data.WSkills,
                         WPhoneNo: response.data.WPhoneNo,
                         WUsername: response.data.WUsername,
                         Wimage: response.data.Wimage,
@@ -55,24 +53,7 @@ class Workerprofile extends Component {
                                 
                                 <br />
 
-                                {/* <div className="row">
-                                    <div className="col-md-6">
-                                    <label class="form-label">Full Name
-                                    </label>
-                                    </div>
-                                    <div className="col-md-6">
-                                    <input type="text"class="form-control"value={this.state.WFullName}/>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-6">
-                                    <label class="form-label">Full Name
-                                    </label>
-                                    </div>
-                                    <div className="col-md-6">
-                                    <input type="text"class="form-control"value={this.state.WFullName}/>
-                                    </div> */}
-                                
+                                           
 
 
                                 <div className="form-group">
@@ -105,17 +86,7 @@ class Workerprofile extends Component {
                                         />
                                     </label>
                                 </div>
-                                <div className="form-group">
-                                    <label class="form-label">Skills
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WSkills}
-                                            
-                                          
-                                        />
-                                    </label>
-                                </div>
+                               
                                 <div className="form-group">
                                     <label class="form-label">Username
                 <input
@@ -127,7 +98,7 @@ class Workerprofile extends Component {
                                         />
                                     </label>
                                 </div>
-                                <Review/>
+                              <h1><Link to={"/workeredit/"}> Update </Link></h1>
                             </div>
                         </div>
                     </div>
@@ -139,4 +110,4 @@ class Workerprofile extends Component {
     }
 }
 
-export default Workerprofile;
+export default WorkersProfile;
