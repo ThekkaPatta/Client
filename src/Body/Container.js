@@ -13,6 +13,10 @@ import Adminlogin from "../Admin/Adminlogin";
 import userhome from "../Components/Userlandingpage";
 import Userprofile from "../Components/UserProfile";
 import UserEditProfile from "../Components/UserEditProfile";
+// import Bidwork from "../Components/Bidwork";
+// import Rating from "../Components/Rating";
+import Userlanding from '../Components/Userlandingpage'
+import Workbidder from '../Components/Workbidder'
 
 
 
@@ -28,7 +32,7 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-                <Route path="/bidwork" component={Bidwork} />
+                <Route path="/bidwork/:id" component={Bidwork} />
                 <Route path="/workerprofile" component={Workerprofile} />
                 <Route path="/adminlgn" component={Adminlogin} />
                 <Route path="/userhome" component={userhome} />
@@ -36,7 +40,9 @@ class Container extends Component{
                 <Route path="/useredit" component={UserEditProfile} />
                 
                 
-
+                <Route path='/userlanding' component={Userlanding}/>
+                <Route path='/workbidder/:_id' component={Workbidder}/>
+                
             </div>
         )
     }
