@@ -28,8 +28,6 @@ class Workerhome extends Component {
         return (
             <div className="container">
                 <br></br><br></br><br></br><br></br>
-                <input type='text' placeholder='Search Bar' value={this.state.search}
-                    onChange={(event) => { this.setState({ search: event.target.value }) }} />
                 <div classNamer="row p-5">
                     <div className="col p-5">
                         <br></br>
@@ -55,8 +53,9 @@ class Workerhome extends Component {
                                             <h4 className="card-title p-2">{mywork.Tags}</h4>
                                             <h5 className="card-title p-3">{mywork.Workdescription}</h5>
                                             <h2><Link to={"/bidwork/" + mywork._id}> Bid Now </Link></h2>
-
+                                        
                                         </div>
+                                        
                                     )
                                 })
                             }
