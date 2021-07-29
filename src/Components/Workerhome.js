@@ -27,10 +27,7 @@ class Workerhome extends Component {
     render() {
         return (
             <div className="container">
-                <br></br><br></br><br></br><br></br>
-                <input type='text' placeholder='Search Bar' value={this.state.search}
-                    onChange={(event) => { this.setState({ search: event.target.value }) }} />
-                <div classNamer="row p-5">
+             <div classNamer="row p-5">
                     <div className="col p-5">
                         <br></br>
                         <input type='text' placeholder='Search Bar' value={this.state.search}

@@ -10,11 +10,12 @@ import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
 import Workerprofile from "../Components/Workerprofile";
 import Adminlogin from "../Admin/Adminlogin";
-import userhome from "../Components/WorkerSearch";
+import userhome from "../Components/Userlanding";
 import Userprofile from "../Components/UserProfile";
 import UserEditProfile from "../Components/UserEditProfile";
 import WorkerEditProfile from "../Components/WorkerEditProfile";
 import WorkersProfile from "../Components/Worker'sProfile";
+import Workbidder from "../Components/Workbidder";
 
 
 
@@ -30,18 +31,17 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-                <Route path="/bidwork" component={Bidwork} />
+                <Route path="/bidwork/:id" component={Bidwork} />
                 <Route path="/workerprofile" component={Workerprofile} />
                 <Route path="/adminlgn" component={Adminlogin} />
-                <Route path="/userhome" component={userhome} />
+                {/* <Route path="/userhome" component={userhome} /> */}
                 <Route path="/userprofile" component={Userprofile} />
                 <Route path="/useredit" component={UserEditProfile} />
                 <Route path="/workeredit" component={WorkerEditProfile} />
-                <Route path="/workersprofile" component={WorkersProfile} />
+                <Route path="/workersprofile" component={WorkersProfile} />               
+                <Route path='/userlanding' component={userhome}/>
+                <Route path='/workbidder/:_id' component={Workbidder}/>
                 
-                
-                
-
             </div>
         )
     }
