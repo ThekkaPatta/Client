@@ -2,7 +2,7 @@ import { Component } from "react";
 import '../assets/css/register.css';
 import axios from 'axios';
 
-class Registeruser extends Component {
+class Bidwork extends Component {
     state = {
         WUsername: "",
         id: this.props.match.params.id,
@@ -32,7 +32,7 @@ class Registeruser extends Component {
         data.append('Bidprice', this.state.Bidprice)
         data.append('Worktime', this.state.Worktime)
 
-        axios.post("https://thekkapatta.herokuapp.com/bid/post", data)
+        axios.post("http://localhost:550/bid/post", data)
         .then((response)=>{
             alert(response.data.message)
             window.location.href= "/workerhome";
@@ -65,4 +65,4 @@ class Registeruser extends Component {
         )
     }
 }
-export default Registeruser
+export default Bidwork

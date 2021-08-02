@@ -22,7 +22,7 @@ class Registeruser extends Component {
         data.append('UUsername', this.state.UUsername)
         data.append('UPassword', this.state.UPassword)
 
-        axios.post("https://thekkapatta.herokuapp.com/user/insert", data)
+        axios.post("http://localhost:550/user/insert", data)
             .then((response)=>{
                 window.location.href = "/loginuser"
                 alert('Welcome ! You Are Registered As A User')

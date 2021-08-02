@@ -10,13 +10,14 @@ class Workpost extends Component {
         PhoneNo:"",
         Tags:"",
         Workdescription:"",
-        Wimage:"",
+        WorkTitle:"",
+        Wimage:[],
     }
 
     componentDidMount(){
         var u_id = localStorage.getItem('_id');
         alert(u_id)
-        axios.get("https://thekkapatta.herokuapp.com/user/single/" +u_id)
+        axios.get("http://localhost:550/user/single/" +u_id)
             .then((response)=>{
                 console.log(response)
                 this.setState({
@@ -43,14 +44,15 @@ class Workpost extends Component {
         data.append('Username', this.state.Username)
         data.append('PhoneNo', this.state.PhoneNo)
         data.append('Tags', this.state.Tags)
+        data.append('WorkTitle', this.state.WorkTitle)
         data.append('Workdescription', this.state.Workdescription)
         data.append('Wimage',this.state.Wimage)
     
-        axios.post("https://thekkapatta.herokuapp.com/work/post",data)
+        axios.post("http://localhost:550/work/post",data)
     .then((response)=>{
         console.log(response)
         alert(" Work Posted Successfully ")
-        window.location.href='#';
+        window.location.href='/userlanding';
     })
     .catch((err)=>{
         console.log(err.response)
@@ -102,6 +104,11 @@ class Workpost extends Component {
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                <div class="form-group">
+                                      <label for="description"> Work Title</label>
+                                        <textarea class="form-control" id="description" placeholder="Enter Your Message" 
+                                        value={this.state.WorkTitle} onChange={(event) => { this.setState({ WorkTitle: event.target.value }) }}></textarea>
+                                    </div>
                                     <div class="form-group">
                                       <label for="description"> Work Description</label>
                                         <textarea class="form-control" id="description" placeholder="Enter Your Message" 

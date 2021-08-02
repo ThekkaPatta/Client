@@ -1,5 +1,6 @@
 import { Component } from "react";
 import axios from 'axios'
+import {Link} from 'react-router-dom';
 
 
 class Workbidder extends Component{
@@ -9,10 +10,10 @@ class Workbidder extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:550/works/bidder/" + this.state.Wid)
+        axios.get("http://localhost:550/works/bidder/" + this.state.Wid)        
         .then((response)=>{
             console.log(response);
-            this.setState({
+                 this.setState({
                 bidder :response.data.data
             })
         })
@@ -22,6 +23,21 @@ class Workbidder extends Component{
 
         )
     }
+
+    Checkbidder=(Wid)=>{
+        axios.get("http://localhost:550/worker/bidder/" +Wid)
+        .then((response)=>{
+            console.log(response)
+            window.location.href = "/profile";
+        })
+        .catch((err)=>{
+            console.log(err)
+        }
+
+        )
+
+    }
+
     render(){
         return(
             <div>
@@ -89,8 +105,9 @@ class Workbidder extends Component{
                 {
                     this.state.bidder.map((mybidder) => {
                         return (
-                            <div>
-                                <p>{mybidder.WUsername}</p><br></br>
+                            <div>                                
+                                <Link to={"/profile/"+mybidder.WUsername}>
+                                <p>{mybidder.WUsername}</p><br></br></Link>
                             </div>
                         )
                     })

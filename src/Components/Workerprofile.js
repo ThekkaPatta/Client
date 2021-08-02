@@ -17,7 +17,7 @@ class Workerprofile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("https://thekkapatta.herokuapp.com/worker/single/" + this.state._id)
+                .get("http://localhost:550/worker/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -41,38 +41,19 @@ class Workerprofile extends Component {
                 <div class="container">
                     <div class="row p-5">
                         <div class="col-md-6 p-5">
-
+                        <br></br><br></br><br></br>
                             <div class="contact_form_container">
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
                                 <img
-                                    src={`https://thekkapatta.herokuapp.com/${this.state.Wimage}`}
+                                    src={`http://localhost:550/${this.state.Wimage}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""
                                 />
                                 <br />
                                 
-                                <br />
-
-                                {/* <div className="row">
-                                    <div className="col-md-6">
-                                    <label class="form-label">Full Name
-                                    </label>
-                                    </div>
-                                    <div className="col-md-6">
-                                    <input type="text"class="form-control"value={this.state.WFullName}/>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-6">
-                                    <label class="form-label">Full Name
-                                    </label>
-                                    </div>
-                                    <div className="col-md-6">
-                                    <input type="text"class="form-control"value={this.state.WFullName}/>
-                                    </div> */}
-                                
+                                <br />            
 
 
                                 <div className="form-group">
