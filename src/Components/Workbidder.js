@@ -1,10 +1,6 @@
 import { Component } from "react";
 import axios from 'axios'
-<<<<<<< HEAD
 import '../assets/css/Userlanding.css'
-=======
->>>>>>> 3ec525b632408204b34e00114f728e0334e09f31
-import {Link} from 'react-router-dom';
 
 
 class Workbidder extends Component{
