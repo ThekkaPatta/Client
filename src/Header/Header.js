@@ -41,8 +41,35 @@ function Header() {
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                         <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
-                        <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
+                        <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
+                        <li class="main_nav_item">
+                            <div style={{ padding: "20px" }}>
+                            </div>
+                            <Modal
+                                isOpen={modalIsOpen}
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                                style={{
+                                    overlay: {
+                                        justifyContent: "center",
+                                        display: "flex",
+                                    },
+                                    content: {
+                                        width: "50%",
+                                        minHeight: "25%",
+                                        margin: "auto",
+                                        backgroundColor: "white",
+                                        boxShadow: "5px 4px 20px 20px #0000000f",
+                                        padding: "20px",
+                                        position: "relative",
+                                    },
+                                }}
+                                className="notify"
+                            >
+                                <Notification closenotificationmodal={setModalIsOpenToFalse} />
+                            </Modal></li>
+                            <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
 
@@ -54,8 +81,7 @@ function Header() {
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/workerhome">Home</a></li>
-                        <li class="main_nav_item"><a href="/workerprofile">My Profile</a></li>
-
+                        <li class="main_nav_item"><a href="/workersprofile">My Profile</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
 

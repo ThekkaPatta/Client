@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import '../assets/css/viewprofile.css'
-// import '../assets/css/workpost.css'
 
 class Userprofile extends Component {
        state = {
@@ -16,7 +15,7 @@ class Userprofile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("https://thekkapatta.herokuapp.com/user/single/" + this.state._id)
+                .get("http://localhost:550/user/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -38,13 +37,14 @@ class Userprofile extends Component {
             <div class="contact_form_section">
                 <div class="container">
                     <div class="row p-5">
-                        <div class="col-md-6 p-5">
-
+                        <div class="col p-5">
+                        <br></br><br></br><br></br>
                             <div class="contact_form_container">
+                                <br></br><br></br><br></br><br></br><br></br>
 
-                                <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.UFullName}'s Profile !!</h3>
+                                <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
                                 <img
-                                    src={`https://thekkapatta.herokuapp.com/${this.state.Uimage}`}
+                                    src={`http://localhost:550/${this.state.Uimage}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""
@@ -98,7 +98,7 @@ class Userprofile extends Component {
                                         />
                                     </label>
                                 </div>
-                              <h1><Link to={"/useredit/"}> Update </Link></h1>
+                              <h1><Link to={"/useredit/"}> Edit Profile </Link></h1>
                             </div>
                         </div>
                     </div>

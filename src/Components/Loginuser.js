@@ -10,13 +10,13 @@ class Loginuser extends Component {
     }
     sendUserData = (e) => {
         e.preventDefault();
-        axios.post("https://thekkapatta.herokuapp.com/user/login", this.state)
+        axios.post("http://localhost:550/user/login", this.state)
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
                 localStorage.setItem('userType', 'user')
-                window.location.href = "/workpost";
+                window.location.href = "/userlanding";
                 this.setState({
                     loginChk: true
                 })

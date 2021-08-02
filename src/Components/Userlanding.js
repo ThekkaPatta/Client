@@ -54,6 +54,8 @@ class userhome extends Component {
 
         return (
             <div class="userfpage">
+                <div className="row p-5">
+                    <div className="col p-5">
                 {
                     this.state.works.map((myworks) => {
                         return (
@@ -71,6 +73,8 @@ class userhome extends Component {
                     
                 }
              
+            </div>
+            </div>
             </div>
         )
     }
