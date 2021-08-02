@@ -10,13 +10,13 @@ import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
 import Workerprofile from "../Components/Workerprofile";
 import Adminlogin from "../Admin/Adminlogin";
-import userhome from "../Components/Userlandingpage";
+import userhome from "../Components/Userlanding";
 import Userprofile from "../Components/UserProfile";
 import UserEditProfile from "../Components/UserEditProfile";
-// import Bidwork from "../Components/Bidwork";
-// import Rating from "../Components/Rating";
-import Userlanding from '../Components/Userlandingpage'
-import Workbidder from '../Components/Workbidder'
+import WorkerEditProfile from "../Components/WorkerEditProfile";
+import WorkersProfile from "../Components/Worker'sProfile";
+import Workbidder from "../Components/Workbidder";
+import Profile from "../Components/Profile";
 
 
 
@@ -35,12 +35,12 @@ class Container extends Component{
                 <Route path="/bidwork/:id" component={Bidwork} />
                 <Route path="/workerprofile" component={Workerprofile} />
                 <Route path="/adminlgn" component={Adminlogin} />
-                <Route path="/userhome" component={userhome} />
+                <Route path="/profile/:WUsername" component={Profile} />
                 <Route path="/userprofile" component={Userprofile} />
                 <Route path="/useredit" component={UserEditProfile} />
-                
-                
-                <Route path='/userlanding' component={Userlanding}/>
+                <Route path="/workeredit" component={WorkerEditProfile} />
+                <Route path="/workersprofile" component={WorkersProfile} />               
+                <Route path='/userlanding' component={userhome}/>
                 <Route path='/workbidder/:_id' component={Workbidder}/>
                 
             </div>

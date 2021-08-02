@@ -12,7 +12,7 @@ class Workerhome extends Component {
         }
     }
     componentDidMount() {
-        axios.get("https://thekkapatta.herokuapp.com/work/show")
+        axios.get("http://localhost:550/work/show")
 
             .then((response) => {
                 console.log(response.data)
@@ -27,12 +27,9 @@ class Workerhome extends Component {
     render() {
         return (
             <div className="container">
-                <br></br><br></br><br></br><br></br>
-                <input type='text' placeholder='Search Bar' value={this.state.search}
-                    onChange={(event) => { this.setState({ search: event.target.value }) }} />
-                <div classNamer="row p-5">
+             <div classNamer="row p-5">
                     <div className="col p-5">
-                        <br></br>
+                        <br></br><br></br><br></br>
                         <input type='text' placeholder='Search Bar' value={this.state.search}
                             onChange={(event) => { this.setState({ search: event.target.value }) }} />
                         <div class="wrapper">
@@ -51,13 +48,13 @@ class Workerhome extends Component {
                                 }).map((mywork) => {
                                     return (
                                         <div className="card">
-                                            <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"https://thekkapatta.herokuapp.com/" + mywork.Wimage} />
+                                            <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
                                             <h4 className="card-title p-2">{mywork.Tags}</h4>
                                             <h5 className="card-title p-3">{mywork.Workdescription}</h5>
-                                            <h5 className="card-title p-3">{mywork._id}</h5>
                                             <h2><Link to={"/bidwork/" + mywork._id}> Bid Now </Link></h2>
-
+                                            <br></br><br></br><br></br>
                                         </div>
+                                        
                                     )
                                 })
                             }

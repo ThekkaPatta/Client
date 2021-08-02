@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-class UserEditProfile extends Component {
+class WorkerEditProfile extends Component {
        state = {
-        UFullName: "",
-        UAddress: "",
-        UPhoneNo: "",
-        Uimage: [],
+        WFullName: "",
+        WAddress: "",
+        WPhoneNo: "",
+        Wimage: [],
         _id: "",
     };  
     changeHandler = (e) => {
@@ -25,17 +25,17 @@ class UserEditProfile extends Component {
     updateProfile = (e) => {
         e.preventDefault();
             const data = {
-            UFullName:this.state.UFullName,
-            UAddress:this.state.UAddress,
-            UPhoneNo:this.state.UPhoneNo,
-            UUsername:this.state.UUsername
+            WFullName:this.state.WFullName,
+            WAddress:this.state.WAddress,
+            WPhoneNo:this.state.WPhoneNo,
+            WUsername:this.state.WUsername
         }
         
         axios
-            .post("http://localhost:550/user/update/" + this.state._id, data)
+            .post("http://localhost:550/worker/update/" + this.state._id, data)
             .then((response) => {
                 console.log(response);
-                window.location.replace("/userprofile");
+                window.location.replace("/workersprofile");
                 alert("Updated ")
             })
             .catch((err) => {
@@ -47,15 +47,15 @@ class UserEditProfile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("http://localhost:550/user/single/" + this.state._id)
+                .get("http://localhost:550/worker/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
-                        UFullName: response.data.UFullName,
-                        UAddress: response.data.UAddress,
-                        UPhoneNo: response.data.UPhoneNo,
-                        UUsername: response.data.UUsername,
-                        Uimage: response.data.Uimage,
+                        WFullName: response.data.WFullName,
+                        WAddress: response.data.WAddress,
+                        WPhoneNo: response.data.WPhoneNo,
+                        WUsername: response.data.WUsername,
+                        Wimage: response.data.Wimage,
                     });
                 })
                 .catch((err) => {
@@ -73,9 +73,9 @@ class UserEditProfile extends Component {
 
                             <div class="contact_form_container">
 
-                                <h3 className="bg-light p-4" id="projectAnchor">!!Your Profile !!</h3>
+                                <h3 className="bg-light p-4" id="projectAnchor">!!Edit Your Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.Uimage}`}
+                                    src={`http://localhost:550/${this.state.Wimage}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "200px", width: "200px", objectFit: "cover" }}
                                     alt=""
@@ -93,7 +93,7 @@ class UserEditProfile extends Component {
                 <input
                                             type="text"
                                             class="form-control text-center"
-                                            value={this.state.UFullName}
+                                            value={this.state.WFullName}
                                             name="UFullName"
                                             onChange={this.changeHandler}
                                         />
@@ -104,7 +104,7 @@ class UserEditProfile extends Component {
                 <input
                                             type="text"
                                             class="form-control text-center"
-                                            value={this.state.UAddress}
+                                            value={this.state.WAddress}
                                             name="UAddress"
                                             onChange={this.changeHandler}
                                         />
@@ -114,9 +114,9 @@ class UserEditProfile extends Component {
                                 <div className="form-group">
                                     <label class="form-label">Phone Number
                 <input
-                                            type="text"
+                                            type="number"
                                             class="form-control text-center"
-                                            value={this.state.UPhoneNo}
+                                            value={this.state.WPhoneNo}
                                             name="UPhoneNo"
                                             onChange={this.changeHandler}
                                         />
@@ -127,7 +127,7 @@ class UserEditProfile extends Component {
                 <input
                                             type="text"
                                             class="form-control text-center"
-                                            value={this.state.UUsername}
+                                            value={this.state.WUsername}
                                             name="UUsername"
                                             onChange={this.changeHandler}
                                         />
@@ -153,4 +153,4 @@ class UserEditProfile extends Component {
     }
 }
 
-export default UserEditProfile;
+export default WorkerEditProfile;

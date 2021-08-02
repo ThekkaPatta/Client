@@ -1,6 +1,9 @@
 import { Component } from "react";
 import axios from 'axios'
+<<<<<<< HEAD
 import '../assets/css/Userlanding.css'
+=======
+>>>>>>> 3ec525b632408204b34e00114f728e0334e09f31
 import {Link} from 'react-router-dom';
 
 
@@ -11,10 +14,10 @@ class Workbidder extends Component{
     }
 
     componentDidMount(){
-        axios.get("http://localhost:550/works/bidder/" + this.state.Wid)
+        axios.get("http://localhost:550/works/bidder/" + this.state.Wid)        
         .then((response)=>{
             console.log(response);
-            this.setState({
+                 this.setState({
                 bidder :response.data.data
             })
         })
@@ -24,6 +27,21 @@ class Workbidder extends Component{
 
         )
     }
+
+    Checkbidder=(Wid)=>{
+        axios.get("http://localhost:550/worker/bidder/" +Wid)
+        .then((response)=>{
+            console.log(response)
+            window.location.href = "/profile";
+        })
+        .catch((err)=>{
+            console.log(err)
+        }
+
+        )
+
+    }
+
     render(){
         return(
             <div>
