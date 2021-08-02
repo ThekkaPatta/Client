@@ -1,5 +1,7 @@
 import { Component } from "react";
 import axios from 'axios'
+import '../assets/css/Userlanding.css'
+import {Link} from 'react-router-dom';
 
 
 class Workbidder extends Component{
@@ -25,77 +27,34 @@ class Workbidder extends Component{
     render(){
         return(
             <div>
-                <p>ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                    ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                    ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                    ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                    ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                    ekfnaeo
-                    afujeba
-                    a<br></br>
-                    alejfuah
-                    afkae
-                    <br></br>
-                    aljefoauhef
-                    aefkjbaeb
-                    aefkjbaeb
-                    <br></br>
-                </p>
+                <br></br><br></br><br></br><br></br>
                 {
                     this.state.bidder.map((mybidder) => {
                         return (
-                            <div>
-                                <p>{mybidder.WUsername}</p><br></br>
+                            <div className="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Bid Price</th>
+                                        <th scope="col">Worktime</th>
+                                        <th scope="col">Actions</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>{mybidder.WUsername}</td>
+                                    <td>Rs.{mybidder.Bidprice}</td>
+                                    <td>{mybidder.Worktime}</td>
+                                    <td><a className="btn btn-outline-info p-3" href={"/workbidder/"}>View Profile</a>
+                                                <a className="btn btn-outline-success p-3" href={"/workbidder/"}>  Hire  </a></td>
+                                                </tr>
+                                </tbody>
                             </div>
                         )
                     })
                 }
-            </div>
+                </div>
 
         )
     }

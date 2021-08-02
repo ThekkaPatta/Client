@@ -53,16 +53,28 @@ class userhome extends Component {
     render() {
 
         return (
-            <div class="userfpage">
+            <div className="container-fluid ">
+
+                <h4 className="bg-light p-4" id="projectAnchor">All Bookings</h4>
+                <div className="card-deck p-2">
+                <br></br><br></br><br></br><br></br>
                 {
                     this.state.works.map((myworks) => {
                         return (
-                            <div>
-                                <Link to={"/workbidder/"+myworks._id}>
-                                <p>{myworks.Workdescription}</p>
-                                <img class="card-img-top" style={{ height: "10px", width: "10px" }} src={"http://localhost:550/" + myworks.Wimage} />
-                                </Link>
+                            <div className="col-md-4 p-3">
+                                <div className="card">
+                                <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + myworks.Wimage} />
+                                            <h4 className="card-title p-2">Tag: {myworks.Tags}</h4>
+                                            <h4 className="card-title p-2">Work Description: {myworks.Workdescription}</h4>
+                                            <div className="text-center p-0">
+                                                {}
+                                                <p> 
+                                                <a className="btn btn-outline-info p-3" href={"/workbidder/"+myworks._id}>View Bidders</a>
+                                                </p>
+                                            </div>
+                                </div>
                             </div>
+                            
 
 
                         )
@@ -71,6 +83,7 @@ class userhome extends Component {
                     
                 }
              
+            </div>
             </div>
         )
     }
