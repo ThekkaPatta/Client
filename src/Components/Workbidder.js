@@ -7,8 +7,6 @@ import '../assets/css/Userlanding.css'
 class Workbidder extends Component{
     state={
         Wid : this.props.match.params._id,
-        Wimage: [],
-        Username:"",
         bidder: []
     }
 
