@@ -17,6 +17,8 @@ import WorkerEditProfile from "../Components/WorkerEditProfile";
 import WorkersProfile from "../Components/Worker'sProfile";
 import Workbidder from "../Components/Workbidder";
 import Profile from "../Components/Profile";
+import Adminpost from "../Admin/Adminpost";
+import Adminusers from "../Admin/Adminusers";
 
 
 
@@ -42,6 +44,8 @@ class Container extends Component{
                 <Route path="/workersprofile" component={WorkersProfile} />               
                 <Route path='/userlanding' component={userhome}/>
                 <Route path='/workbidder/:_id' component={Workbidder}/>
+                <Route path='/adminpost' component={Adminpost}/>
+                <Route path='/adminuser' component={Adminusers}/>
                 
             </div>
         )

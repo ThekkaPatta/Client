@@ -27,7 +27,8 @@ function Header() {
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
+                        <li class="main_nav_item"><a href="/adminpost">Posts</a></li>
+                        <li class="main_nav_item"><a href="/adminuser">Users</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
