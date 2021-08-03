@@ -1,22 +1,41 @@
 import { Component } from "react";
 import axios from 'axios'
+import { Link } from "react-router-dom";
 import '../assets/css/Userlanding.css'
 
 
 class Workbidder extends Component{
     state={
         Wid : this.props.match.params._id,
+        Wimage: [],
+        Username:"",
         bidder: []
     }
 
     componentDidMount(){
         axios.get("http://localhost:550/works/bidder/" + this.state.Wid)        
         .then((response)=>{
-            console.log(response);
+            console.log(response)
                  this.setState({
-                bidder :response.data.data
+                 bidder :response.data.data,
+              
             })
         })
+        .then(() =>{
+            axios.get("http://localhost:550/worker/username/" + this.state.Username)
+            .then((response) => {
+
+                console.log(response);
+                this.setState({
+                    Wimage: response.data.Wimage,
+                });
+                alert(this.state.Username)
+            })
+            .catch((err) => {
+                console.log(err.response);
+            });
+        })
+
         .catch((err)=>{
             console.log(err)
         }
@@ -37,6 +56,9 @@ class Workbidder extends Component{
         )
 
     }
+
+    
+  
 
     render(){
         return(
@@ -60,7 +82,7 @@ class Workbidder extends Component{
                                     <td>{mybidder.WUsername}</td>
                                     <td>Rs.{mybidder.Bidprice}</td>
                                     <td>{mybidder.Worktime}</td>
-                                    <td><a className="btn btn-outline-info p-3" href={"/workbidder/"}>View Profile</a>
+                                    <td><a className="btn btn-outline-info p-3" ><Link to={"/Profile/" +mybidder.WUsername}>View Profile</Link></a>
                                                 <a className="btn btn-outline-success p-3" href={"/workbidder/"}>  Hire  </a></td>
                                                 </tr>
                                 </tbody>
