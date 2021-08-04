@@ -24,9 +24,9 @@ class Registeruser extends Component {
 
         axios.post("http://localhost:550/user/insert", data)
             .then((response)=>{
-                
+                window.location.href = "/loginuser"
                 alert('Welcome ! You Are Registered As A User')
-                window.location.replace = "/loginuser"
+               
             })
             .catch(err => {
                 console.log(err)

@@ -5,11 +5,13 @@ import '../assets/css/workpost.css'
 
 class Workpost extends Component {
     state={
+        FullName:"",
         Username:"",
         PhoneNo:"",
         Tags:"",
         Workdescription:"",
-        Wimage:"",
+        WorkTitle:"",
+        Wimage:[],
     }
 
     componentDidMount(){
@@ -20,6 +22,7 @@ class Workpost extends Component {
                 console.log(response)
                 this.setState({
                     Username : response.data.UUsername,
+                    FullName : response.data.UFullName,
                     PhoneNo : response.data.UPhoneNo,
                 })
             })
@@ -37,10 +40,11 @@ class Workpost extends Component {
     Workpost=(e)=>{
         e.preventDefault();
         const data = new FormData() // new line
-
+        data.append('FullName', this.state.FullName)
         data.append('Username', this.state.Username)
         data.append('PhoneNo', this.state.PhoneNo)
         data.append('Tags', this.state.Tags)
+        data.append('WorkTitle', this.state.WorkTitle)
         data.append('Workdescription', this.state.Workdescription)
         data.append('Wimage',this.state.Wimage)
     
@@ -48,7 +52,7 @@ class Workpost extends Component {
     .then((response)=>{
         console.log(response)
         alert(" Work Posted Successfully ")
-        window.location.href='#';
+        window.location.href='/userlanding';
     })
     .catch((err)=>{
         console.log(err.response)
@@ -70,6 +74,11 @@ class Workpost extends Component {
                                 <div class="col-md-6 form-line">
                                     <div class="form-group">
                                        <label for="exampleInputUsername">Your name</label>
+                                        <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.FullName}
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                       <label for="exampleInputUsername">Your Username</label>
                                         <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.Username}
                                         />
                                     </div>
@@ -95,6 +104,11 @@ class Workpost extends Component {
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                <div class="form-group">
+                                      <label for="description"> Work Title</label>
+                                        <textarea class="form-control" id="description" placeholder="Enter Your Message" 
+                                        value={this.state.WorkTitle} onChange={(event) => { this.setState({ WorkTitle: event.target.value }) }}></textarea>
+                                    </div>
                                     <div class="form-group">
                                       <label for="description"> Work Description</label>
                                         <textarea class="form-control" id="description" placeholder="Enter Your Message" 

@@ -1,6 +1,6 @@
 import { Component } from "react";
-import just from "./just";
-
+import Just from './Just'
+import React from "react";
 class notification extends Component {
 
     
@@ -9,7 +9,7 @@ class notification extends Component {
     {
         return(
             <div>
-                
+             <Just />
             </div>
         )
 

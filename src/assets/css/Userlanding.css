@@ -1,0 +1,21 @@
+.userfpage{
+    padding-top:8%;
+}
+
+.wrapper {
+    display: grid;
+    text-align: center;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+.card:hover{
+    transform:scale(1.1); 
+  }
+
+.alignment{
+  align-items: center;
+  width: 75%;
+}
+

@@ -1,26 +1,31 @@
 import React from 'react';
 import Reactnotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
 
-function just (){
+export default function Just (){
 
     return(
         <div>
-            <Reactnotification/>
-            <Home />
+            <Hoty/>
         </div>
     );
    
-}
+};
 
-function Home(){
+function Hoty(){
     return(
         <div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <button>
                 click for notification
             </button>
 
         </div>
     );
-}
-export default just;
+};
+
