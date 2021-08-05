@@ -1,8 +1,9 @@
 import { Button } from "bootstrap";
-import { Component, React, useState } from "react";
+import { React, useState } from "react";
 import '../assets/css/Header.css'
 import Notification from '../Components/Notification'
 import Modal from "react-modal";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 function Header() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -99,7 +100,8 @@ function Header() {
                         overlay: {
                             justifyContent: "right",
                             marginTop: '4.1%',      
-                            background: "transparent"
+                            background: "transparent",
+                            zIndex:"1"
 
                         },
                         content: {
@@ -109,7 +111,8 @@ function Header() {
                             backgroundColor: "white",
                             boxShadow: "5px 4px 20px 20px #0000000f",
                             padding: "20px",
-                            overflow:"scroll"
+                            overflowY:"scroll",
+                            overflowX:"hidden"
 
 
                         },

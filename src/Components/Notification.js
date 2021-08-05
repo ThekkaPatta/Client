@@ -1,23 +1,46 @@
-import { Button } from 'react';
 import React from 'react'
+import axios from 'axios';
+import Card from 'react-bootstrap/Card';
+import { NotificationsNoneSharp } from '@material-ui/icons';
 
-export default function Notification({closenotificationmodal} ) {
-  // const [isOpen, setIsOpen] = useState(true)
+var Username, notifications;
+export default function Notification({ closenotificationmodal }) {
+  var u_id = localStorage.getItem('_id');
+
+  axios.get("http://localhost:550/user/single/" + u_id)
+    .then((response) => {
+      Username = response.data.UUsername
+    })
+    .then(() => {
+      axios.get("http://localhost:550/notifications/user/" + Username)
+        .then((response) => {
+          notifications = response.data.data
+        })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+
+
   return (
     <div className='modalBackground'>
       <div className='modalContainer'>
-        <button  style={{width: "25px",paddingTop:"0px",marginTop:"0px", float:"right"}} className="btn btn-danger" onClick={closenotificationmodal}>X</button>
+        <button style={{ width: "25px", paddingTop: "0px", marginTop: "0px", float: "right" }}
+          className="btn btn-danger" onClick={closenotificationmodal}>X</button>
         <div className='tite'><h3>
           Notifications</h3></div>
+        <br></br><br></br>
         <div className='body'>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          <p>This is where all the notifications will be</p><br></br>
-          
+          {
+             this.state.notifications.map((mynotifications) => {
+            <Card>
+              <Card.Body>There has been a bid on you work {mynotifications.Wtitle} worker {mynotifications.WUsername}
+
+              </Card.Body>
+            </Card>
+             })
+          }
         </div>
       </div>
     </div>
