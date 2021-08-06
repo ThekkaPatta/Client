@@ -3,6 +3,7 @@ import axios from 'axios'
 import '../assets/css/Userlanding.css'
 import {Link} from 'react-router-dom';
 
+
 class userhome extends Component {
     state = {
         works: [],
@@ -33,22 +34,13 @@ class userhome extends Component {
             })
     }
 
-    Checkbidder=(Wid)=>{
-        axios.get("http://localhost:550/works/bidder/" +Wid)
-        .then((response)=>{
-            console.log(response)
-            window.location.href = "/workbidder";
-        })
-        .catch((err)=>{
-            console.log(err)
-        }
-
-        )
-
-    }
     componentDidMount() {
         this.getUser()
     }
+
+
+
+   
 
     render() {
 

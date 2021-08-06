@@ -48,28 +48,31 @@ function Header() {
                             <div style={{ padding: "20px" }}>
                             </div>
                             <Modal
-                                isOpen={modalIsOpen}
-                                aria-labelledby="contained-modal-title-vcenter"
-                                centered
-                                style={{
-                                    overlay: {
-                                        justifyContent: "center",
-                                        display: "flex",
-                                    },
-                                    content: {
-                                        width: "50%",
-                                        minHeight: "25%",
-                                        margin: "auto",
-                                        backgroundColor: "white",
-                                        boxShadow: "5px 4px 20px 20px #0000000f",
-                                        padding: "20px",
-                                        position: "relative",
-                                    },
-                                }}
-                                className="notify"
-                            >
-                                <Notification closenotificationmodal={setModalIsOpenToFalse} />
-                            </Modal></li>
+                    isOpen={modalIsOpen}
+                    
+                    style={{
+                        overlay: {
+                            justifyContent: "right",
+                            marginTop: '6%',      
+                            background: "transparent"
+
+                        },
+                        content: {
+                            float:"right",
+                            width: "500px",
+                            height:'300px',
+                            backgroundColor: "white",
+                            boxShadow: "5px 4px 20px 20px #0000000f",
+                            padding: "20px",
+                            overflow:"scroll"
+
+
+                        },
+                    }}
+                    className="notify"
+                >
+                    <Notification closenotificationmodal={setModalIsOpenToFalse} />
+                </Modal></li>
                             <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
@@ -119,7 +122,7 @@ function Header() {
                 </div>
             </header>
             <div class="float-right">
-                <Modal
+                {/* <Modal
                     isOpen={modalIsOpen}
                     
                     style={{
@@ -144,7 +147,7 @@ function Header() {
                     className="notify"
                 >
                     <Notification closenotificationmodal={setModalIsOpenToFalse} />
-                </Modal>
+                </Modal> */}
             </div>
         </>
     )

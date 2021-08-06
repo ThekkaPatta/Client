@@ -15,7 +15,7 @@ class Registeruser extends Component {
         e.preventDefault();
         const data = new FormData()
 
-        data.append('Uimage', this.state.Uimage)
+        // data.append('Uimage', this.state.Uimage)
         data.append('UFullName', this.state.UFullName)
         data.append('UAddress', this.state.UAddress)
         data.append('UPhoneNo', this.state.UPhoneNo)
@@ -46,20 +46,20 @@ class Registeruser extends Component {
                     <h1> Register As A User</h1>
                     <div class="main-agileinfo">
                         <div class="agileits-top">
-                            <form>
-                                <p>Full Name:<input type="text" value={this.state.UFullName}
+                            <form id="userregisterfrm">
+                                <p>Full Name:<input type="text" id="UFullNames" value={this.state.UFullName}
                                     onChange={(event) => { this.setState({ UFullName: event.target.value }) }} /></p>
-                                <p>Address:<input type="text" value={this.state.UAddress}
+                                <p>Address:<input type="text" id="UAddresss" value={this.state.UAddress}
                                     onChange={(event) => { this.setState({ UAddress: event.target.value }) }} /></p>
-                                <p> Phone Number:<input type="text" value={this.state.UPhoneNo}
+                                <p> Phone Number:<input type="text" id="UPhoneNos" value={this.state.UPhoneNo}
                                     onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></p>
-                                <p>Username:<input type="text" value={this.state.UUsername}
+                                <p>Username:<input type="text" id="UUsernames" value={this.state.UUsername}
                                     onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></p>
-                                <p>Password:<input type="Password" value={this.state.UPassword}
+                                <p>Password:<input type="Password" id="UPasswords" value={this.state.UPassword}
                                     onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></p>
-                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
-                                    onChange={this.imageHandler} /></p>
-                                <p><input type="submit" onClick={this.sendUserData} />  </p>
+                                {/* <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
+                                    onChange={this.imageHandler} /></p> */}
+                                <p><input type="submit" id="btnsubmit" onClick={this.sendUserData} />  </p>
 
                             </form>
                             <p>Already have an account? <a href="/loginuser"> Login </a></p>
