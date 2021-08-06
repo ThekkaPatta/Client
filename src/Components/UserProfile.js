@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import '../assets/css/viewprofile.css'
 
 class Userprofile extends Component {
-       state = {
+    state = {
         UFullName: "",
-       UAddress: "",
+        UAddress: "",
         UPhoneNo: "",
         Uimage: [],
         _id: "",
-    }; 
-  
+    };
+
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
@@ -38,7 +38,7 @@ class Userprofile extends Component {
                 <div class="container">
                     <div class="row p-5">
                         <div class="col p-5">
-                        <br></br><br></br><br></br>
+                            <br></br><br></br><br></br>
                             <div class="contact_form_container">
                                 <br></br><br></br><br></br><br></br><br></br>
 
@@ -50,55 +50,55 @@ class Userprofile extends Component {
                                     alt=""
                                 />
                                 <br />
-                                
+
                                 <br />
 
-                                           
+
 
 
                                 <div className="form-group">
                                     <label class="form-label">Full Name
-                                   
-                                   
-                <input type="text"class="form-control"value={this.state.UFullName}/>
-                </label>
+
+
+                                        <input type="text" class="form-control" value={this.state.UFullName} />
+                                    </label>
                                 </div>
                                 <div className="form-group">
                                     <label class="form-label">Address
-                                   
-                <input
+
+                                        <input
                                             type="text"
                                             class="form-control"
                                             value={this.state.UAddress}
-                                           
-                                           
-                                        />
-</label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Phone Number
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.UPhoneNo}
-                                            
-                                          
+
+
                                         />
                                     </label>
                                 </div>
-                               
+                                <div className="form-group">
+                                    <label class="form-label">Phone Number
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            value={this.state.UPhoneNo}
+
+
+                                        />
+                                    </label>
+                                </div>
+
                                 <div className="form-group">
                                     <label class="form-label">Username
-                <input
+                                        <input
                                             type="text"
                                             class="form-control"
                                             value={this.state.UUsername}
                                             name="Username"
-                                            
+
                                         />
                                     </label>
                                 </div>
-                              <h1><Link to={"/useredit/"}> Edit Profile </Link></h1>
+                                <h1><Link to={"/useredit/"}> Edit Profile </Link></h1>
                             </div>
                         </div>
                     </div>

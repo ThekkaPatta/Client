@@ -37,9 +37,9 @@ class Loginuser extends Component {
                 <div class="form">
                     <h1>User Login</h1>
                     <form>
-                        <input type="text" placeholder="xyz@mail.com" alue={this.state.UUsername} placeholder="Username"
+                        <input type="text"  alue={this.state.UUsername} placeholder="Username"
                             onChange={(event) => { this.setState({ UUsername: event.target.value }) }} />
-                        <input type="password" placeholder="password" value={this.state.UPassword} placeholder="Password"
+                        <input type="password"  value={this.state.UPassword} placeholder="Password"
                             onChange={(event) => { this.setState({ UPassword: event.target.value }) }} />
                         <button type="submit" id="login" onClick={this.sendUserData}>Login</button>
                         <div class="forgot-signup">
