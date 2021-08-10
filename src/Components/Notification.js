@@ -1,9 +1,14 @@
 import React from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import { io } from "socket.io-client";
 
+var notid
 var Username, notifications = [];
 export default function Notification({ closenotificationmodal }) {
+
+
+
   var u_id = localStorage.getItem('_id');
 
   axios.get("http://localhost:550/user/single/" + u_id)
@@ -21,7 +26,9 @@ export default function Notification({ closenotificationmodal }) {
       console.log(err)
     })
 
+    const socket = io.connect('http://localhost:500')
 
+    socket.emit('notification',`notification_${u_id}`)
 
   return (
     <div className='modalBackground'>
