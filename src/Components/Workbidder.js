@@ -6,7 +6,8 @@ import {Link} from 'react-router-dom';
 class Workbidder extends Component{
     state={
         Wid : this.props.match.params._id,
-        bidder: []
+        bidder: [],
+     
     }
 
     componentDidMount(){
@@ -14,8 +15,10 @@ class Workbidder extends Component{
         .then((response)=>{
             console.log(response);
                  this.setState({
-                bidder :response.data.data
+                bidder :response.data.data,
+                               
             })
+            
         })
         .catch((err)=>{
             console.log(err)

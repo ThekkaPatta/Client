@@ -45,7 +45,7 @@ class WorkersProfile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/Images/${this.state.Wimage}`}
+                                    src={`http://localhost:550/${this.state.Wimage}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""

@@ -6,7 +6,8 @@ import {Link} from 'react-router-dom';
 class userhome extends Component {
     state = {
         works: [],
-        Username:""
+        Username:"",
+        adress:""
     }
 
     getUser = () => {
@@ -15,7 +16,9 @@ class userhome extends Component {
             .then((response) => {
                 this.setState({
                     Username: response.data.UUsername,
+                    
                 })
+                
             })
             .then(() => {
                 axios.get("http://localhost:550/works/posted/" + this.state.Username)
@@ -53,7 +56,7 @@ class userhome extends Component {
     render() {
 
         return (
-            <div class="userfpage">
+            <div class="userpage">
                 <div className="row p-5">
                     <div className="col p-5">
                 {
