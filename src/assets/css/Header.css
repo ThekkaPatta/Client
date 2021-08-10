@@ -29,15 +29,17 @@
     display: block;
   }
   .logo-box img {display: block;}
+
   nav {
     overflow: hidden;
   }
+
+
   ul,.signup {
     font-size: 12px;
     list-style: none;
     margin: 0;
     padding: 0;
-    float: right;
   }
   nav li {
     display: inline-block;
@@ -52,6 +54,7 @@
     position: relative;
     color: #868686;
     text-transform: uppercase;
+    
   }
   nav a:after {
     content: "";

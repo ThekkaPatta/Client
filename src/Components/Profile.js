@@ -14,7 +14,6 @@ class Profile extends Component {
         Wimage: []
 
     };
-
     componentDidMount() {
         alert(this.state.WUsername)
         axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
@@ -35,6 +34,28 @@ class Profile extends Component {
             });
 
     }
+    FavWorker=(e)=>{
+        e.preventDefault();
+        const data = new FormData() // new line
+        data.append('WFullName', this.state.WFullName)
+        data.append('WUsername', this.state.WUsername)
+        data.append('WPhoneNo', this.state.WPhoneNo)
+        data.append('WSkills', this.state.WSkills)
+        data.append('Wimage',this.state.Wimage)
+    
+        axios.post("http://localhost:550/Favworker/insert",data)
+    .then((response)=>{
+        console.log(response)
+        alert("Worker Added To favorites Successfully ")
+        window.location.href='/profile';
+    })
+    .catch((err)=>{
+        console.log(err.response)
+      alert("!!! Something Went Wrong !!!")
+})
+
+    }
+
     render() {
         return (
             <div class="contact_form_section">
@@ -109,6 +130,9 @@ class Profile extends Component {
                                     </label>
                                 </div>
                                 <Review />
+                                <button type="submit"
+                                    onClick={this.FavWorker}
+                                    class="btn btn-block mb-4">Add To Favorites</button>
                             </div>
                             )
                         </div>

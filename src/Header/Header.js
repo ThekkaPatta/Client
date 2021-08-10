@@ -1,9 +1,9 @@
-import { Button } from "bootstrap";
-import { Component, React, useState } from "react";
+import { React, useState } from "react";
 import '../assets/css/Header.css'
 import Notification from '../Components/Notification'
-import Modal from "react-modal";
+import Modal from "react-modal";;
 
+var menu;
 function Header() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -22,74 +22,52 @@ function Header() {
         window.location.href = '/'
     }
 
-    if (localStorage.getItem('token') && localStorage.getItem('userType') == 'admin') {
-        var menu =
+    if (localStorage.getItem('token') && localStorage.getItem('userType') === 'admin') {
+        menu =
             <>
-                <div class="main_nav_container ml-auto col d-flex flex-row">
+                <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
-                        <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
+                        <li class="main_nav_item"><a href="/adminpost">Posts</a></li>
+                        <li class="main_nav_item"><a href="/adminuser">Users</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
             </>
     }
 
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') == 'user') {
-        var menu =
+    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'user') {
+        menu =
             <>
-                <div class="main_nav_container ml-auto col d-flex flex-row">
+                <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                         <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
                         <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
-                        <li class="main_nav_item">
-                            <div style={{ padding: "20px" }}>
-                            </div>
-                            <Modal
-                                isOpen={modalIsOpen}
-                                aria-labelledby="contained-modal-title-vcenter"
-                                centered
-                                style={{
-                                    overlay: {
-                                        justifyContent: "center",
-                                        display: "flex",
-                                    },
-                                    content: {
-                                        width: "50%",
-                                        minHeight: "25%",
-                                        margin: "auto",
-                                        backgroundColor: "white",
-                                        boxShadow: "5px 4px 20px 20px #0000000f",
-                                        padding: "20px",
-                                        position: "relative",
-                                    },
-                                }}
-                                className="notify"
-                            >
-                                <Notification closenotificationmodal={setModalIsOpenToFalse} />
-                            </Modal></li>
                             <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
+
             </>
     }
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') == 'worker') {
-        var menu =
+    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'worker') {
+        menu =
             <>
-                <div class="main_nav_container ml-auto col d-flex flex-row">
+                <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/workerhome">Home</a></li>
                         <li class="main_nav_item"><a href="/workersprofile">My Profile</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
+
                 </div>
+
             </>
     }
     else {
-        var menu =
+        menu =
             <>
-                <div class="main_nav_container ml-auto col d-flex flex-row">
+                <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
                         <li><a href="/">Home</a></li>
                         <li><a href="/loginuser">Login as User</a></li>
@@ -101,18 +79,50 @@ function Header() {
             </>
     }
     return (
-        <header>
-            <div class="container">
-                <div class="logo-box">
-                    <a href="/">
-                        <img src="https://html5book.ru/wp-content/uploads/2015/01/logo-header.png" />
-                    </a>
+        <>
+            <header>
+                <div class="container">
+                    <div class="logo-box">
+                        <a href="/">
+                            <img src="https://html5book.ru/wp-content/uploads/2015/01/logo-header.png" />
+                        </a>
+                    </div>
+                    <nav>
+                        {menu}
+                    </nav>
                 </div>
-                <nav>
-                    {menu}
-                </nav>
+            </header>
+            <div class="float-right">
+                <Modal 
+                    isOpen={modalIsOpen}
+                    ariaHideApp={false}
+                    style={{
+                        overlay: {
+                            justifyContent: "right",
+                            marginTop: '4.1%',      
+                            background: "transparent",
+                            zIndex:"1"
+
+                        },
+                        content: {
+                            float:"right",
+                            width: "500px",
+                            height:'600px',
+                            backgroundColor: "white",
+                            boxShadow: "5px 4px 20px 20px #0000000f",
+                            padding: "20px",
+                            overflowY:"scroll",
+                            overflowX:"hidden"
+
+
+                        },
+                    }}
+                    className="notify"
+                >
+                    <Notification closenotificationmodal={setModalIsOpenToFalse} />
+                </Modal>
             </div>
-        </header>
+        </>
     )
 }
 export default Header

@@ -17,7 +17,7 @@ class Adminlogin extends Component {
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
                 localStorage.setItem('userType', 'admin')
-                window.location.href = "/workpost";
+                window.location.href = "/adminpost";
                 alert("Login success")
                 this.setState({
                     loginChk: true
