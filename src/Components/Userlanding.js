@@ -1,12 +1,12 @@
 import { Component } from "react";
 import axios from 'axios'
 import '../assets/css/Userlanding.css'
-import {Link} from 'react-router-dom';
 
 class userhome extends Component {
     state = {
         works: [],
-        Username:""
+        Username:"",
+
     }
 
     getUser = () => {
@@ -21,7 +21,8 @@ class userhome extends Component {
                 axios.get("http://localhost:550/works/posted/" + this.state.Username)
                     .then((response) => {
                         this.setState({
-                            works: response.data.data
+                            works: response.data.data,
+
                         })
                     })
                     .catch((err) => {

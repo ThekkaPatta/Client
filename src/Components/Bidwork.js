@@ -5,6 +5,7 @@ import axios from 'axios';
 class Bidwork extends Component {
     state = {
         WUsername: "",
+        UUsername:"",
         id: this.props.match.params.id,
         Bidprice: "",
         Worktime: ""
@@ -22,15 +23,29 @@ class Bidwork extends Component {
             .catch((err)=>{
                 console.log(err.response)
         })
+        axios.get("http://localhost:550/work/single/" +this.state.id)
+            .then((response)=>{
+                console.log(response)
+                this.setState({
+                    UUsername : response.data.Username,
+                })
+            })
+            .catch((err)=>{
+                console.log(err.response)
+        })
+
     }
+
     sendUserData = (e) => {
         e.preventDefault();
         const data = new FormData()
 
         data.append('WUsername', this.state.WUsername)
+        data.append('UUsername',this.state.UUsername)
         data.append('Wid', this.state.id)
         data.append('Bidprice', this.state.Bidprice)
         data.append('Worktime', this.state.Worktime)
+        data.append('nType','Bid')
 
         axios.post("http://localhost:550/bid/post", data)
         .then((response)=>{
@@ -50,7 +65,8 @@ class Bidwork extends Component {
                     <div class="main-agileinfo">
                         <div class="agileits-top">
                             <form method="POST" enctype="multipart/form-data">
-                                <p>Username:<input type="text" value={this.state.WUsername}/></p>
+                                <p> Worker Username:<input type="text" value={this.state.WUsername}/></p>
+                                <p> User Username:<input type="text" value={this.state.UUsername}/></p>
                                 <p>Bid Price:<input type="text" value={this.state.Bidprice}
                                     onChange={(event) => { this.setState({ Bidprice: event.target.value }) }} /></p>
                                 <p>Work Time:<input type="text" value={this.state.Worktime}
