@@ -1,34 +1,64 @@
-import React from 'react'
+import React, {useEffect, useState } from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
-import { io } from "socket.io-client";
+// import socketIOClient from "socket.io-client";
 
 var notid
-var Username, notifications = [];
 export default function Notification({ closenotificationmodal }) {
+  const [userName, setUsername] = useState();
+  const [notifications  , setNotification] = useState([]);
+  
+  useEffect(() => {
+  
+    var u_id = localStorage.getItem('_id');
 
+    axios.get("http://localhost:550/user/single/" + u_id)
+      .then((response) => {
+        setUsername(response.data.UUsername)
+        // Username = response.data.UUsername
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
+      // const socket = socketIOClient("http://localhost:550");
+      // // socket.connect()
+      // socket.on("FromAPI", data => {
+      // console.log(data);
+      // setResponse(res => [...res, data]);
+    // });
 
-  var u_id = localStorage.getItem('_id');
-
-  axios.get("http://localhost:550/user/single/" + u_id)
+  }, []);
+  useEffect(() => {
+    const socket = socketIOClient("http://127.0.0.1:550");
+    socket.on("FromAPI", data => {
+      console.log(data);
+    });
+  }, []);
+  useEffect(()=>{
+    if(userName!==undefined){
+      axios.get("http://localhost:550/notifications/user/" + userName)
     .then((response) => {
-      Username = response.data.UUsername
+      console.log("Not res",response)
+      setNotification(
+         response.data.data
+      )
+      console.log(notifications)
     })
-    .then(() => {
-      axios.get("http://localhost:550/notifications/user/" + Username)
-        .then((response) => {
-          notifications = response.data.data
-          console.log(notifications)
-        })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+    }
+    
+  }, userName)
 
-    const socket = io.connect('http://localhost:500')
+  useEffect(()=>{
+    console.log("Notificationss",notifications)
+  }, notifications)
 
-    socket.emit('notification',`notification_${u_id}`)
+    // const socket = io.connect('http://localhost:500')
+
+    // socket.emit('notification',`notification_${u_id}`)
+
+    // const eventEmitter = req.app.get('eventEmitter')
+    // eventEmitter.emit('notificationemit',{Title:notifications.data.Wtitle,worker:notifications.data.WUsername})
 
   return (
     <div className='modalBackground'>
@@ -40,6 +70,7 @@ export default function Notification({ closenotificationmodal }) {
         <br></br><br></br>
         <div className='body'>
           {
+            notifications && 
             notifications.map(mynotifications => {
               return (
                 <Card>
