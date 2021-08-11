@@ -1,9 +1,9 @@
-import { Button } from "bootstrap";
-import { Component, React, useState } from "react";
+import { React, useState } from "react";
 import '../assets/css/Header.css'
 import Notification from '../Components/Notification'
-import Modal from "react-modal";
+import Modal from "react-modal";;
 
+var menu;
 function Header() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -22,8 +22,8 @@ function Header() {
         window.location.href = '/'
     }
 
-    if (localStorage.getItem('token') && localStorage.getItem('userType') == 'admin') {
-        var menu =
+    if (localStorage.getItem('token') && localStorage.getItem('userType') === 'admin') {
+        menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
@@ -35,8 +35,8 @@ function Header() {
             </>
     }
 
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') == 'user') {
-        var menu =
+    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'user') {
+        menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
@@ -44,43 +44,14 @@ function Header() {
                         <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
                         <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
-                        <li class="main_nav_item">
-                            <div style={{ padding: "20px" }}>
-                            </div>
-                            <Modal
-                    isOpen={modalIsOpen}
-                    
-                    style={{
-                        overlay: {
-                            justifyContent: "right",
-                            marginTop: '6%',      
-                            background: "transparent"
-
-                        },
-                        content: {
-                            float:"right",
-                            width: "500px",
-                            height:'300px',
-                            backgroundColor: "white",
-                            boxShadow: "5px 4px 20px 20px #0000000f",
-                            padding: "20px",
-                            overflow:"scroll"
-
-
-                        },
-                    }}
-                    className="notify"
-                >
-                    <Notification closenotificationmodal={setModalIsOpenToFalse} />
-                </Modal></li>
                             <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
 
             </>
     }
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') == 'worker') {
-        var menu =
+    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'worker') {
+        menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
@@ -94,7 +65,7 @@ function Header() {
             </>
     }
     else {
-        var menu =
+        menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
                     <ul class="main_nav_list">
@@ -122,14 +93,15 @@ function Header() {
                 </div>
             </header>
             <div class="float-right">
-                {/* <Modal
+                <Modal 
                     isOpen={modalIsOpen}
-                    
+                    ariaHideApp={false}
                     style={{
                         overlay: {
                             justifyContent: "right",
                             marginTop: '4.1%',      
-                            background: "transparent"
+                            background: "transparent",
+                            zIndex:"1"
 
                         },
                         content: {
@@ -139,7 +111,8 @@ function Header() {
                             backgroundColor: "white",
                             boxShadow: "5px 4px 20px 20px #0000000f",
                             padding: "20px",
-                            overflow:"scroll"
+                            overflowY:"scroll",
+                            overflowX:"hidden"
 
 
                         },
@@ -147,7 +120,7 @@ function Header() {
                     className="notify"
                 >
                     <Notification closenotificationmodal={setModalIsOpenToFalse} />
-                </Modal> */}
+                </Modal> 
             </div>
         </>
     )

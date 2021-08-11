@@ -57,9 +57,9 @@ class Registeruser extends Component {
                                     onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></p>
                                 <p>Password:<input type="Password" id="UPasswords" value={this.state.UPassword}
                                     onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></p>
-                                {/* <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
-                                    onChange={this.imageHandler} /></p> */}
-                                <p><input type="submit" id="btnsubmit" onClick={this.sendUserData} />  </p>
+                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
+                                    onChange={this.imageHandler} /></p>
+                                <p><input type="submit" onClick={this.sendUserData} /></p>
 
                             </form>
                             <p>Already have an account? <a href="/loginuser"> Login </a></p>
