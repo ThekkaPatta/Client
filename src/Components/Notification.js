@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import io from 'socket.io-client'
 
 var Username, notifications = [];
 export default function Notification({ closenotificationmodal }) {
@@ -20,6 +21,10 @@ export default function Notification({ closenotificationmodal }) {
     .catch(err => {
       console.log(err)
     })
+
+    const socket = io.connect("http://localhost:550");
+
+
 
 
 
