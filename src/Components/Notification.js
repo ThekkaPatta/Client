@@ -1,25 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 
-var Username, notifications = [];
 export default function Notification({ closenotificationmodal }) {
-  var u_id = localStorage.getItem('_id');
+  const [Username, setUsername] = useState();
+  const [notifications, setnotifications] = useState([]);
 
-  axios.get("http://localhost:550/user/single/" + u_id)
-    .then((response) => {
-      Username = response.data.UUsername
-    })
-    .then(() => {
+  useEffect(() => {
+    if(localStorage.getItem("userType")==="user"){
       axios.get("http://localhost:550/notifications/user/" + Username)
+      .then((response) => {
+        setnotifications(response.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+    else if(localStorage.getItem("userType")==="worker"){
+      axios.get("http://localhost:550/notifications/worker/" + Username)
+      .then((response) => {
+        setnotifications(response.data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [Username])
+
+  useEffect(() => {
+    if (localStorage.getItem('userType') === 'user') {
+      var u_id = localStorage.getItem('_id');
+      axios.get("http://localhost:550/user/single/" + u_id)
         .then((response) => {
-          notifications = response.data.data
-          console.log(notifications)
+          setUsername(response.data.UUsername)
         })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    else if (localStorage.getItem('userType') === 'worker') {
+      var w_id = localStorage.getItem('_id');
+      axios.get("http://localhost:550/worker/single/" + w_id)
+        .then((response) => {
+          setUsername(response.data.WUsername)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }, [])
 
 
 
@@ -32,17 +61,34 @@ export default function Notification({ closenotificationmodal }) {
           Notifications</h3></div>
         <br></br><br></br>
         <div className='body'>
-          {
-            notifications.map(mynotifications => {
+          {(() => {
+            if (localStorage.getItem('userType') === 'user') {
               return (
-                <Card>
-                  <Card.Body>There has been a bid on you work {mynotifications.Wtitle} worker {mynotifications.WUsername}
-                  </Card.Body>
-                </Card>
-              )
-            })
+                notifications.map(mynotifications => {
+                  return (
+                    <Card>
+                      <Card.Body>There has been a bid on you work <h3>{mynotifications.Wtitle}</h3> worker <h4>{mynotifications.WUsername}</h4>
+                      </Card.Body>
+                    </Card>
+                  )
 
+                })
+              )
+            }
+            else if (localStorage.getItem('userType') === 'worker') {
+              return (
+                notifications.map(mynotifications => {
+                  return (
+                    <Card>
+                      <Card.Body>You have been Hired
+                      </Card.Body>
+                    </Card>
+                  )
+                })
+              )
+            }
           }
+          )()}
         </div>
       </div>
     </div>
