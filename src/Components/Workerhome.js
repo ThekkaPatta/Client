@@ -8,6 +8,7 @@ class Workerhome extends Component {
         work: [],
         search: "",
         workstate: "Pending",
+        WUsername: "",
         config: {
             headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
         }
@@ -25,6 +26,32 @@ class Workerhome extends Component {
             .catch()
     }
 
+    biddedworks = (Wid) => {
+        var wid = localStorage.getItem('_id');
+        axios.get("http://localhost:550/worker/single/" + wid)
+            .then((response) => {
+                console.log(response)
+                this.setState({
+                    WUsername: response.data.WUsername,
+                })
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+
+        const data = new FormData
+        data.append('Wid', Wid)
+        data.append('WUsername', WUsername)
+
+        axios.post("http://localhost:550/bidded/works", data)
+            .then((response) => {
+                return response.data.data
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+
+    }
     render() {
         return (
             <div className="container">
@@ -35,17 +62,22 @@ class Workerhome extends Component {
                             onChange={(event) => { this.setState({ search: event.target.value }) }} />
                         <div class="wrapper">
                             {
+
                                 this.state.work.filter((mywork) => {
-                                    if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
-                                        return mywork
+                                    if (this.biddedworks.bind(this,mywork._id)=== null){
+                                        if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
+
+                                            return mywork
+                                        }
+                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                            return mywork
+                                        }
+                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                            return mywork
+                                        }
+                                        else { }
                                     }
-                                    else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
-                                    else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
-                                    else{}
+                                    
 
                                 }).map((mywork) => {
                                     return (
