@@ -9,6 +9,7 @@ class WorkersProfile extends Component {
         WFullName: "",
        WAddress: "",
         WPhoneNo: "",
+        WSkills:"",
         Wimage: [],
         _id: "",
     }; 
@@ -23,6 +24,7 @@ class WorkersProfile extends Component {
                         WFullName: response.data.WFullName,
                         WAddress: response.data.WAddress,
                         WPhoneNo: response.data.WPhoneNo,
+                        WSkills: response.data.WSkills,
                         WUsername: response.data.WUsername,
                         Wimage: response.data.Wimage,
                     });
@@ -82,6 +84,17 @@ class WorkersProfile extends Component {
                                             type="text"
                                             class="form-control"
                                             value={this.state.WPhoneNo}
+                                            
+                                          
+                                        />
+                                    </label>
+                                </div>
+                                <div className="form-group">
+                                    <label class="form-label">Skills
+                <input
+                                            type="text"
+                                            class="form-control"
+                                            value={this.state.WSkills}
                                             
                                           
                                         />

@@ -19,6 +19,7 @@ import Workbidder from "../Components/Workbidder";
 import Profile from "../Components/Profile";
 import Adminpost from "../Admin/Adminpost";
 import Adminusers from "../Admin/Adminusers";
+import Favorites from "../Components/Favorites";
 
 
 
@@ -46,6 +47,7 @@ class Container extends Component{
                 <Route path='/workbidder/:_id' component={Workbidder}/>
                 <Route path='/adminpost' component={Adminpost}/>
                 <Route path='/adminuser' component={Adminusers}/>
+                <Route path='/fav' component={Favorites}/>
                 
                 
             </div>
