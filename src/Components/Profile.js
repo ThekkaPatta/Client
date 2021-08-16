@@ -17,9 +17,7 @@ class Profile extends Component {
 
     };
     componentDidMount() {
-
-        alert(this.state.WUsername)
-        axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
+                axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
             .then((response) => {
                 console.log(response);
                 this.setState({
@@ -51,12 +49,11 @@ class Profile extends Component {
         data.append('WPhoneNo', this.state.WPhoneNo)
         data.append('WUsername', this.state.WUsername)
         data.append('Wimage', this.state.Wimage)
-        alert(this.Wimage)
+        
         axios.post("http://localhost:550/favworker/insert", data)
             .then((response) => {
                 console.log(response)
-                alert("http://localhost:550/" + response.data.Wimage)
-                alert("worker Added To Your Favorites")
+                 alert("worker Added To Your Favorites")
                 window.location.href = '/fav'
             })
 
@@ -144,7 +141,7 @@ class Profile extends Component {
                                 <Review />
                                 <button type="submit"
                                     onClick={this.FavWorker}
-                                    class="btn btn-block mb-4">Add To Favorites</button>
+                                    className="btn btn-info">Add To Favorites</button>
                             </div>
 
                         </div>
