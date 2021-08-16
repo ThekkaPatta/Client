@@ -1,7 +1,7 @@
 import { Component } from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
-import '../assets/css/Userlanding.css'
+import '../assets/css/adminshowprofile.css'
 
 
 class Workbidder extends Component{
@@ -60,18 +60,19 @@ class Workbidder extends Component{
 
     render(){
         return(
-            <div>
+            <div className="alignment">
                 <br></br><br></br><br></br><br></br>
                 {
                     this.state.bidder.map((mybidder) => {
                         return (
-                            <div className="table table-sm">
+                            <div>
+                                <table class ="table table-stripped">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Bid Price</th>
-                                        <th scope="col">Worktime</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col" width="90px">Username</th>
+                                        <th scope="col" width="90px">Bid Price</th>
+                                        <th scope="col" width="90px">Worktime</th>
+                                        <th scope="col" width="90px">Actions</th>
 
                                     </tr>
                                 </thead>
@@ -84,6 +85,7 @@ class Workbidder extends Component{
                                                 <a className="btn btn-outline-success p-3" href={"/workbidder/"}>  Hire  </a></td>
                                                 </tr>
                                 </tbody>
+                                </table>
                             </div>
                         )
                     })

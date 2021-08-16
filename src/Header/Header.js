@@ -29,6 +29,7 @@ function Header() {
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/adminpost">Posts</a></li>
                         <li class="main_nav_item"><a href="/adminuser">Users</a></li>
+                        <li class="main_nav_item"><a href="/adminworker">Workers</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
@@ -42,7 +43,7 @@ function Header() {
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/userlanding">Home</a></li>
                         <li class="main_nav_item"><a href="/workpost">Work Post</a></li>
-                        <li class="main_nav_item"><a href="/userprofile">My Profile</a></li>
+                        <li class="main_nav_item"><a href="/ownuserprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
                             <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>

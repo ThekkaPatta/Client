@@ -18,7 +18,9 @@ import WorkersProfile from "../Components/Worker'sProfile";
 import Workbidder from "../Components/Workbidder";
 import Profile from "../Components/Profile";
 import Adminpost from "../Admin/Adminpost";
-import Adminusers from "../Admin/Adminusers";
+import Adminworkers from "../Admin/Adminworkers";
+import DataTable from "../Admin/Adminusers";
+import Ownuserprofile from "../Components/ownuserprofile";
 
 
 
@@ -27,6 +29,7 @@ class Container extends Component{
         return(
             <div>
                 <Route path="/workpost" component={Workpost} />
+                <Route path="/ownuserprofile" component={Ownuserprofile}/>
                 <Route path="/loginuser" component={Loginuser} />
                 <Route path="/loginworker" component={Loginworker} />
                 <Route exact path="/" component={Home} />
@@ -45,7 +48,8 @@ class Container extends Component{
                 <Route path='/userlanding' component={userhome}/>
                 <Route path='/workbidder/:_id' component={Workbidder}/>
                 <Route path='/adminpost' component={Adminpost}/>
-                <Route path='/adminuser' component={Adminusers}/>
+                <Route path='/adminuser' component={DataTable}/>
+                <Route path='/adminworker' component={Adminworkers}/>
                 
                 
             </div>
