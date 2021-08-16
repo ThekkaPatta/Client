@@ -4,17 +4,17 @@ import '../assets/css/adminshowprofile.css'
 import swal from "sweetalert";
 
 
-class Adminusers extends Component{
+class Adminworkers extends Component{
     state={
-        user: []
+        worker: []
     }
 
     componentDidMount(){
-        axios.get("http://localhost:550/user/show/" )        
+        axios.get("http://localhost:550/worker/show/" )        
         .then((response)=>{
             console.log(response.data);
             this.setState({
-                user :response.data
+                worker :response.data
             })
         })
         .catch((err)=>{
@@ -24,17 +24,17 @@ class Adminusers extends Component{
         )
     }
 
-    deleteusers = (aid) => {
+    deleteworkers = (aid) => {
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this Profile!",
+            text: "Once deleted, you will not be able to recover this profile!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete("http://localhost:550/user/delete/" + aid)
+                axios.delete("http://localhost:550/worker/delete/" + aid)
             .then((response) => {
                 })
             .catch((err) => {
@@ -42,8 +42,7 @@ class Adminusers extends Component{
             })
             window.location.reload();
             }
-          });
-        
+          });  
     }
 
 
@@ -52,7 +51,7 @@ class Adminusers extends Component{
             <div className="alignment">
                 <br></br><br></br><br></br><br></br>
                 {
-                    this.state.user.map((users) => {
+                    this.state.worker.map((workers) => {
                         return (
                             <div>
                                 <table class ="table table-stripped">
@@ -61,32 +60,29 @@ class Adminusers extends Component{
                                         <th scope="col" width="90px">Fullname</th>
                                         <th scope="col" width="90px">Address</th>
                                         <th scope="col" width="90px">Phone No.</th>
+                                        <th scope="col" width="90px">Skills</th>
                                         <th scope="col" width="90px">Username</th>
-                                        <th scope="col" width="90px">Image</th>
+                                        <th scope="col" width="90px">Profile Image</th>
                                         <th scope="col" width="90px">Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                    <td>{users.UFullName}</td>
-                                    <td>{users.UAddress}</td>
-                                    <td>{users.UPhoneNo}</td>
-                                    <td>{users.UUsername}</td>
-                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + users.Uimage}></img></td>
+                                    <td>{workers.WFullName}</td>
+                                    <td>{workers.WAddress}</td>
+                                    <td>{workers.WPhoneNo}</td>
+                                    <td>{workers.WSkills}</td>
+                                    <td>{workers.WUsername}</td>
+                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + workers.Wimage}></img></td>
                                     <td>
-
                                     {}
                                                 <p> 
                                                     <a className="btn btn-outline-info p-3" href={"/userprofile/"}> View Profile</a>
                                                     
-                                                    <button className="btn btn-danger" onClick={this.deleteusers.bind(this, users._id)}>Delete</button>
+                                                    <button className="btn btn-danger" onClick={this.deleteworkers.bind(this, workers._id)}>Delete</button>
                                                 </p>
-                                        {/* <a className="btn btn-outline-info p-3" href={"/userprofile/"}>View Profile</a>
-                                                <a className="btn btn-outline-danger p-3" href={"/deleteuser/"}>  Delete  </a> */}
-                                                
-                                                
-                                                </td>
+                                        </td>
                                                 </tr>
                                 </tbody>
                                 </table>
@@ -99,4 +95,4 @@ class Adminusers extends Component{
         )
     }
 }
-export default Adminusers
+export default Adminworkers
