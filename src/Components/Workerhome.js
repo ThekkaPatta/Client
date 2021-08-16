@@ -7,6 +7,7 @@ class Workerhome extends Component {
     state = {
         work: [],
         search: "",
+        workstate: "Pending",
         config: {
             headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
         }
@@ -27,7 +28,7 @@ class Workerhome extends Component {
     render() {
         return (
             <div className="container">
-             <div classNamer="row p-5">
+                <div classNamer="row p-5">
                     <div className="col p-5">
                         <br></br><br></br><br></br>
                         <input type='text' placeholder='Search Bar' value={this.state.search}
@@ -35,15 +36,16 @@ class Workerhome extends Component {
                         <div class="wrapper">
                             {
                                 this.state.work.filter((mywork) => {
-                                    if (this.state.search == "") {
+                                    if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
                                         return mywork
                                     }
-                                    else if (mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                    else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
                                         return mywork
                                     }
-                                    else if (mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                    else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
                                         return mywork
                                     }
+                                    else{}
 
                                 }).map((mywork) => {
                                     return (
@@ -54,7 +56,7 @@ class Workerhome extends Component {
                                             <h2><Link to={"/bidwork/" + mywork._id}> Bid Now </Link></h2>
                                             <br></br><br></br><br></br>
                                         </div>
-                                        
+
                                     )
                                 })
                             }
