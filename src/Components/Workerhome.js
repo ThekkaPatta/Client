@@ -7,6 +7,8 @@ class Workerhome extends Component {
     state = {
         work: [],
         search: "",
+        workstate: "Pending",
+        WUsername: "",
         config: {
             headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
         }
@@ -24,26 +26,58 @@ class Workerhome extends Component {
             .catch()
     }
 
+    biddedworks = (Wid) => {
+        var wid = localStorage.getItem('_id');
+        axios.get("http://localhost:550/worker/single/" + wid)
+            .then((response) => {
+                console.log(response)
+                this.setState({
+                    WUsername: response.data.WUsername,
+                })
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+
+        const data = new FormData
+        data.append('Wid', Wid)
+        data.append('WUsername', this.state.WUsername)
+
+        axios.post("http://localhost:550/bidded/works", data)
+            .then((response) => {
+                return response.data.data
+            })
+            .catch((err) => {
+                console.log(err.response)
+            })
+
+    }
     render() {
         return (
             <div className="container">
-             <div classNamer="row p-5">
+                <div classNamer="row p-5">
                     <div className="col p-5">
                         <br></br><br></br><br></br>
                         <input type='text' placeholder='Search Bar' value={this.state.search}
                             onChange={(event) => { this.setState({ search: event.target.value }) }} />
                         <div class="wrapper">
                             {
+
                                 this.state.work.filter((mywork) => {
-                                    if (this.state.search == "") {
-                                        return mywork
+                                    if (this.biddedworks.bind(this,mywork._id)=== null){
+                                        if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
+
+                                            return mywork
+                                        }
+                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                            return mywork
+                                        }
+                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                            return mywork
+                                        }
+                                        else { }
                                     }
-                                    else if (mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
-                                    else if (mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
+                                    
 
                                 }).map((mywork) => {
                                     return (
@@ -54,7 +88,7 @@ class Workerhome extends Component {
                                             <h2><Link to={"/bidwork/" + mywork._id}> Bid Now </Link></h2>
                                             <br></br><br></br><br></br>
                                         </div>
-                                        
+
                                     )
                                 })
                             }
