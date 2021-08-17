@@ -6,7 +6,6 @@ class userhome extends Component {
     state = {
         works: [],
         Username:"",
-
     }
 
     getUser = () => {
@@ -15,7 +14,9 @@ class userhome extends Component {
             .then((response) => {
                 this.setState({
                     Username: response.data.UUsername,
+                    
                 })
+                
             })
             .then(() => {
                 axios.get("http://localhost:550/works/posted/" + this.state.Username)

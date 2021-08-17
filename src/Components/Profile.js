@@ -4,6 +4,7 @@ import '../assets/css/viewprofile.css';
 import Review from "./rating";
 
 
+
 class Profile extends Component {
     state = {
         WUsername: this.props.match.params.WUsername,
@@ -11,17 +12,16 @@ class Profile extends Component {
         WAddress: "",
         WSkills: "",
         WPhoneNo: "",
-        Wimage: []
+        Wimage: [],
+        Workers: []
 
     };
-
     componentDidMount() {
-        alert(this.state.WUsername)
-        axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
+                axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
             .then((response) => {
-
                 console.log(response);
                 this.setState({
+                    Workers: response.data,
                     WFullName: response.data.WFullName,
                     WAddress: response.data.WAddress,
                     WSkills: response.data.WSkills,
@@ -30,18 +30,48 @@ class Profile extends Component {
                     Wimage: response.data.Wimage,
                 });
             })
+
             .catch((err) => {
                 console.log(err.response);
             });
 
     }
+
+    FavWorker = (e) => {
+        e.preventDefault();
+        const data = new FormData() // new line
+        var UUsername = localStorage.getItem('username');
+        
+        data.append('UUsername', UUsername)
+        data.append('WFullName', this.state.WFullName)
+        data.append('WAddress', this.state.WAddress)
+        data.append('WSkills', this.state.WSkills)
+        data.append('WPhoneNo', this.state.WPhoneNo)
+        data.append('WUsername', this.state.WUsername)
+        data.append('Wimage', this.state.Wimage)
+        
+        axios.post("http://localhost:550/favworker/insert", data)
+            .then((response) => {
+                console.log(response)
+                 alert("worker Added To Your Favorites")
+                window.location.href = '/fav'
+            })
+
+            .catch((err) => {
+                console.log(err.response)
+                alert("!!! Something Went Wrong !!!")
+            })
+
+    }
+   
+
     render() {
         return (
             <div class="contact_form_section">
                 <div class="container">
                     <div class="row p-5">
                         <div class="col p-5">
-                        <br></br><br></br><br></br>
+                            <br></br><br></br><br></br>
                             <div class="contact_form_container">
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
@@ -109,8 +139,11 @@ class Profile extends Component {
                                     </label>
                                 </div>
                                 <Review />
+                                <button type="submit"
+                                    onClick={this.FavWorker}
+                                    className="btn btn-info">Add To Favorites</button>
                             </div>
-                            )
+
                         </div>
                     </div>
                 </div>

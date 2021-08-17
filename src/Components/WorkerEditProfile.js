@@ -5,6 +5,7 @@ class WorkerEditProfile extends Component {
         WFullName: "",
         WAddress: "",
         WPhoneNo: "",
+        WSkills:"",
         Wimage: [],
         _id: "",
     };  
@@ -28,6 +29,7 @@ class WorkerEditProfile extends Component {
             WFullName:this.state.WFullName,
             WAddress:this.state.WAddress,
             WPhoneNo:this.state.WPhoneNo,
+            WSkills:this.state.WSkills,
             WUsername:this.state.WUsername
         }
         
@@ -54,6 +56,7 @@ class WorkerEditProfile extends Component {
                         WFullName: response.data.WFullName,
                         WAddress: response.data.WAddress,
                         WPhoneNo: response.data.WPhoneNo,
+                        WSkills: response.data.WSkills,
                         WUsername: response.data.WUsername,
                         Wimage: response.data.Wimage,
                     });
@@ -94,7 +97,7 @@ class WorkerEditProfile extends Component {
                                             type="text"
                                             class="form-control text-center"
                                             value={this.state.WFullName}
-                                            name="UFullName"
+                                            name="WFullName"
                                             onChange={this.changeHandler}
                                         />
                                     </label>
@@ -105,7 +108,7 @@ class WorkerEditProfile extends Component {
                                             type="text"
                                             class="form-control text-center"
                                             value={this.state.WAddress}
-                                            name="UAddress"
+                                            name="WAddress"
                                             onChange={this.changeHandler}
                                         />
 
@@ -114,10 +117,21 @@ class WorkerEditProfile extends Component {
                                 <div className="form-group">
                                     <label class="form-label">Phone Number
                 <input
-                                            type="number"
+                                            type="text"
                                             class="form-control text-center"
                                             value={this.state.WPhoneNo}
-                                            name="UPhoneNo"
+                                            name="WPhoneNo"
+                                            onChange={this.changeHandler}
+                                        />
+                                    </label>
+                                </div>
+                                <div className="form-group">
+                                    <label class="form-label">Skills
+                <input
+                                            type="text"
+                                            class="form-control text-center"
+                                            value={this.state.WSkills}
+                                            name="WSkills"
                                             onChange={this.changeHandler}
                                         />
                                     </label>
@@ -128,7 +142,7 @@ class WorkerEditProfile extends Component {
                                             type="text"
                                             class="form-control text-center"
                                             value={this.state.WUsername}
-                                            name="UUsername"
+                                            name="WUsername"
                                             onChange={this.changeHandler}
                                         />
                                     </label>

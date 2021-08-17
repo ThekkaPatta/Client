@@ -15,6 +15,7 @@ class Loginuser extends Component {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
+                localStorage.setItem('username', response.data.UUsername)
                 localStorage.setItem('userType', 'user')
                 window.location.href = "/userlanding";
                 this.setState({

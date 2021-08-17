@@ -122,8 +122,8 @@ class Ownuserprofile extends Component {
                                         />
                                     </label>
                                 </div>
-                              <h1><Link to={"/useredit/"}> Edit Profile </Link></h1>
-                              <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
+                              <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
+                              <button className="btn btn-warning" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
                             </div>
                         </div>
                     </div>

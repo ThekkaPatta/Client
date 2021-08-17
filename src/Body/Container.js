@@ -11,13 +11,14 @@ import Bidwork from "../Components/Bidwork";
 import Workerprofile from "../Components/Workerprofile";
 import Adminlogin from "../Admin/Adminlogin";
 import userhome from "../Components/Userlanding";
-import Userprofile from "../Components/UserProfile";
 import UserEditProfile from "../Components/UserEditProfile";
 import WorkerEditProfile from "../Components/WorkerEditProfile";
 import WorkersProfile from "../Components/Worker'sProfile";
 import Workbidder from "../Components/Workbidder";
 import Profile from "../Components/Profile";
 import Adminpost from "../Admin/Adminpost";
+import Adminusers from "../Admin/Adminusers";
+import Favorites from "../Components/Favorites";
 import Adminworkers from "../Admin/Adminworkers";
 import DataTable from "../Admin/Adminusers";
 import Ownuserprofile from "../Components/ownuserprofile";
@@ -41,13 +42,14 @@ class Container extends Component{
                 <Route path="/workerprofile" component={Workerprofile} />
                 <Route path="/adminlgn" component={Adminlogin} />
                 <Route path="/profile/:WUsername" component={Profile} />
-                <Route path="/userprofile" component={Userprofile} />
-                <Route path="/useredit" component={UserEditProfile} />
+                             <Route path="/useredit" component={UserEditProfile} />
                 <Route path="/workeredit" component={WorkerEditProfile} />
                 <Route path="/workersprofile" component={WorkersProfile} />               
                 <Route path='/userlanding' component={userhome}/>
                 <Route path='/workbidder/:_id' component={Workbidder}/>
                 <Route path='/adminpost' component={Adminpost}/>
+                <Route path='/adminuser' component={Adminusers}/>
+                <Route path='/fav' component={Favorites}/>
                 <Route path='/adminuser' component={DataTable}/>
                 <Route path='/adminworker' component={Adminworkers}/>
                 
