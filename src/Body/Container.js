@@ -8,7 +8,7 @@ import Registeruser from "../Components/Registeruser";
 import Registerworker from "../Components/Registerworker";
 import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
-import Workerprofile from "../Components/Workerprofile";
+
 import Adminlogin from "../Admin/Adminlogin";
 import userhome from "../Components/Userlanding";
 import UserEditProfile from "../Components/UserEditProfile";
@@ -22,6 +22,7 @@ import Favorites from "../Components/Favorites";
 import Adminworkers from "../Admin/Adminworkers";
 import DataTable from "../Admin/Adminusers";
 import Ownuserprofile from "../Components/ownuserprofile";
+
 
 
 
@@ -39,10 +40,10 @@ class Container extends Component{
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
                 <Route path="/bidwork/:id" component={Bidwork} />
-                <Route path="/workerprofile" component={Workerprofile} />
+             
                 <Route path="/adminlgn" component={Adminlogin} />
                 <Route path="/profile/:WUsername" component={Profile} />
-                             <Route path="/useredit" component={UserEditProfile} />
+                <Route path="/useredit" component={UserEditProfile} />
                 <Route path="/workeredit" component={WorkerEditProfile} />
                 <Route path="/workersprofile" component={WorkersProfile} />               
                 <Route path='/userlanding' component={userhome}/>
@@ -52,6 +53,7 @@ class Container extends Component{
                 <Route path='/fav' component={Favorites}/>
                 <Route path='/adminuser' component={DataTable}/>
                 <Route path='/adminworker' component={Adminworkers}/>
+                
                 
                 
             </div>

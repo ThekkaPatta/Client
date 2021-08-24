@@ -1,9 +1,7 @@
 import { Component } from "react";
 import axios from 'axios';
 import '../assets/css/viewprofile.css';
-import Review from "./rating";
-
-
+import ReactStars from "react-rating-stars-component"
 
 class Profile extends Component {
     state = {
@@ -12,16 +10,18 @@ class Profile extends Component {
         WAddress: "",
         WSkills: "",
         WPhoneNo: "",
+        nType:"rate",
+        Ratenum:"",
         Wimage: [],
-        Workers: []
+
 
     };
+
     componentDidMount() {
-                axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
+        axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
             .then((response) => {
                 console.log(response);
                 this.setState({
-                    Workers: response.data,
                     WFullName: response.data.WFullName,
                     WAddress: response.data.WAddress,
                     WSkills: response.data.WSkills,
@@ -29,6 +29,7 @@ class Profile extends Component {
                     WUsername: response.data.WUsername,
                     Wimage: response.data.Wimage,
                 });
+                alert(this.state.WUsername)
             })
 
             .catch((err) => {
@@ -37,11 +38,41 @@ class Profile extends Component {
 
     }
 
+    RatePost = (e) => {
+        var u_id = localStorage.getItem('_id');
+        axios.get("http://localhost:550/user/single/" + u_id)
+            .then((response) => {
+                this.setState({
+                    UUsername: response.data.UUsername,
+                })
+            })
+            .then(() => {
+                const data = new FormData()
+                data.append('Ratenum', this.state.Ratenum)
+                data.append('WUsername', this.state.WUsername)
+                data.append('UUsername', this.state.UUsername)
+                data.append('nType', this.state.nType)
+                
+                axios.post("http://localhost:550/post/notification", data)
+                    .then((response) => {
+                        alert('Done Rating !!')
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+
+            })
+            .catch((err) => {
+                console.log(err)
+                alert("Api not hit")
+            })
+    }
+
     FavWorker = (e) => {
         e.preventDefault();
         const data = new FormData() // new line
         var UUsername = localStorage.getItem('username');
-        
+
         data.append('UUsername', UUsername)
         data.append('WFullName', this.state.WFullName)
         data.append('WAddress', this.state.WAddress)
@@ -49,11 +80,11 @@ class Profile extends Component {
         data.append('WPhoneNo', this.state.WPhoneNo)
         data.append('WUsername', this.state.WUsername)
         data.append('Wimage', this.state.Wimage)
-        
+
         axios.post("http://localhost:550/favworker/insert", data)
             .then((response) => {
                 console.log(response)
-                 alert("worker Added To Your Favorites")
+                alert("worker Added To Your Favorites")
                 window.location.href = '/fav'
             })
 
@@ -63,14 +94,19 @@ class Profile extends Component {
             })
 
     }
-   
+
 
     render() {
+        const ratingChanged = (rating) => {
+            this.state.Ratenum = rating;
+            this.RatePost();
+        };
         return (
             <div class="contact_form_section">
                 <div class="container">
                     <div class="row p-5">
                         <div class="col p-5">
+
                             <br></br><br></br><br></br>
                             <div class="contact_form_container">
 
@@ -132,13 +168,11 @@ class Profile extends Component {
                                         <input
                                             type="text"
                                             class="form-control"
-                                            value={this.state.WUsername}
-                                            name="Username"
-
-                                        />
+                                            value={this.state.WUsername} />
                                     </label>
+                                    <ReactStars size={30} count={5} isHalf={true} onChange={ratingChanged} />
                                 </div>
-                                <Review />
+
                                 <button type="submit"
                                     onClick={this.FavWorker}
                                     className="btn btn-info">Add To Favorites</button>

@@ -7,7 +7,7 @@ class Workbidder extends Component {
         Wid: this.props.match.params._id,
         bidder: [],
         UUsername: '',
-        WUsername: '',
+        WUsername: '',   
         nType: 'Hire',
         status: '',
     }
@@ -105,7 +105,7 @@ class Workbidder extends Component {
                                         <td>Rs.{mybidder.Bidprice}</td>
                                         <td>{mybidder.Worktime}</td>
 
-                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/Profile/" + mybidder.WUsername}>View Profile</Link></a></td>
+                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/profile/" + mybidder.WUsername}>View Profile</Link></a></td>
                                         <td>
                                             {(() => {
                                                 if (this.state.status === "Pending") {

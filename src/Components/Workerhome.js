@@ -9,9 +9,9 @@ class Workerhome extends Component {
         search: "",
         workstate: "Pending",
         WUsername: "",
-        config: {
-            headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
-        }
+        // config: {
+        // headers: { 'authorization': `Bearer ${localStorage.getItem('token')}` }
+        // }
     }
     componentDidMount() {
         axios.get("http://localhost:550/work/show")
@@ -31,10 +31,12 @@ class Workerhome extends Component {
         axios.get("http://localhost:550/worker/single/" + wid)
             .then((response) => {
                 console.log(response)
-                this.setState({
-                    WUsername: response.data.WUsername,
-                })
+                console.log(response.data.WUsername)
+               return response.data.WUsername
+
+
             })
+            alert(this.state.WUsername)
             .catch((err) => {
                 console.log(err.response)
             })
@@ -55,7 +57,7 @@ class Workerhome extends Component {
     render() {
         return (
             <div className="container">
-                <div classNamer="row p-5">
+                <div className="row p-5">
                     <div className="col p-5">
                         <br></br><br></br><br></br>
                         <input type='text' placeholder='Search Bar' value={this.state.search}
@@ -63,23 +65,27 @@ class Workerhome extends Component {
                         <div class="wrapper">
                             {
 
-                                this.state.work.filter((mywork) => {
-                                    if (this.biddedworks.bind(this,mywork._id)=== null){
-                                        if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
+                                this.state.work
+                                // ((mywork) => {
+                                //     if (this.biddedworks.bind(this,mywork._id)=== ""){
+                                //         if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && this.state.search == "") {
 
-                                            return mywork
-                                        }
-                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                            return mywork
-                                        }
-                                        else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                            return mywork
-                                        }
-                                        else { }
-                                    }
+                                //             return mywork
+                                //         }
+                                //         else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                //             return mywork
+                                //         }
+                                //         else if (mywork.status.toLowerCase().includes(this.state.workstate.toLowerCase()) && mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                //             return mywork
+                                //         }
+                                //         else { 
+                                            
+                                //         }
+                                //     }
                                     
 
-                                }).map((mywork) => {
+                                // })
+                                .map((mywork) => {
                                     return (
                                         <div className="card">
                                             <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.Wimage} />
