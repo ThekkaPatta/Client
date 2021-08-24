@@ -41,7 +41,7 @@ class Workerhome extends Component {
 
         const data = new FormData
         data.append('Wid', Wid)
-        data.append('WUsername', WUsername)
+        data.append('WUsername', this.state.WUsername)
 
         axios.post("http://localhost:550/bidded/works", data)
             .then((response) => {
