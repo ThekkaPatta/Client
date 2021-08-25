@@ -1,14 +1,13 @@
 
  .logo{
-  background-image: url("../Images/logo.PNG"); 
-  height: 85px;
-  width: 200px;
-  place-content: center;
+  height: 30px;
+  width: 125px;
+  font-family: Cedarville Cursive;
+  font-size: 50px;
  }
  header {
     padding: 0px 0;
-    background: repeating-linear-gradient(45deg, #f0f2ed, #f0f2ed 20px, #f8f4eb 20px, #f8f4eb 40px);
-    box-shadow: 0 4px 6px rgba(0,0,0,.2);
+    background: repeating-linear-gradient(45deg, #008fee, #008fee 20px, #008fee 20px, #008fee 40px);
     width:100%;
     position:fixed;
     background: oblique;
@@ -52,7 +51,7 @@
     text-decoration: none;
     display: block;
     position: relative;
-    color: #868686;
+    color: #000000;
     text-transform: uppercase;
     
   }
@@ -63,7 +62,7 @@
     position: absolute;
     left: 0;
     bottom: 15px;
-    background: #868686;
+    background: #020202;
     transition: width .5s linear;  
   }
   nav a:hover:after {width: 100%;}
@@ -86,6 +85,6 @@
     height: 40px;
     line-height: 40px;
   }
-  nav li:hover {background: rgba(0,0,0,.1);}
+  nav li:hover {background: rgb(250, 250, 250);}
   nav a:after {content: none;}
   }
