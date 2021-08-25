@@ -96,6 +96,7 @@ class Workpost extends Component {
                                         <label for="exampleInputtext">Tags</label><br/>
                                         <h4><select name="tags" id="tags" value={this.state.Tags} 
                                         onChange={(event) => { this.setState({ Tags: event.target.value }) }}>
+                                            <option value="Choose">Choose One</option>
                                             <option value="plumber">Plumber</option>
                                             <option value="mechanic">Mechanic</option>
                                             <option value="Construction">Construction</option>

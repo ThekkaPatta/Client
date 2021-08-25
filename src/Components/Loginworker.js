@@ -29,29 +29,22 @@ class Loginworker extends Component {
     }
     render() {
         return (
-            <div class="lw">
-                <div class="wrapper">
-                    <div class="circle circle1"></div>
-                    <div class="circle circle2"></div>
-                    <div class="form">
-                        <h1>Worker Login</h1>
-                        <form>
-                           <input type="text" placeholder="xyz@mail.com" alue={this.state.WUsername} placeholder="Username"
-                                onChange={(event) => { this.setState({ WUsername: event.target.value }) }} />
-                           <input type="password" placeholder="password" value={this.state.WPassword} placeholder="Password"
-                                onChange={(event) => { this.setState({ WPassword: event.target.value }) }} />
-                           <button type="submit" id="login" onClick={this.sendUserData2}>Login</button>
-                            <div class="forgot-signup">
-                            <a class="btn btn-danger" href="#">Forgot password?</a>
-                            <a class="btn btn-info" href="/registerworker">Sign Up</a>
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="background"></div>
-            </div>
+            <div class="login-page">
+      <div class="form">
+        <div class="login">
+          <div class="login-header">
+            <h3>WORKER LOGIN</h3>
+            <p>Please enter your credentials to login.</p>
+          </div>
+        </div>
+        <form class="login-form">
+                        <input type="text" placeholder="username" onChange={(event) => { this.setState({ UUsername: event.target.value }) }}/>
+        <input type="password" placeholder="password" onChange={(event) => { this.setState({ UPassword: event.target.value }) }}/>
+          <button type="submit" onClick={this.sendUserData}>login</button>
+          <p class="message">Not registered? <a href="/registerworker">Create an account</a></p>
+          </form>
+      </div>
+    </div>
 
 
 

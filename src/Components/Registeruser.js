@@ -41,32 +41,37 @@ class Registeruser extends Component {
 
     render() {
         return (
-            <section id="contact">
-                <div class="main-w3layouts wrapper">
-                    <h1> Register As A User</h1>
-                    <div class="main-agileinfo">
-                        <div class="agileits-top">
-                            <form>
-                                <p>Full Name:<input type="text" value={this.state.UFullName}
-                                    onChange={(event) => { this.setState({ UFullName: event.target.value }) }} /></p>
-                                <p>Address:<input type="text" value={this.state.UAddress}
-                                    onChange={(event) => { this.setState({ UAddress: event.target.value }) }} /></p>
-                                <p> Phone Number:<input type="text" value={this.state.UPhoneNo}
-                                    onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></p>
-                                <p>Username:<input type="text" value={this.state.UUsername}
-                                    onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></p>
-                                <p>Password:<input type="Password" value={this.state.UPassword}
-                                    onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></p>
-                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
-                                    onChange={this.imageHandler} /></p>
-                                <p><input type="submit" onClick={this.sendUserData} /></p>
 
-                            </form>
-                            <p>Already have an account? <a href="/loginuser"> Login </a></p>
-                        </div>
-                    </div>
-                </div>
-            </section >
+            <div class="login-page">
+      <div class="form1">
+        <div class="login">
+          <div class="login-header">
+            <h3>USER SIGNUP</h3>
+            <p>Please enter your credentials to Sign Up.</p>
+          </div>
+        </div>
+        <form class="login-form">
+        <div class="col-md-6 form-line">
+            <div class="form-group"><input type="text" placeholder="Full Name" value={this.state.UFullName}
+             onChange={(event) => { this.setState({ UFullName: event.target.value }) }} /></div>
+            <div class="form-group"><input type="text" placeholder="Address" value={this.state.UAddress}
+            onChange={(event) => { this.setState({ UAddress: event.target.value }) }} /></div>
+            <div class="form-group"><input type="text" placeholder="Phone No." value={this.state.UPhoneNo}
+            onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></div>
+            </div>
+            <div class="col-md-6">
+             <div class="form-group"><input type="text" placeholder="Username" value={this.state.UUsername}
+            onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></div>
+            <div class="form-group"><input type="Password" placeholder="Password" value={this.state.UPassword}
+            onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></div>
+            <div class="form-group"><p><input type="file" placeholder="Upload photo" name="Uimage"
+            onChange={this.imageHandler} /></p></div>
+            </div>
+          <button type="submit" onClick={this.sendUserData}>Sign Up</button>
+          <p class="message">Already Have an Account? <a href="/login user">Login</a></p>
+        </form>
+      </div>
+    </div>
         )
     }
 }
