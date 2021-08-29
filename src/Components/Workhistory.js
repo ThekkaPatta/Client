@@ -7,7 +7,9 @@ import swal from "sweetalert";
 class Workhistory extends Component{
     state={
         Worker: "",
-        works: []
+        works: [],
+        Bidprice:"",
+        Worktime:"",
     }
 
     getWorker = () => {
@@ -18,6 +20,7 @@ class Workhistory extends Component{
                     Worker: response.data.WUsername,
                 })
             })
+           
             .then(() => {
                 axios.get("http://localhost:550/workhistory/" + this.state.Worker)
                     .then((response) => {
@@ -30,10 +33,27 @@ class Workhistory extends Component{
                         console.log(err.response)
                     })
             })
+            .then(() => {
+                axios.get("http://localhost:550/worker/bidder/" + this.state.Worker)
+                    .then((res) => {
+                        this.setState({
+                            Bidprice:res.data.Bidprice,
+                            Worktime:res.data.Worktime
+
+                        })
+                        console.log(res.data.Bidprice)
+                    })
+                    .catch((err) => {
+                        console.log(err.response)
+                    })
+                 
+                })
+           
             .catch((err) => {
                 console.log(err.response)
             })
-    }
+  
+}
 
     componentDidMount() {
         this.getWorker()
@@ -56,6 +76,8 @@ class Workhistory extends Component{
                                         <th scope="col" width="90px">Work Tile</th>
                                         <th scope="col" width="90px">Work Description</th>
                                         <th scope="col" width="50px">Status</th>
+                                        <th scope="col" width="50px">Bid Price</th>
+                                        <th scope="col" width="50px">Work Time</th>
 
                                     </tr>
                                 </thead>
@@ -66,6 +88,8 @@ class Workhistory extends Component{
                                     <td>{worksdone.WorkTitle}</td>
                                     <td>{worksdone.Workdescription}</td>
                                     <td>{worksdone.status}</td>
+                                    <td>{this.state.Bidprice}</td>
+                                    <td>{this.state.Worktime}</td>
                                     </tr>
                                 </tbody>
                                 </table>

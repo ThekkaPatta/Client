@@ -2,22 +2,15 @@ import { Component, React } from "react";
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import '../assets/css/adminshowprofile.css'
-
-
-
-
 class Workbidder extends Component {
     state = {
         Wid: this.props.match.params._id,
         bidder: [],
         UUsername: '',
-        WUsername: '',
+        WUsername: '',   
         nType: 'Hire',
         status: '',
-
-
     }
-
     componentDidMount() {
         axios.get("http://localhost:550/works/bidder/" + this.state.Wid)
             .then((response) => {
@@ -71,7 +64,7 @@ class Workbidder extends Component {
 
                         axios.post("http://localhost:550/post/notification", data)
                             .then((response) => {
-                                window.location.href= "/workbidder/"+this.state.Wid;
+                                window.location.href= "/userhistory/"+this.state.Wid;
                             })
 
                     })
@@ -112,12 +105,13 @@ class Workbidder extends Component {
                                         <td>Rs.{mybidder.Bidprice}</td>
                                         <td>{mybidder.Worktime}</td>
 
-                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/Profile/" + mybidder.WUsername}>View Profile</Link></a></td>
+                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/profile/" + mybidder.WUsername}>View Profile</Link></a></td>
                                         <td>
                                             {(() => {
                                                 if (this.state.status === "Pending") {
                                                     return (
-                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>Hire</button>
+                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>
+                                                            <Link to={"/userhistory"}>Hire</Link></button>
                                                     )
                                                 }
                                                 else {

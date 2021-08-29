@@ -45,7 +45,8 @@ function Header() {
                     <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/userlanding"><i class="fa fa-briefcase" aria-hidden="true"></i> My Works </a></li>
                         <li class="main_nav_item"><a href="/workpost"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Work Post</a></li>
-                        <li class="main_nav_item"><a href="/fav"><i class="fa fa-heart" aria-hidden="true"></i> Favorites</a></li>
+                        <li class="main_nav_item"><a href="/fav"><i class="fa fa-heart" aria-hidden="true"></i> MY Favorites</a></li>
+                        <li class="main_nav_item"><a href="/userhistory"><i class="fa fa-history" aria-hidden="true"></i> MY History</a></li>
                         <li class="main_nav_item"><a href="/ownuserprofile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
                         <li class="main_nav_item"><a className="color" onClick={setModalIsOpenToTrue}><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>

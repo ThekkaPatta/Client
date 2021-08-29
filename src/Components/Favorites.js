@@ -18,7 +18,6 @@ class Favorites extends Component {
                     Username: response.data.UUsername,
 
                 })
-
             })
             .then(() => {
                 axios.get("http://localhost:550/fav/worker/" + this.state.Username)
