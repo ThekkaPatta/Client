@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import '../assets/css/viewprofile.css'
 import Review from "./rating";
-// import '../assets/css/workpost.css'
 
 class Workerprofile extends Component {
        state = {
@@ -38,82 +37,43 @@ class Workerprofile extends Component {
     render() {
         return (
             <div class="contact_form_section">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="col-md-6 p-5">
-                        <br></br><br></br><br></br>
-                            <div class="contact_form_container">
+                <br></br><br></br><br></br>
+                <div class="contact_form_container">
+                <br></br><br></br><br></br><br></br><br></br>
+                <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
+                <img src={`http://localhost:550/${this.state.Wimage}`}
+                    className="img-fluid rounded-circle hoverable"
+                    style={{ height: "300px", width: "300px", objectFit: "cover" }}
+                    alt=""/><br/><br />            
 
-                                <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
-                                <img
-                                    src={`http://localhost:550/${this.state.Wimage}`}
-                                    className="img-fluid rounded-circle hoverable"
-                                    style={{ height: "300px", width: "300px", objectFit: "cover" }}
-                                    alt=""
-                                />
-                                <br />
-                                
-                                <br />            
-
-
-                                <div className="form-group">
-                                    <label class="form-label">Full Name
-                                   
-                                   
-                <input type="text"class="form-control"value={this.state.WFullName}/>
-                </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Address
-                                   
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WAddress}
-                                           
-                                           
-                                        />
-</label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Phone Number
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WPhoneNo}
-                                            
-                                          
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Skills
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WSkills}
-                                            
-                                          
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Username
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WUsername}
-                                            name="Username"
-                                            
-                                        />
-                                    </label>
-                                </div>
-                                <Review/>
-                            </div>
-                        </div>
-                    </div>
+                <div className="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="straight"value={this.state.WFullName}/>
                 </div>
+
+                <div className="form-group">
+                    <label class="form-label">Address</label>
+                    <input type="text" class="straight" value={this.state.WAddress} />
+                </div>
+                                
+                <div className="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" class="straight" value={this.state.WPhoneNo}/>
+                </div>
+
+                <div className="form-group">
+                    <label class="form-label">Skills</label>
+                    <input type="text" class="straight" value={this.state.WSkills}/>
+                </div>
+
+                <div className="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="straight" value={this.state.WUsername} name="Username" />
+                </div>
+                <Review/>
             </div>
+        </div>
+                    
 
 
         );
