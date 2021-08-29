@@ -58,27 +58,27 @@ class WorkersProfile extends Component {
                      alt=""/><br/><br/>
 
                 <div className="form-group">
-                    <label class="form-label">Full Name: {this.state.WFullName}</label>
+                    <label class="form-label">Full Name</label>
                     <input type="text" class="straight" value={this.state.WFullName}/>
                 </div>
                                 
                 <div className="form-group">
-                    <label class="form-label">Address: {this.state.WAddress}</label>
+                    <label class="form-label">Address</label>
                     <input type="text" class="straight" value={this.state.WAddress}/>
                 </div>
                                 
                 <div className="form-group">
-                    <label class="form-label">Phone Number: {this.state.WPhoneNo}</label>
+                    <label class="form-label">Phone Number</label>
                     <input type="text" class="straight" value={this.state.WPhoneNo}/>
                 </div>
                 
                 <div className="form-group">
-                    <label class="form-label">Skills: {this.state.WSkills}</label>
+                    <label class="form-label">Skills</label>
                     <input type="text" class="straight" value={this.state.WSkills}/>
                 </div>
                                
                 <div className="form-group">
-                    <label class="form-label">Username: {this.state.WUsername} </label>
+                    <label class="form-label">Username</label>
                     <input type="text" class="straight" value={this.state.WUsername}/>   
                 </div>
                               <h1><Link to={"/workeredit/"}> Edit Profile </Link></h1>
