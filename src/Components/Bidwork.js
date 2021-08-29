@@ -2,6 +2,7 @@ import { Component } from "react";
 import '../assets/css/register.css';
 import axios from 'axios';
 
+
 class Bidwork extends Component {
     state = {
         WUsername: "",

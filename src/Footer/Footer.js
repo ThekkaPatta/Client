@@ -1,51 +1,26 @@
 import { Component } from "react";
 import '../assets/css/Footer.css'
 
-class Header extends Component {
+class Footer extends Component {
     render() {
         return (
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col">
-                            <h4>Sitesoch</h4>
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4>Get Help</h4>
-                            <ul>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Order Status</a></li>
-                                <li><a href="#">Payment Options</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4>Address</h4>
-                            <ul>
-                                <li><a href="#">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate adipisci quia ab omnis id ipsum quae inventore </a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4>follow us</h4>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-google"></i></a>
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
+            <footer class="site-footer">
+                  <div >
+                    <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+                      <a href="/">Thekkapatta</a>.
+                    </p>
+                  </div>
+                  <div >
+                    <ul class="social-icons">
+                      <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                      <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                      <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                      <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
                 </div>
             </footer>
-
         )
     }
 
 }
-export default Header
+export default Footer

@@ -1,15 +1,172 @@
-.container{
-  width: 100%;
+
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  .wrapper{
+	  background-color: rgb(95, 114, 114);
+	  box-shadow: #2f2f2f;
+  }
+
+
+.hero-container {
+	margin-top: auto;
+	display: flex;
 }
-.wrapper {
-    display: grid;
-    text-align: center;
-    max-width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .card:hover{
-    transform:scale(1.1); 
-  }
+.main-container {
+	width: 200px;
+	height: 540px;
+	position: relative;
+	margin: 0 20px;
+}
+
+.poster-container {
+	width: 230px;
+	position: absolute;
+	top: 0;
+	left: 20px;
+	z-index: 1;
+}
+.poster {
+	width: 100%;
+	box-shadow: 0 5px 20px 3px rgba(93, 66, 247, 0.6);
+	margin-top: 20px;
+}
+
+.work_container {
+	background: rgb(253, 248, 248);
+	width: 230px;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: top;
+	border-radius: 5px;
+	position: absolute;
+	top: 10px;
+	box-shadow: 0 5px 20px 3px rgba(238, 236, 236, 0.6);
+	opacity: 0;
+
+}
+.main-container:hover .work_container {
+	opacity: 1;
+	animation: bounceIn 0.6s linear;
+}
+@keyframes bounceIn {
+	0%,
+	20%,
+	40%,
+	60%,
+	80%,
+	to {
+		-webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	0% {
+		opacity: 0;
+		-webkit-transform: scale3d(0.3, 0.3, 0.3);
+		transform: scale3d(0.3, 0.3, 0.3);
+	}
+	20% {
+		-webkit-transform: scale3d(1.03, 1.03, 1.03);
+		transform: scale3d(1.03, 1.03, 1.03);
+	}
+	40% {
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale3d(1.01, 1.01, 1.01);
+		transform: scale3d(1.01, 1.01, 1.01);
+	}
+	80% {
+		-webkit-transform: scale3d(0.97, 0.97, 0.97);
+		transform: scale3d(0.97, 0.97, 0.97);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: scaleX(1);
+		transform: scaleX(1);
+	}
+}
+
+.work-content {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+.work-content-title {
+	text-transform: uppercase;
+	margin: auto;
+  color: rgb(240, 11, 11);
+}
+
+.work-description {
+  background: #cac5c5;
+	color: rgb(7, 0, 0);
+	font-size: 1.5rem;
+	margin-bottom: 180px;
   
+}
+.work-tag {
+	color: #69c982;
+	font-size: 1.4rem;
+	font-weight: bold;
+}
+
+.work-button {
+	cursor: pointer;
+	width: 100%;
+	background: #2f2f2f;
+	color: rgb(255, 255, 255);
+	padding: 15px 0;
+	font-size: 1rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: 0;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+/* searchbar ko design */
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+
+
+/*Resize the wrap to see the search bar change!*/
+/* .wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}  */

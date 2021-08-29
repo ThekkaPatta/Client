@@ -71,7 +71,7 @@ class Workbidder extends Component {
 
                         axios.post("http://localhost:550/post/notification", data)
                             .then((response) => {
-                                window.location.href= "/workbidder/"+this.state.Wid;
+                                window.location.href = "/workbidder/" + this.state.Wid;
                             })
 
                     })
@@ -88,36 +88,36 @@ class Workbidder extends Component {
 
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="alignment">
-                <br></br><br></br><br></br><br></br>
-                {
-                    this.state.bidder.map((mybidder) => {
-                        return (
-                            <div>
-                                <table class ="table table-stripped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" width="90px">Username</th>
-                                        <th scope="col" width="90px">Bid Price</th>
-                                        <th scope="col" width="90px">Worktime</th>
-                                        <th scope="col" width="90px">Actions</th>
+                <table cellSpacing="100" className="tabble">
+                    <thead className="tablehead">
+                        <tr>
+                            <th className="headerson" >Username</th>
+                            <th className="headerson" >Bid Price</th>
+                            <th className="headerson" >Worktime</th>
+                            <th className="headerson" >Actions</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{mybidder.WUsername}</td>
-                                        <td>Rs.{mybidder.Bidprice}</td>
-                                        <td>{mybidder.Worktime}</td>
+                        </tr>
+                    </thead>
 
-                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/Profile/" + mybidder.WUsername}>View Profile</Link></a></td>
-                                        <td>
+                    {
+                        this.state.bidder.map((mybidder) => {
+                            return (
+
+                                <tbody className="boxdesign" >
+
+                                    <tr className="rows">
+                                        <td className="bodyko" col-3>{mybidder.WUsername}</td>
+                                        <td className="bodyko" col-3>Rs.{mybidder.Bidprice}</td>
+                                        <td className="bodyko" col-3>{mybidder.Worktime}</td>
+                                        <td className="buttonsko" col-3><button className="viewpro"><a href={"/userprofile/"}> View Profile</a></button>
+
                                             {(() => {
                                                 if (this.state.status === "Pending") {
                                                     return (
-                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>Hire</button>
+                                                        <button className="viewpro2" onClick={this.hire.bind(this, mybidder.WUsername)}>Hire</button>
                                                     )
                                                 }
                                                 else {
@@ -125,14 +125,15 @@ class Workbidder extends Component {
                                                 }
                                             })()}
                                         </td>
-
                                     </tr>
+
+
                                 </tbody>
-                                </table>
-                            </div>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </table>
+
             </div>
 
         )

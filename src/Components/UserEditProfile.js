@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import '../assets/css/edituser.css'
 class UserEditProfile extends Component {
-       state = {
+    state = {
         UFullName: "",
         UAddress: "",
         UPhoneNo: "",
         Uimage: [],
         _id: "",
-    };  
+    };
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value,
@@ -24,13 +25,13 @@ class UserEditProfile extends Component {
 
     updateProfile = (e) => {
         e.preventDefault();
-            const data = {
-            UFullName:this.state.UFullName,
-            UAddress:this.state.UAddress,
-            UPhoneNo:this.state.UPhoneNo,
-            UUsername:this.state.UUsername
+        const data = {
+            UFullName: this.state.UFullName,
+            UAddress: this.state.UAddress,
+            UPhoneNo: this.state.UPhoneNo,
+            UUsername: this.state.UUsername
         }
-        
+
         axios
             .post("http://localhost:550/user/update/" + this.state._id, data)
             .then((response) => {
@@ -42,7 +43,7 @@ class UserEditProfile extends Component {
                 console.log(err.response);
             });
     };
- 
+
 
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
@@ -66,89 +67,81 @@ class UserEditProfile extends Component {
 
     render() {
         return (
-            <div class="contact_form_section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
+            <div class="Editfor">
+            <center>
+            <div class="box">
+                                            <img
+                                                src={`http://localhost:550/${this.state.Uimage}`}
+                                                className="imageho "
+                                                alt="this is a profile picture"
+                                            />
+                                      
+                                                <input
+                                                    type="file"
+                                                    class="form-control"
+                                                    onChange={this.imageHandler.bind(this)}
+                                                />
 
-                            <div class="contact_form_container">
-
-                                <h3 className="bg-light p-4" id="projectAnchor">!!Your Profile !!</h3>
-                                <img
-                                    src={`http://localhost:550/${this.state.Uimage}`}
-                                    className="img-fluid rounded-circle hoverable"
-                                    style={{ height: "200px", width: "200px", objectFit: "cover" }}
-                                    alt=""
-                                />
-                                <br />
-                                <input
-                                    type="file"
-                                    class="form-control"
-                                    onChange={this.imageHandler.bind(this)}
-                                />
-
-                                <br />
-                                <div className="form-group">
-                                    <label class="form-label">Full Name
-                <input
-                                            type="text"
-                                            class="form-control text-center"
-                                            value={this.state.UFullName}
-                                            name="UFullName"
-                                            onChange={this.changeHandler}
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Address
-                <input
-                                            type="text"
-                                            class="form-control text-center"
-                                            value={this.state.UAddress}
-                                            name="UAddress"
-                                            onChange={this.changeHandler}
-                                        />
-
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Phone Number
-                <input
-                                            type="text"
-                                            class="form-control text-center"
-                                            value={this.state.UPhoneNo}
-                                            name="UPhoneNo"
-                                            onChange={this.changeHandler}
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Username
-                <input
-                                            type="text"
-                                            class="form-control text-center"
-                                            value={this.state.UUsername}
-                                            name="UUsername"
-                                            onChange={this.changeHandler}
-                                        />
-                                    </label>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    onClick={this.updateProfile}
-                                    class="btn btn-info btn-block mb-4"
-                                >
-                                    Update Profile
-                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                          
+                                
 
 
+                                           
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    value={this.state.UFullName}
+                                                    name="UFullName"
+                                                    onChange={this.changeHandler}
+                                                    placeholder="Full Name"
+                                                />
+
+                                          
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    value={this.state.UAddress}
+                                                    name="UAddress"
+                                                    onChange={this.changeHandler}
+                                                    placeholder="Address"
+                                                />
+
+
+                                           
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    value={this.state.UPhoneNo}
+                                                    name="UPhoneNo"
+                                                    onChange={this.changeHandler}
+                                                    placeholder="Phone no."
+                                                />
+
+                                            
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    value={this.state.UUsername}
+                                                    name="UUsername"
+                                                    onChange={this.changeHandler}
+                                                    placeholder="Username"
+                                                />
+
+                                        
+
+                                            <button
+                                                type="submit"
+                                                onClick={this.updateProfile}
+                                                className="Updatho"
+                                            >
+                                                Update Profile
+                                            </button>
+                         
+                    
+
+</div>
+</center>
+</div>
         );
     }
 }

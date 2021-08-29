@@ -11,9 +11,9 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <Header></Header>
-      <Container></Container>
-      <Footer></Footer>
+      <Header id="topko" ></Header>
+      <Container id="mainko" ></Container>
+      <Footer id="bottomko"></Footer>
     </div>
     </BrowserRouter>
   );

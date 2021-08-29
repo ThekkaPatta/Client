@@ -58,6 +58,8 @@ class Ownuserprofile extends Component {
 
     render() {
         return (
+            <div className="userpro">
+            <center>
             <div class="contact_form_section">
                 <div class="container">
                     <div class="row p-5">
@@ -129,8 +131,8 @@ class Ownuserprofile extends Component {
                     </div>
                 </div>
             </div>
-
-
+            </center>
+            </div>
         );
     }
 }

@@ -1,7 +1,89 @@
+.headerson{
+    width: 100vh;
+    font-family: "Rotis";
+    font-size: 20px;
+}
 .alignment{
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 40px;
     width: 100%;
+   height: 100vh;
+   background-color: black;
+
   }
+.rows{
+      width: 100%;
+  }
+
+.tablehead{
+  position: sticky;
+  z-index: 1;
+  top:10vh;
+width: 100%;
+background-color: rgb(54, 56, 56);
+color: aliceblue;
+  }
+
+  .buttonsko{
+    display:flex;
+  }
+
+
+
+  .bodyko{
+    color: aliceblue;
+    font-size: 20px;
+  }
+
+.boxdesign{
+  width: 100%;
+  background-image: linear-gradient(to right, rgb(141, 126, 126), rgb(245, 234, 234));
+    box-shadow: 0 0 20px 0 rgba(224, 218, 223, 0.877), 0 5px 5px 0 rgba(136, 133, 133, 0.897);
+  border: 1 solid black;
+  border-radius: 30px;
+    
+  }
+
+
+.viewpro{
+  font-size: 20px;
+  size: 5PX;
+  width: 160px;
+  margin-left:50px ;
+  margin-bottom: 30px;
+  font-size: 15px;
+  border: 1px solid rgb(252, 248, 248);
+  
+}
+
+.viewpro2{
+  font-size: 20px;
+  size: 5PX;
+  width: 160px;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  border: 1px solid rgb(250, 243, 243);
+}
+.viewpro2:hover{
+  box-shadow: 20px 12px 16px 0 rgba(3, 3, 3, 0.842), 20px 17px 50px 0 rgba(0, 0, 0, 0.788);
+  background-color: aliceblue;
+  color: rgb(245, 10, 10);
+
+}
+
+.viewpro:hover{
+  box-shadow: 20px 12px 16px 0 rgba(0,0,0,0.24), 20px 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: aliceblue;
+  color: rgb(245, 9, 9);
+
+}
+.tabble {
+width: 100%;
+padding: 10px;
+margin-top: 10vh;
+border-radius: 10px 10px 10px 10px;
+border: 1px solid black;
+box-shadow: 0 0 20px 0 rgba(255, 249, 254, 0.877), 0 5px 5px 0 rgba(41, 39, 39, 0.897);
+}

@@ -31,6 +31,7 @@ class Loginuser extends Component {
 
     render() {
         return (
+            <div class="loginuser">
             <div class="lw">
             <div class="wrapper">
                 <div class="circle circle1"></div>
@@ -53,6 +54,7 @@ class Loginuser extends Component {
             </div>
 
             <div class="background"></div>
+        </div>
         </div>
         )
     }
