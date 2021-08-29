@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class Registeruser extends Component {
     state = {
-        Uimage: "",
+        ProfileImg: "",
         UFullName: "",
         UAddress: "",
         UPhoneNo: "",
@@ -15,7 +15,12 @@ class Registeruser extends Component {
         e.preventDefault();
         const data = new FormData()
 
-        data.append('Uimage', this.state.Uimage)
+        if(this.state.ProfileImg===""){
+            data.append('ProfileImg', process.env.PUBLIC_URL + '/no_img.jpg')
+        } 
+        else{
+            data.append('ProfileImg',this.state.ProfileImg)
+        }
         data.append('UFullName', this.state.UFullName)
         data.append('UAddress', this.state.UAddress)
         data.append('UPhoneNo', this.state.UPhoneNo)
@@ -35,7 +40,7 @@ class Registeruser extends Component {
     }
     imageHandler = (e) => {
         this.setState({
-            Uimage: e.target.files[0]
+            ProfileImg: e.target.files[0]
         })
     };
 
@@ -57,7 +62,7 @@ class Registeruser extends Component {
                                     onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></p>
                                 <p>Password:<input type="Password" value={this.state.UPassword}
                                     onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></p>
-                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Uimage"
+                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="ProfileImg"
                                     onChange={this.imageHandler} /></p>
                                 <p><input type="submit" onClick={this.sendUserData} /></p>
 

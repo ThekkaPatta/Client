@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class Registerworker extends Component {
     state = {
-        Wimage: "",
+        ProfileImg: "",
         WFullName: "",
         WAddress: "",
         WPhoneNo: "",
@@ -16,7 +16,7 @@ class Registerworker extends Component {
         e.preventDefault();
         const data = new FormData()
 
-        data.append('Wimage', this.state.Wimage)
+        data.append('ProfileImg', this.state.ProfileImg)
         data.append('WFullName', this.state.WFullName)
         data.append('WAddress', this.state.WAddress)
         data.append('WPhoneNo', this.state.WPhoneNo)
@@ -36,7 +36,7 @@ class Registerworker extends Component {
     }
     imageHandler = (e) => {
         this.setState({
-            Wimage: e.target.files[0]
+            ProfileImg: e.target.files[0]
         })
     };
     render() {
@@ -59,7 +59,7 @@ class Registerworker extends Component {
                                     onChange={(event) => { this.setState({ WUsername: event.target.value }) }} /></p>
                                 <p>Password:<input type="Password" value={this.state.WPassword}
                                     onChange={(event) => { this.setState({ WPassword: event.target.value }) }} /></p>
-                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="Wimage"
+                                <p>Upload Photo:<input type="file" placeholder="Upload photo" name="ProfileImg"
                                     onChange={this.imageHandler} /></p>
                                 <p><input type="submit" onClick={this.sendUserData} />  </p>
 

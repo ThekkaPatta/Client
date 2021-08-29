@@ -11,7 +11,7 @@ class Workpost extends Component {
         Tags:"",
         Workdescription:"",
         WorkTitle:"",
-        Wimage:[],
+        ProfileImg:[],
     }
 
     componentDidMount(){
@@ -33,7 +33,7 @@ class Workpost extends Component {
 
     fileHandler = (e) => {
         this.setState({
-            Wimage: e.target.files[0]
+            ProfileImg: e.target.files[0]
         })
     }
 
@@ -46,7 +46,7 @@ class Workpost extends Component {
         data.append('Tags', this.state.Tags)
         data.append('WorkTitle', this.state.WorkTitle)
         data.append('Workdescription', this.state.Workdescription)
-        data.append('Wimage',this.state.Wimage)
+        data.append('ProfileImg',this.state.ProfileImg)
     
         axios.post("http://localhost:550/work/post",data)
     .then((response)=>{

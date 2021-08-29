@@ -74,7 +74,7 @@ class Favorites extends Component {
                                 <div className="col-md-4 p-3">
                                     <div className="card">
 
-                                        <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + myworkers.Wimage} />
+                                        <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + myworkers.ProfileImg} />
                                         <h4 className="card-title p-2">Skills: {myworkers.WSkills}</h4>
                                         <h4 className="card-title p-2">Address: {myworkers.WAddress}</h4>
                                         <h4 className="card-title p-2">Phone Number: {myworkers.WPhoneNo}</h4>

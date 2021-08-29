@@ -1,28 +1,27 @@
 
- .logo{
-  background-image: url("../Images/logo.PNG"); 
-  height: 85px;
-  width: 200px;
-  place-content: center;
- }
- header {
+header {
     padding: 0px 0;
-    background: repeating-linear-gradient(45deg, #f0f2ed, #f0f2ed 20px, #f8f4eb 20px, #f8f4eb 40px);
+    background: repeating-linear-gradient(45deg, #f0f2ed, #fbfcfd 20px, #edeef1 20px, #f8f4eb 40px);
     box-shadow: 0 4px 6px rgba(0,0,0,.2);
     width:100%;
     position:fixed;
     background: oblique;
-    z-index:1;
   }
  
   .container {
     padding: 0 20px;
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
   }
-  .logo-box {
+
+  .logoImg{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
     float: left;
     margin-right: 20px;
+    
   }
   .logo-box a {
     outline: none;
@@ -85,6 +84,7 @@
     margin: 0;
     height: 40px;
     line-height: 40px;
+    text-align: center;
   }
   nav li:hover {background: rgba(0,0,0,.1);}
   nav a:after {content: none;}

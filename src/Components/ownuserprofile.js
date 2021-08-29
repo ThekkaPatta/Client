@@ -10,7 +10,7 @@ class Ownuserprofile extends Component {
         UFullName: "",
        UAddress: "",
         UPhoneNo: "",
-        Uimage: [],
+        ProfileImg: [],
         _id: "",
     }; 
   
@@ -25,7 +25,7 @@ class Ownuserprofile extends Component {
                         UAddress: response.data.UAddress,
                         UPhoneNo: response.data.UPhoneNo,
                         UUsername: response.data.UUsername,
-                        Uimage: response.data.Uimage,
+                        ProfileImg: response.data.ProfileImg,
                     });
                 })
                 .catch((err) => {
@@ -68,7 +68,7 @@ class Ownuserprofile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.Uimage}`}
+                                    src={`http://localhost:550/${this.state.ProfileImg}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""

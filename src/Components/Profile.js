@@ -12,7 +12,7 @@ class Profile extends Component {
         WAddress: "",
         WSkills: "",
         WPhoneNo: "",
-        Wimage: [],
+        ProfileImg: [],
         Workers: []
 
     };
@@ -27,7 +27,7 @@ class Profile extends Component {
                     WSkills: response.data.WSkills,
                     WPhoneNo: response.data.WPhoneNo,
                     WUsername: response.data.WUsername,
-                    Wimage: response.data.Wimage,
+                    ProfileImg: response.data.ProfileImg,
                 });
             })
 
@@ -48,7 +48,7 @@ class Profile extends Component {
         data.append('WSkills', this.state.WSkills)
         data.append('WPhoneNo', this.state.WPhoneNo)
         data.append('WUsername', this.state.WUsername)
-        data.append('Wimage', this.state.Wimage)
+        data.append('ProfileImg', this.state.ProfileImg)
         
         axios.post("http://localhost:550/favworker/insert", data)
             .then((response) => {
@@ -76,7 +76,7 @@ class Profile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.Wimage}`}
+                                    src={`http://localhost:550/${this.state.ProfileImg}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "300px", width: "300px", objectFit: "cover" }}
                                     alt=""

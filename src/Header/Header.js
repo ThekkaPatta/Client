@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import '../assets/css/Header.css'
 import Notification from '../Components/Notification'
-import Modal from "react-modal";;
+import Modal from "react-modal";
+import logo from '../assets/Images/logo.png'
+
 
 var menu;
 function Header() {
@@ -19,6 +21,7 @@ function Header() {
         localStorage.removeItem('token')
         localStorage.removeItem('_id')
         localStorage.removeItem('usertype')
+        localStorage.removeItem('username')
         window.location.href = '/'
     }
 
@@ -46,7 +49,8 @@ function Header() {
                                                <li class="main_nav_item"><a href="/fav">Favorites</a></li>
                         <li class="main_nav_item"><a href="/ownuserprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
-                            <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
+                        <li class="main_nav_item"><a href="/messenger">My Messages</a></li>
+                        <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
 
@@ -60,6 +64,7 @@ function Header() {
                         <li class="main_nav_item"><a href="/workerhome">Home</a></li>
                         <li class="main_nav_item"><a href="/workersprofile">My Profile</a></li>
                         <li class="main_nav_item"><a onClick={setModalIsOpenToTrue}>Notification</a></li>
+                        <li class="main_nav_item"><a href="/messenger">My Messages</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
 
@@ -87,7 +92,7 @@ function Header() {
                 <div class="container">
                     <div class="logo-box">
                         <a href="/">
-                            <img src="https://html5book.ru/wp-content/uploads/2015/01/logo-header.png" />
+                            <img className='logoImg' src={logo} />
                         </a>
                     </div>
                     <nav>
