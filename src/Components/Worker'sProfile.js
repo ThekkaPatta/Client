@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import '../assets/css/viewprofile.css'
 import StarRatings from "react-star-ratings"
+import swal from "sweetalert";
 
 class WorkersProfile extends Component {
     state = {
@@ -45,6 +46,28 @@ class WorkersProfile extends Component {
             })
 
     }
+    deleteprofile = (aid) => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this profile!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                axios.delete("http://localhost:550/worker/delete/" + aid)
+            .then((response) => {
+                })
+            .catch((err) => {
+                console.log(err.response)
+            })
+            
+            window.location.href = "/";
+            }
+          });  
+    }
+
 
     render() {
         return (
@@ -81,10 +104,12 @@ class WorkersProfile extends Component {
                     <label class="form-label">Username</label>
                     <input type="text" class="straight" value={this.state.WUsername}/>   
                 </div>
-                              <h1><Link to={"/workeredit/"}> Edit Profile </Link></h1>
+                <button className="btn btn-info"><Link to={"/workeredit/"}> Edit Profile </Link></button>
+                <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
                            
-                        <StarRatings rating={3.5} starDimension="35px" starSpacing="15px" starRatedColor="green" />
+                       
                 </div>
+                <StarRatings rating={3.5} starDimension="35px" starSpacing="15px" starRatedColor="green" />
             </div>
 
 
