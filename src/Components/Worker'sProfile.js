@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import '../assets/css/viewprofile.css';
-import StarRatings from 'react-star-ratings';
-
+import '../assets/css/viewprofile.css'
+import StarRatings from "react-star-ratings"
 
 class WorkersProfile extends Component {
     state = {
