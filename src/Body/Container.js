@@ -22,6 +22,8 @@ import Favorites from "../Components/Favorites";
 import Adminworkers from "../Admin/Adminworkers";
 import DataTable from "../Admin/Adminusers";
 import Ownuserprofile from "../Components/ownuserprofile";
+import Workhistory from "../Components/Workhistory";
+import Userhistory from "../Components/Userhistory";
 
 
 
@@ -39,8 +41,7 @@ class Container extends Component{
                 <Route path="/registeruser" component={Registeruser} />
                 <Route path="/registerworker" component={Registerworker} />
                 <Route path="/workerhome" component={Workerhome} />
-                <Route path="/bidwork/:id" component={Bidwork} />
-             
+                <Route path="/bidwork/:id" component={Bidwork} />             
                 <Route path="/adminlgn" component={Adminlogin} />
                 <Route path="/profile/:WUsername" component={Profile} />
                 <Route path="/useredit" component={UserEditProfile} />
@@ -53,6 +54,8 @@ class Container extends Component{
                 <Route path='/fav' component={Favorites}/>
                 <Route path='/adminuser' component={DataTable}/>
                 <Route path='/adminworker' component={Adminworkers}/>
+                <Route path='/workhistory' component={Workhistory}/>
+                <Route path='/userhistory' component={Userhistory}/>
                 
                 
                 

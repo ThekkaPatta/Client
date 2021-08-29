@@ -64,7 +64,7 @@ class Workbidder extends Component {
 
                         axios.post("http://localhost:550/post/notification", data)
                             .then((response) => {
-                                window.location.href= "/workbidder/"+this.state.Wid;
+                                window.location.href= "/userhistory/"+this.state.Wid;
                             })
 
                     })
@@ -110,7 +110,8 @@ class Workbidder extends Component {
                                             {(() => {
                                                 if (this.state.status === "Pending") {
                                                     return (
-                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>Hire</button>
+                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>
+                                                            <Link to={"/userhistory"}>Hire</Link></button>
                                                     )
                                                 }
                                                 else {

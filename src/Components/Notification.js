@@ -3,7 +3,7 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 
 export default function Notification({ closenotificationmodal }) {
-  const [Username, setUsername] = useState();
+  const [Username, setUsername] = useState('');
   const [notifications, setnotifications] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,9 @@ export default function Notification({ closenotificationmodal }) {
       axios.get("http://localhost:550/notifications/worker/" + Username)
         .then((response) => {
           setnotifications(response.data.data)
+          console.log(response.data.data)
         })
+        
         .catch(err => {
           console.log(err)
         })
@@ -76,7 +78,7 @@ export default function Notification({ closenotificationmodal }) {
                       </Card.Body>
                     </Card>
                     //   }
-                      
+
                     // }
                     // )}
                     // </>
@@ -88,20 +90,28 @@ export default function Notification({ closenotificationmodal }) {
             else if (localStorage.getItem('userType') === 'worker') {
               return (
                 notifications.map(mynotifications => {
-                  return(
-                    //  <>
-                    //   {(() => {
-                    //     if (mynotifications.nType === 'rate') {
+                  return (
+                    <>
+                      {(() => {
+                        if (mynotifications.nType === 'rate') {
                           <Card>
                             <Card.Body>You Have Been rated By <h3>{mynotifications.UUsername}
                             </h3> User with Rate Number<h4>{mynotifications.Ratenum}</h4>
                             </Card.Body>
                           </Card>
-                        
-                    //     }
-                      
-                    //   })}
-                    // </>
+
+                        }
+
+                        if (mynotifications.nType === 'Hire') {
+                          <Card>
+                            <Card.Body>You Have Been Hired By{mynotifications.UUsername}
+                            </Card.Body>
+                          </Card>
+
+                        }
+
+                      })}
+                    </>
 
                   )
 

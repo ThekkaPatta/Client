@@ -45,13 +45,13 @@ class Workerhome extends Component {
         data.append('Wid', Wid)
         data.append('WUsername', this.state.WUsername)
 
-        axios.post("http://localhost:550/bidded/works", data)
-            .then((response) => {
-                return response.data.data
-            })
-            .catch((err) => {
-                console.log(err.response)
-            })
+//         axios.post("http://localhost:550/bidded/works", data)
+//             .then((response) => {
+//                 return response.data.data
+//             })
+//             .catch((err) => {
+//                 console.log(err.response)
+//             })
 
     }
     render() {
