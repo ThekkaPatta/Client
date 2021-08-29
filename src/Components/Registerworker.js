@@ -45,7 +45,7 @@ class Registerworker extends Component {
       <div class="form1">
         <div class="login">
           <div class="login-header">
-            <h3>USER SIGNUP</h3>
+            <h3>WORKER SIGNUP</h3>
             <p>Please enter your credentials to Sign Up.</p>
           </div>
         </div>

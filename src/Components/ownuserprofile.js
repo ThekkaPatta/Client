@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import '../assets/css/viewprofile.css'
+import '../assets/css/viewprofile.css';
 import swal from "sweetalert";
-import { Button } from "bootstrap";
 
 class Ownuserprofile extends Component {
        state = {
         UFullName: "",
        UAddress: "",
         UPhoneNo: "",
-        Uimage: [],
+        ProfileImg: [],
         _id: "",
     }; 
   
@@ -25,7 +24,7 @@ class Ownuserprofile extends Component {
                         UAddress: response.data.UAddress,
                         UPhoneNo: response.data.UPhoneNo,
                         UUsername: response.data.UUsername,
-                        Uimage: response.data.Uimage,
+                        ProfileImg: response.data.ProfileImg,
                     });
                 })
                 .catch((err) => {
@@ -59,76 +58,38 @@ class Ownuserprofile extends Component {
     render() {
         return (
             <div class="contact_form_section">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="col p-5">
-                        <br></br><br></br><br></br>
-                            <div class="contact_form_container">
-                                <br></br><br></br><br></br><br></br><br></br>
+                <br></br><br></br><br></br>
+                <div class="contact_form_container">
+                <br></br><br></br><br></br><br></br><br></br>
+                <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
+                <img src={`http://localhost:550/${this.state.ProfileImg}`} 
+                        className="img-fluid rounded-circle hoverable"
+                        style={{ height: "200px", width: "200px", objectFit: "cover" }}
+                        alt=""/><br/><br/>
 
-                                <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
-                                <img
-                                    src={`http://localhost:550/${this.state.Uimage}`}
-                                    className="img-fluid rounded-circle hoverable"
-                                    style={{ height: "300px", width: "300px", objectFit: "cover" }}
-                                    alt=""
-                                />
-                                <br />
-                                
-                                <br />
-
-                                           
-
-
-                                <div className="form-group">
-                                    <label class="form-label">Full Name
-                                   
-                                   
-                <input type="text"class="form-control"value={this.state.UFullName}/>
-                </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Address
-                                   
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.UAddress}
-                                           
-                                           
-                                        />
-</label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Phone Number
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.UPhoneNo}
-                                            
-                                          
-                                        />
-                                    </label>
-                                </div>
-                               
-                                <div className="form-group">
-                                    <label class="form-label">Username
-                <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.UUsername}
-                                            name="Username"
-                                            
-                                        />
-                                    </label>
-                                </div>
-                              <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
-                              <button className="btn btn-warning" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div className="form-group">
+                <label class="form-label">Full Name</label><input class="straight" type="text" value={this.state.UFullName}/>
+            
             </div>
+            
+            <div className="form-group">
+                <label class="form-label">Address</label><input class="straight" type="text" value={this.state.UAddress}/>
+                
+            </div>
+                                
+            <div className="form-group">
+                <label class="form-label">Phone Number</label><input class="straight" type="text" value={this.state.UPhoneNo}/>
+            </div>
+                               
+            <div className="form-group">
+                <label class="form-label">Username</label><input class="straight" type="text" value={this.state.UUsername} name="Username"/>
+            </div>
+                    
+                <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
+                <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
+        </div>
+    </div>
+                    
 
 
         );

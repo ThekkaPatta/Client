@@ -68,6 +68,7 @@
     transition: width .5s linear;  
   }
   nav a:hover:after {width: 100%;}
+
   
   @media screen and (max-width: 660px) {
     header {text-align: center;}
