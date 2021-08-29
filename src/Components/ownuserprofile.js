@@ -68,21 +68,25 @@ class Ownuserprofile extends Component {
                         alt=""/><br/><br/>
 
             <div className="form-group">
-                <label class="form-label">Full Name: {this.state.UFullName}</label>
+                <label class="form-label">Full Name:</label>
+                <input type="text" class="straight"value={this.state.UFullName}/>
             
             </div>
             
             <div className="form-group">
-                <label class="form-label">Address: {this.state.UAddress}</label>
+                <label class="form-label">Address:</label>
+                <input type="text" class="straight"value={this.state.UAddress}/>
                 
             </div>
                                 
             <div className="form-group">
-                <label class="form-label">Phone Number: {this.state.UPhoneNo}</label>
+                <label class="form-label">Phone Number:</label>
+                <input type="text" class="straight" value={this.state.UPhoneNo}/>
             </div>
                                
             <div className="form-group">
-                <label class="form-label">Username: {this.state.UUsername}</label>
+                <label class="form-label">Username:</label>
+                <input type="text" class="straight"value={this.state.UUsername}/>
             </div>
                     
                 <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>

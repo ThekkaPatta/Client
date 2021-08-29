@@ -68,7 +68,7 @@ class Registeruser extends Component {
             onChange={this.imageHandler} /></p></div>
             </div>
           <button type="submit" onClick={this.sendUserData}>Sign Up</button>
-          <p class="message">Already Have an Account? <a href="/login user">Login</a></p>
+          <p class="message">Already Have an Account? <a href="/loginuser">Login</a></p>
         </form>
       </div>
     </div>

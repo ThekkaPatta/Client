@@ -1,5 +1,6 @@
-.container{
-  width: 100%;
+.workerhome{
+  width: 95%;
+  padding: 30px;
 }
 .wrapper {
     display: grid;
