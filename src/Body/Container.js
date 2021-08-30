@@ -10,7 +10,7 @@ import Workerhome from "../Components/Workerhome";
 import Bidwork from "../Components/Bidwork";
 
 import Adminlogin from "../Admin/Adminlogin";
-import userhome from "../Components/Userlanding";
+import Userhome from "../Components/Userlanding";
 import UserEditProfile from "../Components/UserEditProfile";
 import WorkerEditProfile from "../Components/WorkerEditProfile";
 import WorkersProfile from "../Components/Worker'sProfile";
@@ -25,6 +25,8 @@ import Ownuserprofile from "../Components/ownuserprofile";
 import Workhistory from "../Components/Workhistory";
 import Userhistory from "../Components/Userhistory";
 
+import Messenger from '../Components/Messenger/Messenger';
+import Hiredworker from '../Components/Hiredworker'
 
 
 
@@ -47,7 +49,7 @@ class Container extends Component{
                 <Route path="/useredit" component={UserEditProfile} />
                 <Route path="/workeredit" component={WorkerEditProfile} />
                 <Route path="/workersprofile" component={WorkersProfile} />               
-                <Route path='/userlanding' component={userhome}/>
+                <Route path='/userlanding' component={Userhome}/>
                 <Route path='/workbidder/:_id' component={Workbidder}/>
                 <Route path='/adminpost' component={Adminpost}/>
                 <Route path='/adminuser' component={Adminusers}/>
@@ -57,6 +59,9 @@ class Container extends Component{
                 <Route path='/workhistory' component={Workhistory}/>
                 <Route path='/userhistory' component={Userhistory}/>
                 
+                <Route path ='/messenger' component={Messenger}/>
+                <Route path ='/hiredworker' component={Hiredworker}/>
+
                 
                 
             </div>

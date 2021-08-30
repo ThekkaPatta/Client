@@ -6,7 +6,7 @@ class WorkerEditProfile extends Component {
         WAddress: "",
         WPhoneNo: "",
         WSkills:"",
-        Wimage: [],
+        ProfileImg: [],
         _id: "",
     };  
     changeHandler = (e) => {
@@ -58,7 +58,7 @@ class WorkerEditProfile extends Component {
                         WPhoneNo: response.data.WPhoneNo,
                         WSkills: response.data.WSkills,
                         WUsername: response.data.WUsername,
-                        Wimage: response.data.Wimage,
+                        ProfileImg: response.data.ProfileImg,
                     });
                 })
                 .catch((err) => {
@@ -78,7 +78,7 @@ class WorkerEditProfile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor">!!Edit Your Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.Wimage}`}
+                                    src={`http://localhost:550/${this.state.ProfileImg}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "200px", width: "200px", objectFit: "cover" }}
                                     alt=""

@@ -19,6 +19,7 @@ function Header() {
         localStorage.removeItem('token')
         localStorage.removeItem('_id')
         localStorage.removeItem('usertype')
+        localStorage.removeItem('username')
         window.location.href = '/'
     }
 
@@ -26,9 +27,7 @@ function Header() {
         menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
-                    <ul class="main_nav_list">
-                        
-                        
+                    <ul class="main_nav_list"> 
                         <li class="main_nav_item"><a href="/adminpost">Posts</a></li>
                         <li class="main_nav_item"><a href="/adminuser">Users</a></li>
                         <li class="main_nav_item"><a href="/adminworker">Workers</a></li>
@@ -49,7 +48,8 @@ function Header() {
                         <li class="main_nav_item"><a href="/userhistory"><i class="fa fa-history" aria-hidden="true"></i> MY History</a></li>
                         <li class="main_nav_item"><a href="/ownuserprofile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
                         <li class="main_nav_item"><a className="color" onClick={setModalIsOpenToTrue}><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
-                        <li class="main_nav_item"><a href="/" onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                        <li class="main_nav_item"><a href="/messenger">My Messages</a></li>
+                        <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
                 </div>
 
@@ -64,7 +64,8 @@ function Header() {
                         <li class="main_nav_item"><a href="/workersprofile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
                         <li class="main_nav_item"><a href="/workhistory"><i class="fa fa-history" aria-hidden="true"></i> Work History</a></li>
                         <li class="main_nav_item"><a className="color" onClick={setModalIsOpenToTrue}><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
-                        <li class="main_nav_item"><a href="/" onClick={logout}><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a></li>
+                        <li class="main_nav_item"><a href="/messenger">My Messages</a></li>
+                        <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
 
                 </div>
@@ -86,9 +87,9 @@ function Header() {
             </>
     }
     return (
-        <>
+        <div className='headernav'>
             <header>
-                <div class="container">
+                <div class="containernav">
                     <div class="logo-box">
                         <a className="logo" href="/">ThekkaPatta                         
                         </a>
@@ -128,7 +129,7 @@ function Header() {
                     <Notification closenotificationmodal={setModalIsOpenToFalse} />
                 </Modal>
             </div>
-        </>
+        </div>
     )
 }
 export default Header

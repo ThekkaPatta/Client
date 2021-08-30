@@ -6,25 +6,28 @@ import StarRatings from "react-star-ratings"
 
 class WorkersProfile extends Component {
     state = {
+        WUsername:'',
         WFullName: "",
         WAddress: "",
         WPhoneNo: "",
-        WSkills: "",
-        Wimage: [],
-
-    };
+        WSkills:"",
+        ProfileImg: [],
+        _id: "",
+    }; 
+  
     componentDidMount() {
-        var W_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/worker/single/" + W_id)
-            .then((response) => {
-                console.log(response);
-                this.setState({
-                    WFullName: response.data.WFullName,
-                    WAddress: response.data.WAddress,
-                    WPhoneNo: response.data.WPhoneNo,
-                    WSkills: response.data.WSkills,
-                    WUsername: response.data.WUsername,
-                    Wimage: response.data.Wimage,
+        this.setState({ _id: localStorage.getItem("_id") }, () => {
+            axios.get("http://localhost:550/worker/single/" + this.state._id)
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        WFullName: response.data.WFullName,
+                        WAddress: response.data.WAddress,
+                        WPhoneNo: response.data.WPhoneNo,
+                        WSkills: response.data.WSkills,
+                        WUsername: response.data.WUsername,
+                        ProfileImg: response.data.ProfileImg,
+                    });
                 })
 
             }).then(() => {
@@ -52,7 +55,7 @@ class WorkersProfile extends Component {
                 <br></br><br></br><br></br><br></br>
                 <div class="contact_form_container">
                 <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
-                <img src={`http://localhost:550/${this.state.Wimage}`}
+                <img src={`http://localhost:550/${this.state.ProfileImg}`}
                      className="img-fluid rounded-circle hoverable"
                      style={{ height: "300px", width: "300px", objectFit: "cover" }}
                      alt=""/><br/><br/>

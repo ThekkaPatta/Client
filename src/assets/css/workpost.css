@@ -1,5 +1,13 @@
 .fp{
-  height: 100vh !important;
+  margin-top:80px;
+  height: calc (100vh - 80px);
+}
+
+
+.containerworkpost {
+  padding: 0 20px;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .content-header{
@@ -12,21 +20,22 @@
 .section-content{
   text-align: center;
   height: auto;
-  margin-top:8%;
 
 }
 #contact{
-    
   font-family: 'Teko', sans-serif;
-  padding-top: 60px;
+  padding-top: 10px;
   width: 100%;
   /* width: 100vw; */
   height: 100%;
   background-color: #848686;
-  color : #fff;    
+  color : rgb(0, 0, 0);    
 }
 .contact-section{
   padding-top: 40px;
+  height: 100%;
+  border: 2px black solid;
+
 }
 .contact-section .col-md-6{
   width: 50%;
@@ -62,6 +71,6 @@ textarea.form-control {
   width: 150px;
   height:30px;
   background-color: transparent;
-  color: #fff;
+  color: rgb(8, 7, 7);
 
 }

@@ -73,7 +73,7 @@ class Adminusers extends Component{
                                     <td>{users.UAddress}</td>
                                     <td>{users.UPhoneNo}</td>
                                     <td>{users.UUsername}</td>
-                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + users.Uimage}></img></td>
+                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + users.ProfileImg}></img></td>
                                     <td>
 
                                     {}

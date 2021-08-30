@@ -4,15 +4,15 @@ import '../assets/css/viewprofile.css'
 import Review from "./rating";
 
 class Workerprofile extends Component {
-       state = {
+    state = {
         WFullName: "",
-       WAddress: "",
-       WSkills:"",
+        WAddress: "",
+        WSkills: "",
         WPhoneNo: "",
-        Wimage: [],
+        ProfileImg: [],
         _id: "",
-    }; 
-  
+    };
+
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
@@ -25,7 +25,7 @@ class Workerprofile extends Component {
                         WSkills: response.data.WSkills,
                         WPhoneNo: response.data.WPhoneNo,
                         WUsername: response.data.WUsername,
-                        Wimage: response.data.Wimage,
+                        ProfileImg: response.data.ProfileImg,
                     });
                 })
                 .catch((err) => {
@@ -39,41 +39,42 @@ class Workerprofile extends Component {
             <div class="contact_form_section">
                 <br></br><br></br><br></br>
                 <div class="contact_form_container">
-                <br></br><br></br><br></br><br></br><br></br>
-                <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
-                <img src={`http://localhost:550/${this.state.Wimage}`}
-                    className="img-fluid rounded-circle hoverable"
-                    style={{ height: "300px", width: "300px", objectFit: "cover" }}
-                    alt=""/><br/><br />            
-
-                <div className="form-group">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" class="straight"value={this.state.WFullName}/>
-                </div>
-
-                <div className="form-group">
-                    <label class="form-label">Address</label>
-                    <input type="text" class="straight" value={this.state.WAddress} />
-                </div>
-                                
-                <div className="form-group">
-                    <label class="form-label">Phone Number</label>
-                    <input type="text" class="straight" value={this.state.WPhoneNo}/>
-                </div>
-
-                <div className="form-group">
-                    <label class="form-label">Skills</label>
-                    <input type="text" class="straight" value={this.state.WSkills}/>
-                </div>
-
-                <div className="form-group">
-                    <label class="form-label">Username</label>
-                    <input type="text" class="straight" value={this.state.WUsername} name="Username" />
-                </div>
-                <Review/>
-            </div>
-        </div>
+                    <br></br><br></br><br></br><br></br><br></br>
+                    <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
                     
+                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                        className="img-fluid rounded-circle hoverable"
+                        style={{ height: "300px", width: "300px", objectFit: "cover" }}
+                        alt="" /><br /><br />
+
+                    <div className="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="straight" value={this.state.WFullName} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="straight" value={this.state.WAddress} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text" class="straight" value={this.state.WPhoneNo} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Skills</label>
+                        <input type="text" class="straight" value={this.state.WSkills} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="straight" value={this.state.WUsername} name="Username" />
+                    </div>
+                    <Review />
+                </div>
+            </div>
+
 
 
         );

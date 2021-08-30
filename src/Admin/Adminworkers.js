@@ -74,7 +74,7 @@ class Adminworkers extends Component{
                                     <td>{workers.WPhoneNo}</td>
                                     <td>{workers.WSkills}</td>
                                     <td>{workers.WUsername}</td>
-                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + workers.Wimage}></img></td>
+                                    <td><img class="img-circle" style={{height:"20px", width: "20px"}} src={"http://localhost:550/" + workers.ProfileImg}></img></td>
                                     <td>
                                     {}
                                                 <p> 
