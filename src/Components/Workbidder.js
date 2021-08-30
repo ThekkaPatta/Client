@@ -1,95 +1,164 @@
-import { Component, React } from "react";
+import { React, useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 import axios from 'axios'
-import { Link } from "react-router-dom";
 import '../assets/css/adminshowprofile.css'
-class Workbidder extends Component {
-    state = {
-        Wid: this.props.match.params._id,
-        bidder: [],
-        UUsername: '',
-        WUsername: '',   
-        nType: 'Hire',
-        status: '',
-    }
-    componentDidMount() {
-        axios.get("http://localhost:550/works/bidder/" + this.state.Wid)
-            .then((response) => {
-                console.log(response)
-                this.setState({
-                    bidder: response.data.data,
+import { Link, useParams, useHistory } from 'react-router-dom';
 
+
+
+
+
+function Workbidder() {
+    const id = useParams()
+    const routerHistory = useHistory();
+    const [bidder, setBidder] = useState([])
+    const [receiverId, setReceiverId] = useState()
+    const [status, setStatus] = useState("")
+    const [UUsername, setUUsername] = useState([])
+    const [WUsername, setWUsername] = useState([])
+    // const [bidder, setBidder] = useState([])
+    // state = {
+    //     Wid: useParams,
+    //     receiverId: '',
+    //     bidder: [],
+    //     UUsername: '',
+    //     WUsername: '',
+    //     nType: 'Hire',
+    //     status: '',
+
+
+    // }
+
+    useEffect(() => {
+        const getdata = async () => {
+            try {
+                const response = await axios.get("http://localhost:550/works/bidder/" + id._id)
+                setBidder(response.data)
+
+                const res = await axios.get("http://localhost:550/work/single/" + id._id)
+                setStatus(res.data.status)
+
+
+                var _id = localStorage.getItem('_id');
+                const result = await axios.get("http://localhost:550/user/single/" + _id)
+                setUUsername(result.data.UUsername)
+
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        getdata()
+    }, [])
+
+
+    // const hire = (WUsername) => {
+    //     const data = new FormData()
+    //     data.append('WUsername', WUsername)
+    //     data.append('Wid', id._id)
+    //     alert(WUsername)
+
+    //     axios.post("http://localhost:550/hire/worker", data)
+    //         .then(() => {
+    //             alert("Worker has been hired")
+    //             startconversation(WUsername)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //             alert("Api not hit")
+    //         })
+
+    // }
+
+    const getWUsername = async (WUsername) => {
+        try {
+            await axios.get('http://localhost:550/worker/one/' + WUsername)
+            .then((res)=>{
+                setReceiverId(res.data._id)
+                startconversation(WUsername)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+           
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+
+    const startconversation = async (WUsername) => {
+        var _id = localStorage.getItem('_id');
+        console.log(_id)
+        console.log(receiverId)
+        const data = new FormData()
+        data.append('senderId', _id)
+        data.append('receiverId', receiverId)
+
+        await axios.post('http://localhost:550/conversation', data)
+            console.log('conversation started')
+            startmessage(WUsername, receiverId, _id)
+
+
+
+    }
+
+    const startmessage = (WUsername, receiverId, senderId) => {
+        var conversationId;
+        const data = new FormData()
+        data.append('senderId', senderId)
+        data.append('receiverId', receiverId)
+
+        axios.get('http://localhost:550/getconversation', data)
+            .then((response) => {
+                conversationId = response.data._id
+            })
+
+        const data2 = new FormData()
+        data2.append('conversationId', conversationId)
+        data2.append('sender', senderId)
+        data2.append('text', 'Hey, I have have you for a work. Please, try to complete it within the time')
+
+        axios.post('http://localhost:550/messages', data2)
+            .then(() => {
+                console.log('conversation started')
+                setnotification(WUsername)
+            })
+
+    }
+
+
+    const setnotification = async (WUsername) => {
+        const workid = id._id
+        const data = new FormData()
+        data.append('Workid', workid)
+        data.append('WUsername', WUsername)
+        data.append('UUsername', UUsername)
+        data.append('nType', "Hire")
+
+        axios.post("http://localhost:550/post/notification", data)
+            .then((response) => {
+                console.log(response.data.message);
+                routerHistory.push({
+                    pathname: '/hiredworker',
+                    state: {
+                        workid: workid,
+                        WUsername: WUsername
+                    }
                 })
             })
-            .then(() => {
-                axios.get("http://localhost:550/work/single/" + this.state.Wid)
-                    .then((response) => {
-                        this.setState({
-                            status: response.data.status
-                        })
-                        alert(this.state.status)
-                    })
-            })
-
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
-
-    hire = (WUsername) => {
-        const data = new FormData()
-        data.append('WUsername', WUsername)
-        data.append('Wid', this.state.Wid)
-
-        alert(WUsername)
-
-        axios.post("http://localhost:550/hire/worker", data)
-            .then((response) => {
-                alert("Worker has been hired")
-            })
-            .then(() => {
-                var u_id = localStorage.getItem('_id');
-                axios.get("http://localhost:550/user/single/" + u_id)
-                    .then((response) => {
-                        this.setState({
-                            UUsername: response.data.UUsername,
-                        })
-                    })
-                    .then(() => {
-                        const data = new FormData()
-                        data.append('Workid', this.state.Wid)
-                        data.append('WUsername', WUsername)
-                        data.append('UUsername', this.state.UUsername)
-                        data.append('nType', this.state.nType)
-
-                        axios.post("http://localhost:550/post/notification", data)
-                            .then((response) => {
-                                window.location.href= "/userhistory/"+this.state.Wid;
-                            })
-
-                    })
-
-            })
-
-
-            .catch((err) => {
-                console.log(err)
-                alert("Api not hit")
-            }
-
-            )
 
     }
 
-    render(){
-        return(
-            <div className="alignment">
-                <br></br><br></br><br></br><br></br>
-                {
-                    this.state.bidder.map((mybidder) => {
-                        return (
-                            <div>
-                                <table class ="table table-stripped">
+    return (
+        <div className="alignment">
+            <br></br><br></br><br></br><br></br>
+            {
+                bidder.map((mybidder) => {
+                    return (
+                        <div>
+                            <table class="table table-stripped">
                                 <thead>
                                     <tr>
                                         <th scope="col" width="90px">Username</th>
@@ -107,29 +176,22 @@ class Workbidder extends Component {
 
                                         <td><a className="btn btn-outline-info p-3" ><Link to={"/profile/" + mybidder.WUsername}>View Profile</Link></a></td>
                                         <td>
-                                            {(() => {
-                                                if (this.state.status === "Pending") {
-                                                    return (
-                                                        <button className="btn btn-outline-success p-3" onClick={this.hire.bind(this, mybidder.WUsername)}>
-                                                            <Link to={"/userhistory"}>Hire</Link></button>
-                                                    )
-                                                }
-                                                else {
-
-                                                }
-                                            })()}
+                                            {
+                                                status === 'Pending' ?
+                                                    <button className="btn btn-outline-success p-3" onClick={() => getWUsername(mybidder.WUsername)}>Hire</button>
+                                                    : ""
+                                            }
                                         </td>
 
                                     </tr>
                                 </tbody>
-                                </table>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+                            </table>
+                        </div>
+                    )
+                })
+            }
+        </div>
 
-        )
-    }
+    )
 }
 export default Workbidder

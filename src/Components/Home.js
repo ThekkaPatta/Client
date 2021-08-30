@@ -6,17 +6,14 @@ class Home extends Component {
         return (
             <div class="site-wrapper">
                 <div class="pt-tablecell page-home relative">
-                    <div class="overlay"></div>
 
-                    <div class="container">
+                    <div class="containerhome">
                         <div class="row">
                             <div class="col-xs-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
                                 <div class="page-title  home text-center">
                                     <span class="heading-page"> Login
                                     </span>
                                 </div>
-                                <div class='spacer'
-                                ></div>
 
                                 <div class="hexagon-menu clear">
                                     <div class="hexagon-item">
@@ -29,6 +26,7 @@ class Home extends Component {
                                             <div></div>
                                             <div></div>
                                             <div></div>
+                                            
                                         </div>
                                         <a href="/loginuser" class="hex-content">
                                             <span class="hex-content-inner">

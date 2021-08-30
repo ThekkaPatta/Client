@@ -1,8 +1,9 @@
-.workerhome{
-  width: 95%;
-  padding: 30px;
+.containerworkerhome{
+  margin-top:80px;
+  height: calc (100vh - 80px);
 }
 .wrapper {
+    margin-top: 10px;
     display: grid;
     text-align: center;
     max-width: 100%;
@@ -10,7 +11,10 @@
     flex-wrap: wrap;
     gap: 20px;
   }
+  .card{
+    margin-top: 20px;
+  }
   .card:hover{
-    transform:scale(1.1); 
+    transform:scale(0.5); 
   }
   

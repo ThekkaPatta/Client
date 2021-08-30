@@ -5,14 +5,14 @@ import '../assets/css/viewprofile.css';
 import swal from "sweetalert";
 
 class Ownuserprofile extends Component {
-       state = {
+    state = {
         UFullName: "",
-       UAddress: "",
+        UAddress: "",
         UPhoneNo: "",
         ProfileImg: [],
         _id: "",
-    }; 
-  
+    };
+
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
@@ -40,19 +40,19 @@ class Ownuserprofile extends Component {
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-                axios.delete("http://localhost:550/user/delete/" + aid)
-            .then((response) => {
-                })
-            .catch((err) => {
-                console.log(err.response)
-            })
-            
-            window.location.href = "/";
-            }
-          });  
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete("http://localhost:550/user/delete/" + aid)
+                        .then((response) => {
+                        })
+                        .catch((err) => {
+                            console.log(err.response)
+                        })
+
+                    window.location.href = "/";
+                }
+            });
     }
 
     render() {
@@ -60,40 +60,40 @@ class Ownuserprofile extends Component {
             <div class="contact_form_section">
                 <br></br><br></br><br></br>
                 <div class="contact_form_container">
-                <br></br><br></br><br></br><br></br><br></br>
-                <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
-                <img src={`http://localhost:550/${this.state.ProfileImg}`} 
+                    <br></br><br></br><br></br><br></br><br></br>
+                    <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
+                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
                         className="img-fluid rounded-circle hoverable"
                         style={{ height: "200px", width: "200px", objectFit: "cover" }}
-                        alt=""/><br/><br/>
+                        alt="" /><br /><br />
 
-            <div className="form-group">
-                <label class="form-label">Full Name:</label>
-                <input type="text" class="straight"value={this.state.UFullName}/>
-            
+                    <div className="form-group">
+                        <label class="form-label">Full Name:</label>
+                        <input type="text" class="straight" value={this.state.UFullName} />
+
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Address:</label>
+                        <input type="text" class="straight" value={this.state.UAddress} />
+
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Phone Number:</label>
+                        <input type="text" class="straight" value={this.state.UPhoneNo} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Username:</label>
+                        <input type="text" class="straight" value={this.state.UUsername} />
+                    </div>
+
+                    <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
+                    <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
+                </div>
             </div>
-            
-            <div className="form-group">
-                <label class="form-label">Address:</label>
-                <input type="text" class="straight"value={this.state.UAddress}/>
-                
-            </div>
-                                
-            <div className="form-group">
-                <label class="form-label">Phone Number:</label>
-                <input type="text" class="straight" value={this.state.UPhoneNo}/>
-            </div>
-                               
-            <div className="form-group">
-                <label class="form-label">Username:</label>
-                <input type="text" class="straight"value={this.state.UUsername}/>
-            </div>
-                    
-                <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
-                <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
-        </div>
-    </div>
-                    
+
 
 
         );
