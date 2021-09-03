@@ -1,7 +1,3 @@
-.userfpage{
-    padding-top:8%;
-}
-
 .wrapper {
     display: grid;
     text-align: center;
@@ -16,6 +12,13 @@
 
   .workloader{
     display: flex;
+  }
+
+  #btnwork{
+    flex: auto;
+    height:40px;
+    font-size: 15px !important;
+    font-weight: 500 !important;
   }
 
 

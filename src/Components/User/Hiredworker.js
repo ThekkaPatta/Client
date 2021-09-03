@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useHistory } from "react-router"
-import '../assets/css/Hiredworker.css'
+import '../../assets/css/User/Hiredworker.css'
 
 
 export default function Hiredworker() {

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from 'axios'
-import '../assets/css/Userlanding.css'
+import '../../assets/css/User/Userlanding.css'
 import swal from "sweetalert";
 
 

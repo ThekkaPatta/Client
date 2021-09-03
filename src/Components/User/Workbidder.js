@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 import axios from 'axios'
-import '../assets/css/adminshowprofile.css'
+import '../../assets/css/admin/adminshowprofile.css'
 import { Link, useParams, useHistory } from 'react-router-dom';
 
 
@@ -16,18 +16,6 @@ function Workbidder() {
     const [status, setStatus] = useState("")
     const [UUsername, setUUsername] = useState([])
     const [WUsername, setWUsername] = useState([])
-    // const [bidder, setBidder] = useState([])
-    // state = {
-    //     Wid: useParams,
-    //     receiverId: '',
-    //     bidder: [],
-    //     UUsername: '',
-    //     WUsername: '',
-    //     nType: 'Hire',
-    //     status: '',
-
-
-    // }
 
     useEffect(() => {
         const getdata = async () => {
@@ -73,14 +61,14 @@ function Workbidder() {
     const getWUsername = async (WUsername) => {
         try {
             await axios.get('http://localhost:550/worker/one/' + WUsername)
-            .then((res)=>{
-                setReceiverId(res.data._id)
-                startconversation(WUsername)
-            })
-            .catch((err)=>{
-                console.log(err)
-            })
-           
+                .then((res) => {
+                    setReceiverId(res.data._id)
+                    startconversation(WUsername)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+
         }
         catch (err) {
             console.log(err)
@@ -97,8 +85,8 @@ function Workbidder() {
         data.append('receiverId', receiverId)
 
         await axios.post('http://localhost:550/conversation', data)
-            console.log('conversation started')
-            startmessage(WUsername, receiverId, _id)
+        console.log('conversation started')
+        startmessage(WUsername, receiverId, _id)
 
 
 
@@ -152,44 +140,46 @@ function Workbidder() {
     }
 
     return (
-        <div className="alignment">
-            <br></br><br></br><br></br><br></br>
-            {
-                bidder.map((mybidder) => {
-                    return (
-                        <div>
-                            <table class="table table-stripped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" width="90px">Username</th>
-                                        <th scope="col" width="90px">Bid Price</th>
-                                        <th scope="col" width="90px">Worktime</th>
-                                        <th scope="col" width="90px">Actions</th>
+        <div className="alignment" style={{marginTop:"10px"}}>
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" >Username</th>
+                        <th scope="col" >Bid Price</th>
+                        <th scope="col" >Worktime</th>
+                        <th scope="col" >Worker Profile</th>
+                        <th scope="col" >Hire</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{mybidder.WUsername}</td>
-                                        <td>Rs.{mybidder.Bidprice}</td>
-                                        <td>{mybidder.Worktime}</td>
+                    </tr>
+                </thead>
+                {
+                    bidder.map((mybidder) => {
+                        return (
+                            <tbody>
+                                <tr>
+                                    <td>{mybidder.WUsername}</td>
+                                    <td>Rs.{mybidder.Bidprice}</td>
+                                    <td>{mybidder.Worktime}</td>
 
-                                        <td><a className="btn btn-outline-info p-3" ><Link to={"/profile/" + mybidder.WUsername}>View Profile</Link></a></td>
-                                        <td>
-                                            {
-                                                status === 'Pending' ?
-                                                    <button className="btn btn-outline-success p-3" onClick={() => getWUsername(mybidder.WUsername)}>Hire</button>
-                                                    : ""
-                                            }
-                                        </td>
 
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    )
-                })
-            }
+                                    <td>
+                                        <Link to={"/profile/" + mybidder.WUsername}><button className="btn btn-warning" >View Profile</button></Link>
+                                    </td>
+                                    <td>
+                                        {
+                                            status === 'Pending' ?
+                                                <button className="btn btn-success" onClick={() => getWUsername(mybidder.WUsername)}>Hire</button>
+                                                : ""
+                                        }
+                                    </td>
+
+                                </tr>
+                            </tbody>
+
+                        )
+                    })
+                }
+            </table>
         </div>
 
     )

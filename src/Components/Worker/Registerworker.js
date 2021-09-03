@@ -1,5 +1,5 @@
 import { Component } from "react";
-import '../assets/css/register.css';
+import '../../assets/css/register.css';
 import axios from 'axios';
 
 class Registerworker extends Component {
@@ -51,16 +51,16 @@ class Registerworker extends Component {
         </div>
         <form class="login-form">
         <div class="col-md-6 form-line">
-            <div class="form-group"><input type="text" placeholder="Full Name" value={this.state.UFullName}
-             onChange={(event) => { this.setState({ UFullName: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Address" value={this.state.UAddress}
-            onChange={(event) => { this.setState({ UAddress: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Phone No." value={this.state.UPhoneNo}
-            onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></div>
+            <div class="form-group"><input type="text" placeholder="Full Name" value={this.state.WFullName}
+             onChange={(event) => { this.setState({ WFullName: event.target.value }) }} /></div>
+            <div class="form-group"><input type="text" placeholder="Address" value={this.state.WAddress}
+            onChange={(event) => { this.setState({ WAddress: event.target.value }) }} /></div>
+            <div class="form-group"><input type="text" placeholder="Phone No." value={this.state.WPhoneNo}
+            onChange={(event) => { this.setState({ WPhoneNo: event.target.value }) }} /></div>
             <div class="form-group">
                                         <label for="exampleInputtext">Tags</label><br/>
-                                        <h4><select name="tags" id="tags" value={this.state.Tags} 
-                                        onChange={(event) => { this.setState({ Tags: event.target.value }) }}>
+                                        <h4><select name="tags" id="tags" value={this.state.WSkills} 
+                                        onChange={(event) => { this.setState({ WSkills: event.target.value }) }}>
                                             <option value="Choose">Choose One</option>
                                             <option value="plumber">Plumber</option>
                                             <option value="mechanic">Mechanic</option>
@@ -70,10 +70,10 @@ class Registerworker extends Component {
                                     </div>
             </div>
             <div class="col-md-6">
-             <div class="form-group"><input type="text" placeholder="Username" value={this.state.UUsername}
-            onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></div>
-            <div class="form-group"><input type="Password" placeholder="Password" value={this.state.UPassword}
-            onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></div>
+             <div class="form-group"><input type="text" placeholder="Username" autoComplete="off" value={this.state.WUsername}
+            onChange={(event) => { this.setState({ WUsername: event.target.value }) }} /></div>
+            <div class="form-group"><input type="Password" placeholder="Password" autoComplete="off" value={this.state.WPassword}
+            onChange={(event) => { this.setState({ WPassword: event.target.value }) }} /></div>
             <div class="form-group"><p><input type="file" placeholder="Upload photo" name="ProfileImg"
             onChange={this.imageHandler} /></p></div>
             </div>

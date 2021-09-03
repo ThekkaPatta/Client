@@ -1,13 +1,15 @@
 .fp{
-  margin-top:80px;
-  height: calc (100vh - 80px);
+  font-family: 'Teko', sans-serif;
+  padding-top: 30px;
+  height: calc(100vh - 80px);
+  color : rgb(0, 0, 0);
+  align-items: center;
 }
 
+.section-content{
+  text-align: center;
+  height: auto;
 
-.containerworkpost {
-  padding: 0 20px;
-  max-width: 90%;
-  margin: 0 auto;
 }
 
 .content-header{
@@ -17,32 +19,26 @@
   
 }
 
-.section-content{
-  text-align: center;
-  height: auto;
 
-}
-#contact{
-  font-family: 'Teko', sans-serif;
-  padding-top: 10px;
-  width: 100%;
-  /* width: 100vw; */
-  height: 100%;
-  background-color: #848686;
-  color : rgb(0, 0, 0);    
-}
+
 .contact-section{
+  background: rgb(158, 156, 156);
   padding-top: 40px;
-  height: 100%;
-  border: 2px black solid;
+  margin-left: 10%;
+  height: 80%;
+  width:80%;
+  border: 1px black solid;
+  box-shadow: 3px black;
 
 }
+
+
 .contact-section .col-md-6{
   width: 50%;
 }
 
 .form-line{
-  border-right: 1px solid #B29999;
+  border-right: 5px solid #ffffff;
 }
 
 .form-group{

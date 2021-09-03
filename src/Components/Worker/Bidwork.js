@@ -1,5 +1,5 @@
 import { Component } from "react";
-import '../assets/css/register.css';
+import '../../assets/css/Worker/bid.css';
 import axios from 'axios';
 
 class Bidwork extends Component {

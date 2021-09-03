@@ -1,5 +1,4 @@
 import { Component } from "react";
-import '../assets/css/Footer.css'
 
 class Header extends Component {
     render() {

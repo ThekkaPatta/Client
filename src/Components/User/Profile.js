@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from 'axios';
-import '../assets/css/viewprofile.css';
+import '../../assets/css/viewprofile.css';
 import ReactStars from "react-rating-stars-component"
 
 class Profile extends Component {

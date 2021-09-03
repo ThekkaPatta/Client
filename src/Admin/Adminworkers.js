@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from 'axios'
-import '../assets/css/adminshowprofile.css'
+import '../assets/css/admin/adminshowprofile.css'
 import swal from "sweetalert";
 
 

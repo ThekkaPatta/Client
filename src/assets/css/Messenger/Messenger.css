@@ -1,7 +1,5 @@
-
 .messenger{
-    padding-top: 6%;
-    height:100vh;
+    height:100%;
     display: flex ;
 }
 
@@ -12,7 +10,7 @@
     width:90%;
     padding:10 px 0;
     border:none;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(255, 255, 255);
 
 }
 
@@ -21,33 +19,31 @@
 }
 
 
-/* .chatBox{
-    height: 100px;
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
 
 .chatBoxWrapper{
-    height:100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position:relative;
+    height:100%;
 }
 
+.chat{
+    border:1px solid white;
+    height: 100%;
+}
 
 .chatBoxTop{
-    height: 100%;
     padding-right: 10px;
-    overflow-y: scroll;   
+    height:83%;
+    overflow-y: scroll;
 }
 
 .noConvotext{
     position:absolute;
     top: 10%;
     font-size: 50px;
-    color: rgb(138, 137, 137);
+    color: rgb(10, 10, 10);
     cursor: default;
 }
 
@@ -57,6 +53,7 @@
     align-items: center;
     justify-content: space-between;
     bottom: 0;
+    border: 1px solid white;
     
 }
 
@@ -67,12 +64,14 @@
 }
 
 .chatSubmitButton{
-    width:70px;
-    height:40px;
+    font-size: 15px;
+    margin-left:5px;
+    width:100px;
+    height:50px;
     border:none;
     border-radius: 5px;
     cursor: pointer;
-    background-color:teal;
+    background-color:rgb(4, 167, 18);
     color:white;
 }
 

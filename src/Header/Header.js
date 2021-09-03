@@ -47,7 +47,7 @@ function Header() {
                         <li class="main_nav_item"><a href="/fav"><i class="fa fa-heart" aria-hidden="true"></i> MY Favorites</a></li>
                         <li class="main_nav_item"><a href="/userhistory"><i class="fa fa-history" aria-hidden="true"></i> MY History</a></li>
                         <li class="main_nav_item"><a href="/ownuserprofile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
-                        <li class="main_nav_item"><a className="color" onClick={setModalIsOpenToTrue}><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
+                        <li class="main_nav_item"><a className="noti" onClick={setModalIsOpenToTrue}><i class="fa fa-bell" aria-hidden="true"></i> Notification</a></li>
                         <li class="main_nav_item"><a href="/messenger">My Messages</a></li>
                         <li class="main_nav_item"><a href="/" onClick={logout}>Log Out</a></li>
                     </ul>
@@ -87,7 +87,7 @@ function Header() {
             </>
     }
     return (
-        <div className='headernav'>
+        <>
             <header>
                 <div class="containernav">
                     <div class="logo-box">
@@ -129,7 +129,7 @@ function Header() {
                     <Notification closenotificationmodal={setModalIsOpenToFalse} />
                 </Modal>
             </div>
-        </div>
+        </>
     )
 }
 export default Header

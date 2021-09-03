@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import '../assets/css/viewprofile.css';
+import '../../assets/css/viewprofile.css';
 import swal from "sweetalert";
 
 class Ownuserprofile extends Component {
@@ -58,10 +58,9 @@ class Ownuserprofile extends Component {
     render() {
         return (
             <div class="contact_form_section">
-                <br></br><br></br><br></br>
                 <div class="contact_form_container">
-                    <br></br><br></br><br></br><br></br><br></br>
                     <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
+                    
                     <img src={`http://localhost:550/${this.state.ProfileImg}`}
                         className="img-fluid rounded-circle hoverable"
                         style={{ height: "200px", width: "200px", objectFit: "cover" }}

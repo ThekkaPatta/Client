@@ -32,29 +32,21 @@ class Adminlogin extends Component {
 
     render() {
         return (
-            <div class="lw">
-            <div class="wrapper">
-                <div class="circle circle1"></div>
-                <div class="circle circle2"></div>
+            <div class="login-page">
                 <div class="form">
-                    <h1>Admin Login</h1>
-                    <form>
-                        <input type="text" placeholder="xyz@mail.com" alue={this.state.Username} placeholder="Username"
-                            onChange={(event) => { this.setState({ Username: event.target.value }) }} />
-                        <input type="password" placeholder="password" value={this.state.Password} placeholder="Password"
-                            onChange={(event) => { this.setState({ Password: event.target.value }) }} />
-                        <button type="submit" id="login" onClick={this.sendUserData}>Login</button>
-                        <div class="forgot-signup">
-                            <a href="#">Forgot password?</a>
-                            <a href="/registeruser">Sign Up as User</a>
-
+                    <div class="login">
+                        <div class="login-header">
+                            <h3>Admin Login</h3>
+                            <p>Please enter your credentials to login.</p>
                         </div>
+                    </div>
+                    <form class="login-form">
+                        <input type="text" placeholder="username" onChange={(event) => { this.setState({ Username: event.target.value }) }} />
+                        <input type="password" placeholder="password" onChange={(event) => { this.setState({ Password: event.target.value }) }} />
+                        <button type="submit" onClick={this.sendUserData}>login</button>
                     </form>
                 </div>
             </div>
-
-            <div class="background"></div>
-        </div>
         )
     }
 }

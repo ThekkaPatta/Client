@@ -1,5 +1,5 @@
 import { Component } from "react";
-import '../assets/css/register.css';
+import '../../assets/css/register.css';
 import axios from 'axios';
 
 class Registeruser extends Component {
@@ -65,9 +65,9 @@ class Registeruser extends Component {
             onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></div>
             </div>
             <div class="col-md-6">
-             <div class="form-group"><input type="text" placeholder="Username" value={this.state.UUsername}
+             <div class="form-group"><input type="text" placeholder="Username" autoComplete="off" value={this.state.UUsername}
             onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></div>
-            <div class="form-group"><input type="Password" placeholder="Password" value={this.state.UPassword}
+            <div class="form-group"><input type="Password" placeholder="Password" autoComplete="off" value={this.state.UPassword}
             onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></div>
             <div class="form-group"><p><input type="file" placeholder="Upload photo" name="ProfileImg"
             onChange={this.imageHandler} /></p></div>

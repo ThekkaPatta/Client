@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
-import '../assets/css/Userlanding.css'
+import '../../assets/css/User/Userlanding.css'
 import { useHistory } from 'react-router-dom';
 
 function Userhome() {
@@ -59,14 +59,12 @@ function Userhome() {
 
     return (
         <div className="container-fluid ">
-
-            <h4 className="bg-light p-4" id="projectAnchor">All Bookings</h4>
+            <h4 className="bg-light p-4" id="projectAnchor">Works</h4>
             <div className="card-deck p-2">
-                <br></br><br></br><br></br><br></br>
                 <div className='workloader'>
-                    <button className="btn btn-outline-info" onClick={() => { setWorkstatus('Pending') }}>Pending works</button>
-                    <button className="btn btn-outline-info" onClick={() => { setWorkstatus('On-going') }}>Ongoing-works</button>
-                    <button className="btn btn-outline-info" onClick={() => { setWorkstatus('Completed') }}>Comleted Works</button>
+                    <button id='btnwork'className="btn btn-outline-info" onClick={() => { setWorkstatus('Pending') }}>Pending works</button>
+                    <button id='btnwork' className="btn btn-outline-info" onClick={() => { setWorkstatus('On-going') }}>Ongoing-works</button>
+                    <button id='btnwork'className="btn btn-outline-info" onClick={() => { setWorkstatus('Completed') }}>Comleted Works</button>
                 </div>
                 {
                     work.filter((myworks) => {

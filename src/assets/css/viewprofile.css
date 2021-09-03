@@ -1,14 +1,25 @@
 .form-group{
     width:85%;
     height: 85%;
+    font-family:'Teko', sans-serif;
 }
 
 .form-label{
     width: 50%;
     height: 50%;
-    font-size: 20sm;
+    font-size: 17px;
 }
 
 .straight{
-    font-size: 2rem;
+    font-size: 17px;
+}
+
+
+.editworker{
+    margin-top: 17px;
+}
+
+
+Link{
+    text-decoration: none !important;
 }

@@ -1,7 +1,6 @@
 import { Component } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
-import '../assets/css/workerhome.css'
+import '../assets/css/Worker/workerhome.css'
 import swal from "sweetalert";
 
 class Adminpost extends Component {
@@ -32,64 +31,76 @@ class Adminpost extends Component {
             icon: "warning",
             buttons: true,
             dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-                axios.delete("http://localhost:550/work/delete/" + aid)
-            .then((response) => {
-                })
-            .catch((err) => {
-                console.log(err.response)
-            })
-            window.location.reload();
-              
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axios.delete("http://localhost:550/work/delete/" + aid)
+                        .then((response) => {
+                        })
+                        .catch((err) => {
+                            console.log(err.response)
+                        })
+                    window.location.reload();
 
-            }
-          });
-        
+
+                }
+            });
+
     }
 
 
 
     render() {
         return (
-            <div className="container">
-             <div classNamer="row p-5">
-                    <div className="col p-5">
-                        <br></br><br></br><br></br>
-                        <input type='text' placeholder='Search Bar' value={this.state.search}
-                            onChange={(event) => { this.setState({ search: event.target.value }) }} />
-                        <div class="wrapper">
-                            {
-                                this.state.work.filter((mywork) => {
-                                    if (this.state.search == "") {
-                                        return mywork
-                                    }
-                                    else if (mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
-                                    else if (mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
-                                        return mywork
-                                    }
-
-                                }).map((mywork) => {
-                                    return (
-                                        <div className="card">
-                                            <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + mywork.ProfileImg} />
-                                            <h4 className="card-title p-2">{mywork.Tags}</h4>
-                                            <h5 className="card-title p-3">{mywork.Workdescription}</h5>
-                                            <h2><button className="btn btn-danger" onClick={this.deleteusers.bind(this, mywork._id)}>Delete</button></h2>
-                                            <br></br><br></br><br></br>
-                                        </div>
-                                        
-                                    )
-                                })
-                            }
-                        </div>
-                    </div>
+            <div className="admincontainer" style={{paddingTop:'10px'}}>
+                <div className='worksearch-box'>
+                    <input className='worksearch-text' type='text' name='' placeholder='Type to search'
+                        value={this.state.search} onChange={(event) => { this.setSearch(event.target.value) }}></input>
+                    <a className='worksearch-btn' href='#'><i className='fa fa-search'></i></a>
                 </div>
+                <div class="wrapper">
+                    {
+                        this.state.work.filter((mywork) => {
+                            if (this.state.search == "") {
+                                return mywork
+                            }
+                            else if (mywork.Tags.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                return mywork
+                            }
+                            else if (mywork.Workdescription.toLowerCase().includes(this.state.search.toLowerCase())) {
+                                return mywork
+                            }
+
+                        }).map((mywork) => {
+                            return (
+                                <div class="row product-list">
+                                    <section class="panel">
+                                        <div class="pro-img-box">
+                                            <img src={"http://localhost:550/" + mywork.WorkImg} alt="" />
+                                            <div className='openworkd'>
+                                                <div class="sworkdescription">
+                                                    <i class="fa fa-eye"></i>
+                                                </div>
+                                                <div className='content'>
+                                                    <h2 style={{ color: 'Green' }}>Work Description</h2>
+                                                    <p style={{ color: "black", fontSize: '15px' }}> {mywork.Workdescription}</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
+
+                                        <div class="panel-body text-center">
+                                            <p class="wTitle">{mywork.WorkTitle}</p>
+                                            <button id='btnbid' className="btn btn-outline-danger" onClick={this.deleteusers.bind(this, mywork._id)}> Bid</button>
+                                        </div>
+                                    </section>
+                                </div>
+
+                            )
+                        })
+                    }
+                </div>
             </div>
         )
     }
