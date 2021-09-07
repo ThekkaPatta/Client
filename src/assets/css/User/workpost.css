@@ -1,0 +1,79 @@
+.pworkpost{
+  font-family: 'Teko', sans-serif;
+  height: calc(100vh - 80px);
+  color : rgb(0, 0, 0);
+  align-items: center;
+}
+
+.section-contentwp{
+  text-align: center;
+  padding-top: 20px;
+
+}
+
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:#fcc500;
+  font-size: 45px;
+  
+}
+
+
+.contact-section{
+  color:white;
+  background: rgb(0, 0, 0);
+  padding-top: 50px;
+  margin-left: 10%;
+  height: 75%;
+  width:80%;
+  box-shadow: 4px 4px 3px 4px #060705;
+  border-radius: 10px;
+
+}
+
+
+.contact-section .col-md-6{
+  width: 50%;
+}
+
+.form-line{
+  border-right: 5px solid #ffffff;
+}
+
+.form-group{
+  margin-top: 4px;
+  font-size: 1.3em;
+}
+label{
+  font-size: 1.6em;
+  line-height: 1em;
+  font-weight: normal;
+}
+
+.form-control{
+  font-size: 1.5em;
+  color: #080808;
+  padding-top:0%;
+  margin-top:0px;
+}
+textarea.form-control {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.optionTag, .tags{
+  color: black;
+}
+
+#btnpost{
+  margin-top: 20px;
+  width: 100px;
+  height:60px;
+
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+}
+
+#btnpost:hover{
+  background-color: rgb(26, 26, 68);
+}

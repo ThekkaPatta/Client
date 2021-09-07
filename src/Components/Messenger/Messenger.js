@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useRef } from 'react'
 import { useEffect, useState } from 'react'
 import '../../assets/css/Messenger/Messenger.css'
-import ChatOnline from './ChatOnline'
 import Conversations from './Conversations.js'
 import Message from './Message.js'
 import {io} from "socket.io-client"
@@ -131,7 +130,7 @@ export default function Messenger() {
                     {
                         currentChat ?
                             (
-                                <>
+                                <div className='chat'>
                                     <div className='chatBoxTop'>
                                         {messages.map((m) => (
                                             <div ref={scrollRef}>
@@ -149,17 +148,13 @@ export default function Messenger() {
                                         ></textarea>
                                         <button className='chatSubmitButton' onClick={handleSubmit}>Send</button>
                                     </div>
-                                </>) : (<span className='noConvotext'> Open a Conversation to start a Chat</span>
+                                </div>) : (<span className='noConvotext'> Open a Conversation to start a Chat</span>
                             )
                     }
                 </div>
             </div>
             <div className="chatOnline">
                 <div className='chatOnlineWrapper'>
-                    <ChatOnline />
-                    <ChatOnline />
-                    <ChatOnline />
-                    <ChatOnline />
                 </div>
             </div>
         </div >

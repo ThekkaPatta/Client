@@ -1,0 +1,29 @@
+.usernoti, .wnotihire, .wnotirate{
+    display: flex;
+    font-family:'Teko', sans-serif;
+    font-size: 15px;
+    
+    padding:10px;
+    margin-Top:5px;
+    height: 60px;
+    
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    align-items: center;
+    border-radius: 20px;
+}
+
+.usernoti:hover{
+    background-color: rgb(196, 230, 235);
+    transform:scale(1.03);
+}
+
+.wnotihire:hover{
+    background-color: rgb(131, 228, 172);
+    transform:scale(1.03);
+}
+
+.wnotirate:hover{
+    background-color: rgb(219, 230, 127);
+    transform:scale(1.03);
+}

@@ -1,7 +1,28 @@
+html,
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
 .App {
   text-align: center;
   height: 100vh;
 }
+
+.Header{
+  height:80px;
+}
+
+.Container{
+  padding-top: 0px;
+  height:(100vh - 80px);
+  margin-bottom: 0px;
+}
+
+/* .Footer{
+  height: 50px;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -27,6 +48,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+header{
+  height: 80px;
 }
 
 

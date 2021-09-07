@@ -1,7 +1,10 @@
 import { Component } from "react";
 import axios from 'axios';
-import '../assets/css/Login.css'
+import '../../assets/css/Login.css'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure();
 class Loginworker extends Component {
     state = {
         Username: "",
@@ -14,17 +17,18 @@ class Loginworker extends Component {
                 console.log(response.data.message);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
-                console.log(response)
-                localStorage.setItem('userType', 'worker')
-                window.location.href = "/workerhome";
-                this.setState({
-                    loginChk: true
-                })
-                alert("You Are Logged In !!")
+                localStorage.setItem('username', response.data.WUsername)
+                localStorage.setItem('userType','worker')
+
+                toast.success("Login Successful",{autoClose: 2000})
+                window.setTimeout(() => {
+                    window.location.href='/workerhome';
+                  },2000);
             })
+            
             .catch((err) => {
                 console.log(err.response)
-                alert("Invalid Credential")
+                toast.error("Failed to Login",{autoClose: 2000})
             })
     }
     render() {
