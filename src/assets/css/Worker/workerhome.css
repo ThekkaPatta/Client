@@ -2,10 +2,13 @@
   padding-top: 10px;
 }
 
+
+
 /* For search Bar */
 
 .worksearch-box{
   display: flex;
+  position:sticky;
   width: 20%;
   margin: 0 auto;
   background: #2f3640;
@@ -45,6 +48,15 @@
   padding-top: 20px;
   margin: 0 auto;
   width: 90%;
+}
+.wrapper {
+    
+  display: grid;
+  text-align: center;
+  max-width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .panel{

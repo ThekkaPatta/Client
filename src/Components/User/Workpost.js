@@ -60,21 +60,21 @@ class Workpost extends Component {
     }
     render() {
         return (
-            <div class='fp'>
-                <div class="section-content">
-                    <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
+            <div className='pworkpost'>
+                <div className="section-contentwp">
+                    <h1 class="section-header"><span className="content-header wow fadeIn " data-wow-delay="0.2s"
                         data-wow-duration="2s">POST the WORK that needs to be done</span></h1>
                 </div>
                 <div className="contact-section">
                     <div className="containerworkpost">
                         <form className='workpostform'>
-                            <div class="col-md-6 form-line">
-                                <div class="form-group">
+                            <div className="col-md-6 form-line">
+                                <div className="form-group">
                                     <label for="exampleInputUsername">Your name</label>
-                                    <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.FullName}
+                                    <input type="text" className="form-control" id="" placeholder=" Enter Name" value={this.state.FullName}
                                     />
                                 </div>
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label for="exampleInputUsername">Your Username</label>
                                     <input type="text" class="form-control" id="" placeholder=" Enter Name" value={this.state.Username}
                                     />
@@ -90,10 +90,10 @@ class Workpost extends Component {
                                         placeholder=" Upload the picture" onChange={this.fileHandler} />
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputtext">Tags</label><br />
-                                    <h4><select name="tags" id="tags" value={this.state.Tags}
+                                    <label for="exampleInputTag">Tags</label><br />
+                                    <h4><select name="tags" id="tags" className="form-control" value={this.state.Tags}
                                         onChange={(event) => { this.setState({ Tags: event.target.value }) }}>
-                                        <option value="Choose" className="optionTag">Choose One</option>
+                                        <option value="Choose" className="optionTag" >Choose One</option>
                                         <option value="plumber" className="optionTag">Plumber</option>
                                         <option value="mechanic" className="optionTag">Mechanic</option>
                                         <option value="Construction" className="optionTag">Construction</option>
@@ -114,7 +114,7 @@ class Workpost extends Component {
                                 </div>
                                 <div>
 
-                                    <h4><input type="submit" value="Post the Work" onClick={this.Workpost} /></h4>
+                                    <button type='button' id="btnpost" class='btn btn-secondary' onClick={this.Workpost} >Post the Work</button>
                                 </div>
 
                             </div>

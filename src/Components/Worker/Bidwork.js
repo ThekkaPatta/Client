@@ -2,82 +2,97 @@ import { Component } from "react";
 import '../../assets/css/Worker/bid.css';
 import axios from 'axios';
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
+
 class Bidwork extends Component {
     state = {
         WUsername: "",
-        UUsername:"",
+        UUsername: "",
+        Wtitle: '',
         id: this.props.match.params.id,
         Bidprice: "",
         Worktime: ""
     }
-    componentDidMount(){
+    componentDidMount() {
         var wid = localStorage.getItem('_id');
-        alert(wid)
-        axios.get("http://localhost:550/worker/single/" +wid)
-            .then((response)=>{
+        axios.get("http://localhost:550/worker/single/" + wid)
+            .then((response) => {
                 console.log(response)
                 this.setState({
-                    WUsername : response.data.WUsername,
+                    WUsername: response.data.WUsername,
                 })
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err.response)
-        })
-        axios.get("http://localhost:550/work/single/" +this.state.id)
-            .then((response)=>{
+            })
+        axios.get("http://localhost:550/work/single/" + this.state.id)
+            .then((response) => {
                 console.log(response)
                 this.setState({
-                    UUsername : response.data.Username,
+                    UUsername: response.data.Username,
+                    Wtitle: response.data.WorkTitle
                 })
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err.response)
-        })
+            })
 
     }
 
     sendUserData = (e) => {
         e.preventDefault();
         const data = new FormData()
-
         data.append('WUsername', this.state.WUsername)
-        data.append('UUsername',this.state.UUsername)
+        data.append('UUsername', this.state.UUsername)
         data.append('Wid', this.state.id)
+        data.append('Wtitle', this.state.Wtitle)
         data.append('Bidprice', this.state.Bidprice)
         data.append('Worktime', this.state.Worktime)
-        data.append('nType','Bid')
+        data.append('nType', 'Bid')
 
         axios.post("http://localhost:550/bid/post", data)
-        .then((response)=>{
-            alert(response.data.message)
-            window.location.href= "/workerhome";
-        }).catch(err => {
-            console.log(err)
-            alert("!! Field Must Not Be Empty !!")
-        })
+            .then((response) => {
+                toast.success("Bid Successful", { autoClose: 1500 })
+                setTimeout(() => {
+                    this.props.history.push("/workerhome")
+                }, 1500);
+                
+            }).catch(err => {
+                console.log(err)
+                alert("!! Field Must Not Be Empty !!")
+            })
     }
 
     render() {
         return (
-            <section id="contact">
-                <div class="main-w3layouts wrapper">
-                    <h1>Bid For The Work</h1>
-                    <div class="main-agileinfo">
-                        <div class="agileits-top">
-                            <form method="POST" enctype="multipart/form-data">
-                                <p> Worker Username:<input type="text" value={this.state.WUsername}/></p>
-                                <p> User Username:<input type="text" value={this.state.UUsername}/></p>
-                                <p>Bid Price:<input type="text" value={this.state.Bidprice}
-                                    onChange={(event) => { this.setState({ Bidprice: event.target.value }) }} /></p>
-                                <p>Work Time:<input type="text" value={this.state.Worktime}
-                                    onChange={(event) => { this.setState({ Worktime: event.target.value }) }} /></p>
-                                <p><input type="submit" onClick={this.sendUserData} />  </p>
+            <div className='Bidpage'>
+                <div className='Bidform'>
+                
+                    <form method="POST" enctype="multipart/form-data" className='col-md-12'>
 
-                            </form>
+                        <p classname='label'>Worker Username</p>
+                        <input type="text" className='bidval' value={this.state.WUsername} />
+
+
+                        <p classname='label'>User Username</p>
+                        <input type="text" className='bidval' value={this.state.UUsername} />
+
+                        <p classname='label'>Bid Price (RS.)</p>
+                        <input type="text" className='bidval' value={this.state.Bidprice}
+                            onChange={(event) => { this.setState({ Bidprice: event.target.value }) }} />
+
+                        <p classname='label'>Work Time (In Hours)</p>
+                        <input type="text" className='bidval' value={this.state.Worktime}
+                            onChange={(event) => { this.setState({ Worktime: event.target.value }) }} />
+                        <div>
+                            <button className='btnbid' type="submit" onClick={this.sendUserData}> Bid </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </section >
+            </div>
         )
     }
 }

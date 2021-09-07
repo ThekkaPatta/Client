@@ -6,23 +6,21 @@ import swal from "sweetalert";
 
 class Adminusers extends Component {
     state = {
-        user: []
+        guser: [],
     }
 
     componentDidMount() {
         axios.get("http://localhost:550/user/show/")
             .then((response) => {
-                console.log(response.data);
                 this.setState({
-                    user: response.data
+                    guser: response.data
                 })
             })
             .catch((err) => {
                 console.log(err)
-            }
-
-            )
+            })
     }
+
 
     deleteusers = (aid) => {
         swal({
@@ -64,10 +62,8 @@ class Adminusers extends Component {
                         </tr>
                     </thead>
                     {
-
-                        this.state.user.map((users) => {
+                        this.state.guser.map((users) => {
                             return (
-
                                 <tbody>
                                     <tr>
                                         <td>{users.UFullName}</td>
@@ -81,7 +77,6 @@ class Adminusers extends Component {
                                         <td>
                                             <button className="btn btn-danger" onClick={this.deleteusers.bind(this, users._id)}>Delete</button>
                                         </td>
-
                                     </tr>
                                 </tbody>
 

@@ -61,6 +61,8 @@ export default function Workerhome() {
             })
 
             Setmybiddedwork(result)
+            console.log(work)
+            console.log(result)
         }
     }, [work, biddedworks])
 
@@ -75,7 +77,6 @@ export default function Workerhome() {
             <div className="wrapper">
 
                 {
-
                     mybiddedwork.filter((mywork) => {
                         if (mywork.status.toLowerCase().includes(workstate.toLowerCase()) && search == "") {
                             return mywork

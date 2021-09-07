@@ -1,10 +1,12 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import '../assets/css/Header.css'
 import Notification from '../Components/Notification'
 import Modal from "react-modal";
 
-var menu;
+
 function Header() {
+    var menu;
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const setModalIsOpenToTrue = () => {
@@ -18,16 +20,16 @@ function Header() {
     const logout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('_id')
-        localStorage.removeItem('usertype')
+        localStorage.removeItem('userType')
         localStorage.removeItem('username')
         window.location.href = '/'
     }
 
-    if (localStorage.getItem('token') && localStorage.getItem('userType') === 'admin') {
+    if (localStorage.getItem('userType') === 'admin') {
         menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
-                    <ul class="main_nav_list"> 
+                    <ul class="main_nav_list">
                         <li class="main_nav_item"><a href="/adminpost">Posts</a></li>
                         <li class="main_nav_item"><a href="/adminuser">Users</a></li>
                         <li class="main_nav_item"><a href="/adminworker">Workers</a></li>
@@ -37,7 +39,7 @@ function Header() {
             </>
     }
 
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'user') {
+    else if (localStorage.getItem('userType') === 'user') {
         menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
@@ -55,7 +57,7 @@ function Header() {
 
             </>
     }
-    else if (localStorage.getItem('token') && localStorage.getItem('userType') === 'worker') {
+    else if (localStorage.getItem('userType') === 'worker') {
         menu =
             <>
                 <div class="main_nav_container ml-auto col d-flex flex-row-reverse">
@@ -86,12 +88,13 @@ function Header() {
 
             </>
     }
+
     return (
         <>
             <header>
                 <div class="containernav">
                     <div class="logo-box">
-                        <a className="logo" href="/">ThekkaPatta                         
+                        <a className="logo" href="/">ThekkaPatta
                         </a>
                     </div>
                     <nav>
@@ -100,26 +103,26 @@ function Header() {
                 </div>
             </header>
             <div class="float-right">
-                <Modal 
+                <Modal
                     isOpen={modalIsOpen}
                     ariaHideApp={false}
                     style={{
                         overlay: {
                             justifyContent: "right",
-                            marginTop: '4.1%',      
+                            marginTop: '4.1%',
                             background: "transparent",
-                            zIndex:"1"
+                            zIndex: "1"
 
                         },
                         content: {
-                            float:"right",
+                            float: "right",
                             width: "500px",
-                            height:'600px',
+                            height: '600px',
                             backgroundColor: "white",
                             boxShadow: "5px 4px 20px 20px #0000000f",
                             padding: "20px",
-                            overflowY:"scroll",
-                            overflowX:"hidden"
+                            overflowY: "scroll",
+                            overflowX: "hidden"
 
 
                         },

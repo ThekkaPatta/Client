@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from 'axios'
-import '../../assets/css/User/Userlanding.css'
+import '../../assets/css/User/Favourites.css'
 import swal from "sweetalert";
 
 
@@ -66,14 +66,12 @@ class Favorites extends Component {
 
                 <h4 className="bg-light p-4" id="projectAnchor">My Favorites</h4>
                 <div className="card-deck p-2">
-                    <br></br><br></br><br></br><br></br>
                     {
                         this.state.workers.map((myworkers) => {
                             return (
-                                <div className="col-md-4 p-3">
-                                    <div className="card">
-
-                                        <img class="card-img-top" style={{ height: "300px", width: "500px" }} src={"http://localhost:550/" + myworkers.ProfileImg} />
+                                <div className="col-md-3 p-3">
+                                    <div className='favprofiles'>
+                                        <img class="card-img-top" src={"http://localhost:550/" + myworkers.ProfileImg} />
                                         <h4 className="card-title p-2">Skills: {myworkers.WSkills}</h4>
                                         <h4 className="card-title p-2">Address: {myworkers.WAddress}</h4>
                                         <h4 className="card-title p-2">Phone Number: {myworkers.WPhoneNo}</h4>

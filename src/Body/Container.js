@@ -20,7 +20,6 @@ import Adminpost from "../Admin/Adminpost";
 import Adminusers from "../Admin/Adminusers";
 import Favorites from "../Components/User/Favorites";
 import Adminworkers from "../Admin/Adminworkers";
-import DataTable from "../Admin/Adminusers";
 import Ownuserprofile from "../Components/User/ownuserprofile";
 import Workhistory from "../Components/Worker/Workhistory";
 import Userhistory from "../Components/User/Userhistory";
@@ -54,7 +53,6 @@ class Container extends Component{
                 <Route path='/adminpost' component={Adminpost}/>
                 <Route path='/adminuser' component={Adminusers}/>
                 <Route path='/fav' component={Favorites}/>
-                <Route path='/adminuser' component={DataTable}/>
                 <Route path='/adminworker' component={Adminworkers}/>
                 <Route path='/workhistory' component={Workhistory}/>
                 <Route path='/userhistory' component={Userhistory}/>

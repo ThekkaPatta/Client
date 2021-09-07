@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Card from 'react-bootstrap/Card';
+import '../assets/css/Notification.css'
 
 export default function Notification({ closenotificationmodal }) {
   const [Username, setUsername] = useState('');
@@ -16,7 +17,7 @@ export default function Notification({ closenotificationmodal }) {
           console.log(err)
         })
     }
-    else if (localStorage.getItem("userType") === "worker") {
+    else if (localStorage.getItem("userType") === "worker" && Username !== '') {
       axios.get("http://localhost:550/notifications/worker/" + Username)
         .then((response) => {
           setnotifications(response.data.data)
@@ -61,27 +62,16 @@ export default function Notification({ closenotificationmodal }) {
         <button style={{ width: "25px", paddingTop: "0px", marginTop: "0px", float: "right" }}
           className="btn btn-danger" onClick={closenotificationmodal}>X</button>
         <div className='tite'><h3>
-          Notifications</h3></div>
-        <br></br><br></br>
-        <div className='body'>
+          <b>Notifications</b></h3></div>
+        <div className='notificationcontainer'>
           {(() => {
             if (localStorage.getItem('userType') === 'user') {
               return (
                 notifications.map(mynotifications => {
                   return (
-                    // <>
-                    // {(()=> {
-                    //   if(mynotifications.nType==='Hire'){
-                    <Card>
-                      <Card.Body>There has been a bid on you work <h3>{mynotifications.Wtitle}
-                      </h3> worker <h4>{mynotifications.WUsername}</h4>
-                      </Card.Body>
-                    </Card>
-                    //   }
-
-                    // }
-                    // )}
-                    // </>
+                    <div className='usernoti'>
+                      There has been a bid on you work &nbsp;<b>{mynotifications.Wtitle} </b> &nbsp; by worker &nbsp;<b>{mynotifications.WUsername}</b>
+                    </div>
                   )
 
                 })
@@ -91,27 +81,27 @@ export default function Notification({ closenotificationmodal }) {
               return (
                 notifications.map(mynotifications => {
                   return (
-                    <>
-                      {(() => {
-                        if (mynotifications.nType === 'rate') {
-                          <Card>
-                            <Card.Body>You Have Been rated By <h3>{mynotifications.UUsername}
-                            </h3> User with Rate Number<h4>{mynotifications.Ratenum}</h4>
-                            </Card.Body>
-                          </Card>
+                    <div>
+                      {(()=>{
+                        if(mynotifications.nType === 'Hire'){
+                          return (
+                            <div className='wnotihire'>
+                              You have been hired by &nbsp;<b>{mynotifications.UUsername} </b> &nbsp; for work &nbsp;<b>{mynotifications.Wtitle}</b>
+                            </div>
+                          )
+                        }
+                        else if(mynotifications.nType === 'Rate'){
+                          <div className='wnotirate'>
+                              <p>You have been rated</p>
+                            </div>
+                        }
+                        else{
 
                         }
+                      })()
 
-                        if (mynotifications.nType === 'Hire') {
-                          <Card>
-                            <Card.Body>You Have Been Hired By{mynotifications.UUsername}
-                            </Card.Body>
-                          </Card>
-
-                        }
-
-                      })}
-                    </>
+                      }
+                    </div>
 
                   )
 

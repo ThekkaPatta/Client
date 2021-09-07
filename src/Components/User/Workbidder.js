@@ -1,21 +1,19 @@
 import { React, useEffect, useState } from "react";
-import ReactDOM from 'react-dom';
 import axios from 'axios'
 import '../../assets/css/admin/adminshowprofile.css'
 import { Link, useParams, useHistory } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
-
-
-
+toast.configure();
 
 function Workbidder() {
     const id = useParams()
     const routerHistory = useHistory();
     const [bidder, setBidder] = useState([])
-    const [receiverId, setReceiverId] = useState()
     const [status, setStatus] = useState("")
     const [UUsername, setUUsername] = useState([])
-    const [WUsername, setWUsername] = useState([])
+    const [Wtitle, setWtitle] = useState([])
 
     useEffect(() => {
         const getdata = async () => {
@@ -25,6 +23,7 @@ function Workbidder() {
 
                 const res = await axios.get("http://localhost:550/work/single/" + id._id)
                 setStatus(res.data.status)
+                setWtitle(res.data.WorkTitle)
 
 
                 var _id = localStorage.getItem('_id');
@@ -40,31 +39,31 @@ function Workbidder() {
     }, [])
 
 
-    // const hire = (WUsername) => {
-    //     const data = new FormData()
-    //     data.append('WUsername', WUsername)
-    //     data.append('Wid', id._id)
-    //     alert(WUsername)
+    const hire = (WUsername) => {
+        const data = new FormData()
+        data.append('WUsername', WUsername)
+        data.append('Wid', id._id)
+        alert(WUsername)
 
-    //     axios.post("http://localhost:550/hire/worker", data)
-    //         .then(() => {
-    //             alert("Worker has been hired")
-    //             startconversation(WUsername)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //             alert("Api not hit")
-    //         })
+        axios.post("http://localhost:550/hire/worker", data)
+            .then(() => {
+                toast.success("Worker Successfully Hired",{autoClose: 3000})
+                startconversation(WUsername)
+            })
+            .catch((err) => {
+                console.log(err)
+                alert("Api not hit")
+            })
 
-    // }
+    }
 
     const getWUsername = async (WUsername) => {
         try {
             await axios.get('http://localhost:550/worker/one/' + WUsername)
                 .then((res) => {
-                    setReceiverId(res.data._id)
-                    startconversation(WUsername)
+                    startconversation(res.data._id, WUsername)
                 })
+
                 .catch((err) => {
                     console.log(err)
                 })
@@ -76,40 +75,49 @@ function Workbidder() {
 
     }
 
-    const startconversation = async (WUsername) => {
+    const startconversation = async (receiverId, WUsername) => {
         var _id = localStorage.getItem('_id');
-        console.log(_id)
-        console.log(receiverId)
-        const data = new FormData()
-        data.append('senderId', _id)
-        data.append('receiverId', receiverId)
+        const datas = new FormData()
+        datas.append('senderId', _id);
+        datas.append('receiverId', receiverId);
 
-        await axios.post('http://localhost:550/conversation', data)
-        console.log('conversation started')
-        startmessage(WUsername, receiverId, _id)
-
-
+        if (datas !== null) {
+            await axios.post("http://localhost:550/conversation", datas)
+                .then((res) => {
+                    console.log(res.data)
+                    startmessage(WUsername, receiverId, _id)
+                })
+        }
 
     }
 
-    const startmessage = (WUsername, receiverId, senderId) => {
+    const startmessage = async (WUsername, receiverId, senderId) => {
         var conversationId;
-        const data = new FormData()
-        data.append('senderId', senderId)
-        data.append('receiverId', receiverId)
+        const datac = new FormData()
+        datac.append('senderId', senderId);
+        datac.append('receiverId', receiverId);
 
-        axios.get('http://localhost:550/getconversation', data)
-            .then((response) => {
-                conversationId = response.data._id
+        if (datac !== null) {
+            await axios.get("http://localhost:550/getconversation", {
+                params: {
+                    senderId: senderId, 
+                    receiverId: receiverId
+                }
             })
+                .then((res) => {
+                    conversationId=res.data[0]._id;
+                })
+        }
+
 
         const data2 = new FormData()
         data2.append('conversationId', conversationId)
-        data2.append('sender', senderId)
+        data2.append('senderId', senderId)
         data2.append('text', 'Hey, I have have you for a work. Please, try to complete it within the time')
 
         axios.post('http://localhost:550/messages', data2)
             .then(() => {
+                toast.success("Conversation started with worker",{autoClose: 3000})
                 console.log('conversation started')
                 setnotification(WUsername)
             })
@@ -123,6 +131,7 @@ function Workbidder() {
         data.append('Workid', workid)
         data.append('WUsername', WUsername)
         data.append('UUsername', UUsername)
+        data.append('Wtitle', Wtitle)
         data.append('nType', "Hire")
 
         axios.post("http://localhost:550/post/notification", data)
@@ -140,7 +149,7 @@ function Workbidder() {
     }
 
     return (
-        <div className="alignment" style={{marginTop:"10px"}}>
+        <div className="alignment" style={{ marginTop: "10px" }}>
             <table class="table table-hover table-dark">
                 <thead>
                     <tr>
@@ -168,7 +177,7 @@ function Workbidder() {
                                     <td>
                                         {
                                             status === 'Pending' ?
-                                                <button className="btn btn-success" onClick={() => getWUsername(mybidder.WUsername)}>Hire</button>
+                                                <button className="btn btn-success" onClick={() => hire(mybidder.WUsername)}>Hire</button>
                                                 : ""
                                         }
                                     </td>

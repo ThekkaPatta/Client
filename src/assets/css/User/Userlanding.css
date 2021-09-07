@@ -1,13 +1,12 @@
-.wrapper {
-    display: grid;
-    text-align: center;
-    max-width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    flex-wrap: wrap;
-    gap: 20px;
+
+
+  .card{
+    font-family:'Teko', sans-serif;
+    font-size: 20px !important;
   }
+
 .card:hover{
-    transform:scale(1.1); 
+    transform:scale(1.05); 
   }
 
   .workloader{

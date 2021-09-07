@@ -10,15 +10,15 @@ class Profile extends Component {
         WAddress: "",
         WSkills: "",
         WPhoneNo: "",
-        nType:"rate",
-        Ratenum:"",
+        nType: "rate",
+        Ratenum: "",
         ProfileImg: [],
         Workers: []
 
     };
 
     componentDidMount() {
-        axios.get("http://localhost:550/worker/username/" + this.state.WUsername)
+        axios.get("http://localhost:550/worker/one/" + this.state.WUsername)
             .then((response) => {
                 console.log(response);
                 this.setState({
@@ -29,7 +29,6 @@ class Profile extends Component {
                     WUsername: response.data.WUsername,
                     ProfileImg: response.data.ProfileImg,
                 });
-                alert(this.state.WUsername)
             })
 
             .catch((err) => {
@@ -52,7 +51,7 @@ class Profile extends Component {
                 data.append('WUsername', this.state.WUsername)
                 data.append('UUsername', this.state.UUsername)
                 data.append('nType', this.state.nType)
-                
+
                 axios.post("http://localhost:550/post/notification", data)
                     .then((response) => {
                         alert('Done Rating !!')
@@ -80,7 +79,7 @@ class Profile extends Component {
         data.append('WPhoneNo', this.state.WPhoneNo)
         data.append('WUsername', this.state.WUsername)
         data.append('ProfileImg', this.state.ProfileImg)
-        
+
         axios.post("http://localhost:550/favworker/insert", data)
             .then((response) => {
                 console.log(response)
@@ -103,85 +102,47 @@ class Profile extends Component {
         };
         return (
             <div class="contact_form_section">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="col p-5">
+                <div class="contact_form_container">
+                    <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
 
-                            <br></br><br></br><br></br>
-                            <div class="contact_form_container">
+                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                        className="img-fluid rounded-circle hoverable"
+                        style={{ height: "200px", width: "200px", objectFit: "cover" }}
+                        alt="" /><br /><br />
 
-                                <h3 className="bg-light p-4" id="projectAnchor"> !! {this.state.WFullName}'s Profile !!</h3>
-                                <img
-                                    src={`http://localhost:550/${this.state.ProfileImg}`}
-                                    className="img-fluid rounded-circle hoverable"
-                                    style={{ height: "300px", width: "300px", objectFit: "cover" }}
-                                    alt=""
-                                />
-                                <br />
+                    <div className="form-group">
+                        <label class="form-label">Full Name:</label>
+                        <input type="text" class="straight" value={this.state.WFullName} />
 
-                                <br />
-
-
-                                <div className="form-group">
-                                    <label class="form-label">Full Name
-
-
-                                        <input type="text" class="form-control" value={this.state.WFullName} />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Address
-
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WAddress}
-
-
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Phone Number
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WPhoneNo}
-
-
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Skills
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WSkills}
-
-
-                                        />
-                                    </label>
-                                </div>
-                                <div className="form-group">
-                                    <label class="form-label">Username
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            value={this.state.WUsername} />
-                                    </label>
-                                    <ReactStars size={30} count={5} isHalf={true} onChange={ratingChanged} />
-                                </div>
-
-                                <button type="submit"
-                                    onClick={this.FavWorker}
-                                    className="btn btn-info">Add To Favorites</button>
-                            </div>
-
-                        </div>
                     </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Address:</label>
+                        <input type="text" class="straight" value={this.state.WAddress} />
+
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Phone Number:</label>
+                        <input type="text" class="straight" value={this.state.WPhoneNo} />
+                    </div>
+
+                    <div className="form-group">
+                        <label class="form-label">Username:</label>
+                        <input type="text" class="straight" value={this.state.WUsername} />
+                    </div>
+
+                    <ReactStars size={30} count={5} isHalf={true} onChange={ratingChanged} />
+                    
+                    <button type="submit"
+                        onClick={this.FavWorker}
+                        className="btn btn-info">Add To Favorites
+                    </button>
                 </div>
             </div>
+
+
+
 
         )
     }

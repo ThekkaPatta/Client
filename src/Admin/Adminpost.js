@@ -55,7 +55,7 @@ class Adminpost extends Component {
             <div className="admincontainer" style={{paddingTop:'10px'}}>
                 <div className='worksearch-box'>
                     <input className='worksearch-text' type='text' name='' placeholder='Type to search'
-                        value={this.state.search} onChange={(event) => { this.setSearch(event.target.value) }}></input>
+                         onChange={(event) => { this.setState({ search: event.target.value }) }}></input>
                     <a className='worksearch-btn' href='#'><i className='fa fa-search'></i></a>
                 </div>
                 <div class="wrapper">
@@ -92,7 +92,7 @@ class Adminpost extends Component {
 
                                         <div class="panel-body text-center">
                                             <p class="wTitle">{mywork.WorkTitle}</p>
-                                            <button id='btnbid' className="btn btn-outline-danger" onClick={this.deleteusers.bind(this, mywork._id)}> Bid</button>
+                                            <button id='btnbid' className="btn btn-outline-danger" onClick={this.deleteusers.bind(this, mywork._id)}> Delete Post</button>
                                         </div>
                                     </section>
                                 </div>

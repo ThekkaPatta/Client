@@ -73,8 +73,6 @@ class Workhistory extends Component {
                                 <th scope="col" width="90px">Work Tile</th>
                                 <th scope="col" width="90px">Work Description</th>
                                 <th scope="col" width="50px">Status</th>
-                                <th scope="col" width="50px">Bid Price</th>
-                                <th scope="col" width="50px">Work Time</th>
 
                             </tr>
                         </thead>
@@ -89,8 +87,6 @@ class Workhistory extends Component {
                                             <td>{worksdone.WorkTitle}</td>
                                             <td>{worksdone.Workdescription}</td>
                                             <td>{worksdone.status}</td>
-                                            <td>{this.state.Bidprice}</td>
-                                            <td>{this.state.Worktime}</td>
                                         </tr>
                                     </tbody>
 

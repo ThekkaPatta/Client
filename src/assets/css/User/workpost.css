@@ -1,14 +1,13 @@
-.fp{
+.pworkpost{
   font-family: 'Teko', sans-serif;
-  padding-top: 30px;
   height: calc(100vh - 80px);
   color : rgb(0, 0, 0);
   align-items: center;
 }
 
-.section-content{
+.section-contentwp{
   text-align: center;
-  height: auto;
+  padding-top: 20px;
 
 }
 
@@ -20,15 +19,15 @@
 }
 
 
-
 .contact-section{
-  background: rgb(158, 156, 156);
-  padding-top: 40px;
+  color:white;
+  background: rgb(0, 0, 0);
+  padding-top: 50px;
   margin-left: 10%;
-  height: 80%;
+  height: 75%;
   width:80%;
-  border: 1px black solid;
-  box-shadow: 3px black;
+  box-shadow: 4px 4px 3px 4px #060705;
+  border-radius: 10px;
 
 }
 
@@ -62,11 +61,19 @@ textarea.form-control {
   padding-top: 0px;
 }
 
-.submit{
-  float: right;
-  width: 150px;
-  height:30px;
-  background-color: transparent;
-  color: rgb(8, 7, 7);
+.optionTag, .tags{
+  color: black;
+}
 
+#btnpost{
+  margin-top: 20px;
+  width: 100px;
+  height:60px;
+
+  font-family: 'Teko', sans-serif;
+  font-size: 20px;
+}
+
+#btnpost:hover{
+  background-color: rgb(26, 26, 68);
 }

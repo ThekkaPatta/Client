@@ -1,35 +1,43 @@
 import { Component } from "react";
 import axios from 'axios';
 import '../../assets/css/Login.css';
-import { Toast } from "bootstrap";
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
 class Loginuser extends Component {
   state = {
     Username: "",
     Password: ""
-
   }
+
+
+
   sendUserData = (e) => {
     e.preventDefault();
     axios.post("http://localhost:550/user/login", this.state)
       .then((response) => {
+
         console.log(response);
-        localStorage.setItem('token', response.data.token)
-        localStorage.setItem('_id', response.data._id)
-        localStorage.setItem('username', response.data.UUsername)
-        localStorage.setItem('userType', 'user')
-        window.location.href = "/userlanding";
-        Toast.success("affafasafafa")
-        this.setState({
-          loginChk: true
-        })
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('_id', response.data._id);
+        localStorage.setItem('userType', 'user');
+        localStorage.setItem('username', response.data.UUsername);
+
+        toast.success("Login Successful", { autoClose: 2000});
+        window.setTimeout(() => {
+          window.location.href='/userlanding';
+        },2000);
 
       })
+
       .catch((err) => {
         console.log(err.response)
-        alert("Invalid Credential")
+        toast.error("Failed to Login", { autoClose: 2000 })
       })
   }
+
+
 
   render() {
     return (

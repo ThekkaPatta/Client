@@ -36,7 +36,6 @@ function Userhome() {
             await axios.get("http://localhost:550/works/posted/" + Username)    
             .then((res)=>{
                 setWork(res.data.data)
-                // console.log(res.data.data)
             })
             .catch (err=>{
                 console.log(err)
