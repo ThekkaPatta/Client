@@ -1,5 +1,4 @@
 import { Component } from "react";
-import Just from './Just'
 import React from "react";
 class notification extends Component {
 
@@ -9,8 +8,7 @@ class notification extends Component {
     {
         return(
             <div>
-             <Just />
-            </div>
+                   </div>
         )
 
         
