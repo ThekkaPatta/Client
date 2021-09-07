@@ -16,7 +16,7 @@ function Userhome() {
             const getUser = async () => {
                 var u_id = localStorage.getItem('_id');
                 try {
-                    const res = await axios.get("http://localhost:550/user/single/" + u_id)
+                    const res = await axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
                     setUsername(res.data.UUsername)
 
                 }
@@ -33,7 +33,7 @@ function Userhome() {
     useEffect(async() => {
         
         if (Username !== '') {
-            await axios.get("http://localhost:550/works/posted/" + Username)    
+            await axios.get("https://thekkapatta.herokuapp.com/works/posted/" + Username)    
             .then((res)=>{
                 setWork(res.data.data)
             })
@@ -75,7 +75,7 @@ function Userhome() {
                             return (
                                 <div className="col-md-4 p-3">
                                     <div className="card">
-                                        <img class="card-img-top" src={"http://localhost:550/" + myworks.WorkImg} />
+                                        <img class="card-img-top" src={"https://thekkapatta.herokuapp.com/" + myworks.WorkImg} />
                                         <h4 className="card-title p-2">Tag: {myworks.Tags}</h4>
                                         <h4 className="card-title p-2">Work Description: {myworks.Workdescription}</h4>
                                         <div className="text-center p-0">

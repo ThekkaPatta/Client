@@ -16,7 +16,7 @@ class Ownuserprofile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("http://localhost:550/user/single/" + this.state._id)
+                .get("https://thekkapatta.herokuapp.com/user/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -43,7 +43,7 @@ class Ownuserprofile extends Component {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete("http://localhost:550/user/delete/" + aid)
+                    axios.delete("https://thekkapatta.herokuapp.com/user/delete/" + aid)
                         .then((response) => {
                         })
                         .catch((err) => {
@@ -61,7 +61,7 @@ class Ownuserprofile extends Component {
                 <div class="contact_form_container">
                     <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
                     
-                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                    <img src={`https://thekkapatta.herokuapp.com/${this.state.ProfileImg}`}
                         className="img-fluid rounded-circle hoverable"
                         style={{ height: "200px", width: "200px", objectFit: "cover" }}
                         alt="" /><br /><br />

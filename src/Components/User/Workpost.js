@@ -15,7 +15,7 @@ class Workpost extends Component {
 
     componentDidMount() {
         var u_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/user/single/" + u_id)
+        axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
             .then((response) => {
                 console.log(response)
                 this.setState({
@@ -46,7 +46,7 @@ class Workpost extends Component {
         data.append('Workdescription', this.state.Workdescription)
         data.append('ProfileImg', this.state.ProfileImg)
 
-        axios.post("http://localhost:550/work/post", data)
+        axios.post("https://thekkapatta.herokuapp.com/work/post", data)
             .then((response) => {
                 console.log(response)
                 alert(" Work Posted Successfully ")

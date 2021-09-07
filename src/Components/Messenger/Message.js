@@ -12,7 +12,7 @@ export default function Message({ message, own, currentChat }) {
 
     useEffect(() => {
         const getUser = async () => {
-            const res = await axios.get("http://localhost:550/user/single/" + u_id)
+            const res = await axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
             if (res.data !== null) {
                 try {
                     setSelf(res.data)
@@ -22,7 +22,7 @@ export default function Message({ message, own, currentChat }) {
                 }
             }
             else {
-                const res = await axios.get("http://localhost:550/worker/single/" + u_id)
+                const res = await axios.get("https://thekkapatta.herokuapp.com/worker/single/" + u_id)
                 try {
                     setSelf(res.data)
                 }
@@ -35,7 +35,7 @@ export default function Message({ message, own, currentChat }) {
 
             const friendId = currentChat.members.find((m) => m !== u_id)
             try {
-                const res = await axios("http://localhost:550/worker/single/" + friendId)
+                const res = await axios("https://thekkapatta.herokuapp.com/worker/single/" + friendId)
                 if (res.data !== null) {
                     try {
                         setUser(res.data)
@@ -47,7 +47,7 @@ export default function Message({ message, own, currentChat }) {
                 }
                 else {
                     try {
-                        const res = await axios("http://localhost:550/user/single/" + friendId)
+                        const res = await axios("https://thekkapatta.herokuapp.com/user/single/" + friendId)
                         setUser(res.data)
 
                     }
@@ -69,7 +69,7 @@ export default function Message({ message, own, currentChat }) {
     return (
             <div className={own ? "message own" : "message"}>
                 <div className='messageTop'>
-                    <img className='messageImg' src={own ? "http://localhost:550/" + self?.ProfileImg : "http://localhost:550/" + user?.ProfileImg} alt=''></img>
+                    <img className='messageImg' src={own ? "https://thekkapatta.herokuapp.com/" + self?.ProfileImg : "https://thekkapatta.herokuapp.com/" + user?.ProfileImg} alt=''></img>
                     <p className='messageText'> {message.text}</p>
                 </div>
                 <div className='messageBottom'>{format(message.createdAt)}</div>

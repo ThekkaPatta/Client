@@ -18,7 +18,7 @@ class Bidwork extends Component {
     }
     componentDidMount() {
         var wid = localStorage.getItem('_id');
-        axios.get("http://localhost:550/worker/single/" + wid)
+        axios.get("https://thekkapatta.herokuapp.com/worker/single/" + wid)
             .then((response) => {
                 console.log(response)
                 this.setState({
@@ -28,7 +28,7 @@ class Bidwork extends Component {
             .catch((err) => {
                 console.log(err.response)
             })
-        axios.get("http://localhost:550/work/single/" + this.state.id)
+        axios.get("https://thekkapatta.herokuapp.com/work/single/" + this.state.id)
             .then((response) => {
                 console.log(response)
                 this.setState({
@@ -53,7 +53,7 @@ class Bidwork extends Component {
         data.append('Worktime', this.state.Worktime)
         data.append('nType', 'Bid')
 
-        axios.post("http://localhost:550/bid/post", data)
+        axios.post("https://thekkapatta.herokuapp.com/bid/post", data)
             .then((response) => {
                 toast.success("Bid Successful", { autoClose: 1500 })
                 setTimeout(() => {

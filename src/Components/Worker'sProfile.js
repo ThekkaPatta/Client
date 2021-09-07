@@ -18,7 +18,7 @@ class WorkersProfile extends Component {
   
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
-            axios.get("http://localhost:550/worker/single/" + this.state._id)
+            axios.get("https://thekkapatta.herokuapp.com/worker/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -32,7 +32,7 @@ class WorkersProfile extends Component {
                 })
 
             }).then(() => {
-                axios.get("http://localhost:550/notifications/worker/" + this.state.WUsername)
+                axios.get("https://thekkapatta.herokuapp.com/notifications/worker/" + this.state.WUsername)
                     .then((response) => {
                         this.setState({
                             rates: response.data.Ratenum
@@ -59,7 +59,7 @@ class WorkersProfile extends Component {
           })
           .then((willDelete) => {
             if (willDelete) {
-                axios.delete("http://localhost:550/worker/delete/" + aid)
+                axios.delete("https://thekkapatta.herokuapp.com/worker/delete/" + aid)
             .then((response) => {
                 })
             .catch((err) => {
@@ -78,7 +78,7 @@ class WorkersProfile extends Component {
                 <br></br><br></br><br></br><br></br>
                 <div class="contact_form_container">
                 <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
-                <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                <img src={`https://thekkapatta.herokuapp.com/${this.state.ProfileImg}`}
                      className="img-fluid rounded-circle hoverable"
                      style={{ height: "300px", width: "300px", objectFit: "cover" }}
                      alt=""/><br/><br/>

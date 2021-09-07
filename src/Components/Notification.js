@@ -9,7 +9,7 @@ export default function Notification({ closenotificationmodal }) {
 
   useEffect(() => {
     if (localStorage.getItem("userType") === "user") {
-      axios.get("http://localhost:550/notifications/user/" + Username)
+      axios.get("https://thekkapatta.herokuapp.com/notifications/user/" + Username)
         .then((response) => {
           setnotifications(response.data.data)
         })
@@ -18,7 +18,7 @@ export default function Notification({ closenotificationmodal }) {
         })
     }
     else if (localStorage.getItem("userType") === "worker" && Username !== '') {
-      axios.get("http://localhost:550/notifications/worker/" + Username)
+      axios.get("https://thekkapatta.herokuapp.com/notifications/worker/" + Username)
         .then((response) => {
           setnotifications(response.data.data)
           console.log(response.data.data)
@@ -34,7 +34,7 @@ export default function Notification({ closenotificationmodal }) {
   useEffect(() => {
     if (localStorage.getItem('userType') === 'user') {
       var u_id = localStorage.getItem('_id');
-      axios.get("http://localhost:550/user/single/" + u_id)
+      axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
         .then((response) => {
           setUsername(response.data.UUsername)
         })
@@ -44,7 +44,7 @@ export default function Notification({ closenotificationmodal }) {
     }
     else if (localStorage.getItem('userType') === 'worker') {
       var w_id = localStorage.getItem('_id');
-      axios.get("http://localhost:550/worker/single/" + w_id)
+      axios.get("https://thekkapatta.herokuapp.com/worker/single/" + w_id)
         .then((response) => {
           setUsername(response.data.WUsername)
         })

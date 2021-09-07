@@ -12,7 +12,7 @@ class Favorites extends Component {
 
     getworker = () => {
         var u_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/user/single/" + u_id)
+        axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
             .then((response) => {
                 this.setState({
                     Username: response.data.UUsername,
@@ -20,7 +20,7 @@ class Favorites extends Component {
                 })
             })
             .then(() => {
-                axios.get("http://localhost:550/fav/worker/" + this.state.Username)
+                axios.get("https://thekkapatta.herokuapp.com/fav/worker/" + this.state.Username)
                     .then((response) => {
                         this.setState({
                             workers: response.data.data,
@@ -48,7 +48,7 @@ class Favorites extends Component {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    axios.delete("http://localhost:550/favworker/delete/" + wn)
+                    axios.delete("https://thekkapatta.herokuapp.com/favworker/delete/" + wn)
 
                         .catch((err) => {
                             console.log(err.response)
@@ -71,7 +71,7 @@ class Favorites extends Component {
                             return (
                                 <div className="col-md-3 p-3">
                                     <div className='favprofiles'>
-                                        <img class="card-img-top" src={"http://localhost:550/" + myworkers.ProfileImg} />
+                                        <img class="card-img-top" src={"https://thekkapatta.herokuapp.com/" + myworkers.ProfileImg} />
                                         <h4 className="card-title p-2">Skills: {myworkers.WSkills}</h4>
                                         <h4 className="card-title p-2">Address: {myworkers.WAddress}</h4>
                                         <h4 className="card-title p-2">Phone Number: {myworkers.WPhoneNo}</h4>

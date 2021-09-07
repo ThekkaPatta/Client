@@ -12,7 +12,7 @@ export default function Conversations({ conversations, currentUser }) {
 
         const getUser = async () => {
             try {
-                const res = await axios("http://localhost:550/worker/single/" + friendId)
+                const res = await axios("https://thekkapatta.herokuapp.com/worker/single/" + friendId)
                 if (res.data !== null) {
                     try {
                         setUser(res.data)
@@ -24,7 +24,7 @@ export default function Conversations({ conversations, currentUser }) {
                     }
                 }
                 else {
-                    const res = await axios("http://localhost:550/user/single/" + friendId)
+                    const res = await axios("https://thekkapatta.herokuapp.com/user/single/" + friendId)
                     setUser(res.data)
                     setUserType("User")
                 }
@@ -47,7 +47,7 @@ export default function Conversations({ conversations, currentUser }) {
                 if (usertype === "User") {
                     return (
                         <>
-                            <img className='conversationImg' src={"http://localhost:550/" + user.ProfileImg} alt='' />
+                            <img className='conversationImg' src={"https://thekkapatta.herokuapp.com/" + user.ProfileImg} alt='' />
                             <span className='conversationName'>{user.UUsername}</span>
                         </>
                     )
@@ -57,7 +57,7 @@ export default function Conversations({ conversations, currentUser }) {
                 else if (usertype === 'Worker') {
                     return (
                         <>
-                            <img className='conversationImg' src={ "http://localhost:550/" + user.ProfileImg} alt='' />
+                            <img className='conversationImg' src={ "https://thekkapatta.herokuapp.com/" + user.ProfileImg} alt='' />
                             <span className='conversationName'>{user.WUsername}</span>
                         </>
                     )

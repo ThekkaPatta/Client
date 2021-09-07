@@ -45,7 +45,7 @@ export default function Messenger() {
     useEffect(() => {
         const getConversations = async () => {
             try {
-                const res = await axios.get("http://localhost:550/conversation/" + u_id)
+                const res = await axios.get("https://thekkapatta.herokuapp.com/conversation/" + u_id)
                 setConversation(res.data);
             }
             catch (err) {
@@ -59,7 +59,7 @@ export default function Messenger() {
     useEffect(() => {
         const getMessages = async () => {
             try {
-                const res = await axios.get("http://localhost:550/messages/" + currentChat?._id)
+                const res = await axios.get("https://thekkapatta.herokuapp.com/messages/" + currentChat?._id)
                 setMessages(res.data)
             }
             catch (err) {
@@ -89,7 +89,7 @@ export default function Messenger() {
 
         
         try {
-            const res = await axios.post('http://localhost:550/messages', message)
+            const res = await axios.post('https://thekkapatta.herokuapp.com/messages', message)
             setMessages([...messages, res.data])
             setNewMessages('')
         }

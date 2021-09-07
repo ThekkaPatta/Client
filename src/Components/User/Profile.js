@@ -18,7 +18,7 @@ class Profile extends Component {
     };
 
     componentDidMount() {
-        axios.get("http://localhost:550/worker/one/" + this.state.WUsername)
+        axios.get("https://thekkapatta.herokuapp.com/worker/one/" + this.state.WUsername)
             .then((response) => {
                 console.log(response);
                 this.setState({
@@ -39,7 +39,7 @@ class Profile extends Component {
 
     RatePost = (e) => {
         var u_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/user/single/" + u_id)
+        axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
             .then((response) => {
                 this.setState({
                     UUsername: response.data.UUsername,
@@ -52,7 +52,7 @@ class Profile extends Component {
                 data.append('UUsername', this.state.UUsername)
                 data.append('nType', this.state.nType)
 
-                axios.post("http://localhost:550/post/notification", data)
+                axios.post("https://thekkapatta.herokuapp.com/post/notification", data)
                     .then((response) => {
                         alert('Done Rating !!')
                     })
@@ -80,7 +80,7 @@ class Profile extends Component {
         data.append('WUsername', this.state.WUsername)
         data.append('ProfileImg', this.state.ProfileImg)
 
-        axios.post("http://localhost:550/favworker/insert", data)
+        axios.post("https://thekkapatta.herokuapp.com/favworker/insert", data)
             .then((response) => {
                 console.log(response)
                 alert("worker Added To Your Favorites")
@@ -105,7 +105,7 @@ class Profile extends Component {
                 <div class="contact_form_container">
                     <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
 
-                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                    <img src={`https://thekkapatta.herokuapp.com/${this.state.ProfileImg}`}
                         className="img-fluid rounded-circle hoverable"
                         style={{ height: "200px", width: "200px", objectFit: "cover" }}
                         alt="" /><br /><br />

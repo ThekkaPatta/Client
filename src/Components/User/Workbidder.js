@@ -18,16 +18,16 @@ function Workbidder() {
     useEffect(() => {
         const getdata = async () => {
             try {
-                const response = await axios.get("http://localhost:550/works/bidder/" + id._id)
+                const response = await axios.get("https://thekkapatta.herokuapp.com/works/bidder/" + id._id)
                 setBidder(response.data)
 
-                const res = await axios.get("http://localhost:550/work/single/" + id._id)
+                const res = await axios.get("https://thekkapatta.herokuapp.com/work/single/" + id._id)
                 setStatus(res.data.status)
                 setWtitle(res.data.WorkTitle)
 
 
                 var _id = localStorage.getItem('_id');
-                const result = await axios.get("http://localhost:550/user/single/" + _id)
+                const result = await axios.get("https://thekkapatta.herokuapp.com/user/single/" + _id)
                 setUUsername(result.data.UUsername)
 
             }
@@ -45,7 +45,7 @@ function Workbidder() {
         data.append('Wid', id._id)
         alert(WUsername)
 
-        axios.post("http://localhost:550/hire/worker", data)
+        axios.post("https://thekkapatta.herokuapp.com/hire/worker", data)
             .then(() => {
                 toast.success("Worker Successfully Hired",{autoClose: 3000})
                 startconversation(WUsername)
@@ -59,7 +59,7 @@ function Workbidder() {
 
     const getWUsername = async (WUsername) => {
         try {
-            await axios.get('http://localhost:550/worker/one/' + WUsername)
+            await axios.get('https://thekkapatta.herokuapp.com/worker/one/' + WUsername)
                 .then((res) => {
                     startconversation(res.data._id, WUsername)
                 })
@@ -82,7 +82,7 @@ function Workbidder() {
         datas.append('receiverId', receiverId);
 
         if (datas !== null) {
-            await axios.post("http://localhost:550/conversation", datas)
+            await axios.post("https://thekkapatta.herokuapp.com/conversation", datas)
                 .then((res) => {
                     console.log(res.data)
                     startmessage(WUsername, receiverId, _id)
@@ -98,7 +98,7 @@ function Workbidder() {
         datac.append('receiverId', receiverId);
 
         if (datac !== null) {
-            await axios.get("http://localhost:550/getconversation", {
+            await axios.get("https://thekkapatta.herokuapp.com/getconversation", {
                 params: {
                     senderId: senderId, 
                     receiverId: receiverId
@@ -115,7 +115,7 @@ function Workbidder() {
         data2.append('senderId', senderId)
         data2.append('text', 'Hey, I have have you for a work. Please, try to complete it within the time')
 
-        axios.post('http://localhost:550/messages', data2)
+        axios.post('https://thekkapatta.herokuapp.com/messages', data2)
             .then(() => {
                 toast.success("Conversation started with worker",{autoClose: 3000})
                 console.log('conversation started')
@@ -134,7 +134,7 @@ function Workbidder() {
         data.append('Wtitle', Wtitle)
         data.append('nType', "Hire")
 
-        axios.post("http://localhost:550/post/notification", data)
+        axios.post("https://thekkapatta.herokuapp.com/post/notification", data)
             .then((response) => {
                 console.log(response.data.message);
                 routerHistory.push({

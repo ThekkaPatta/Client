@@ -14,7 +14,7 @@ class Userhistory extends Component {
 
     getWorker = () => {
         var u_id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/user/single/" + u_id)
+        axios.get("https://thekkapatta.herokuapp.com/user/single/" + u_id)
             .then((response) => {
                 this.setState({
                     User: response.data.UUsername,
@@ -22,7 +22,7 @@ class Userhistory extends Component {
                
             })
             .then(() => {
-                axios.get("http://localhost:550/work/history/" + this.state.User)
+                axios.get("https://thekkapatta.herokuapp.com/work/history/" + this.state.User)
                     .then((response) => {
                         this.setState({
                             works: response.data.data,

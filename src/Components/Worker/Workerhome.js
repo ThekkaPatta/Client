@@ -16,10 +16,10 @@ export default function Workerhome() {
     useEffect(() => {
         const getWorker = async () => {
             try {
-                const res = await axios.get("http://localhost:550/worker/single/" + wid)
+                const res = await axios.get("https://thekkapatta.herokuapp.com/worker/single/" + wid)
                 setWUsername(res.data.WUsername);
 
-                const result = await axios.get('http://localhost:550/work/show')
+                const result = await axios.get('https://thekkapatta.herokuapp.com/work/show')
                 setWork(result.data)
 
             }
@@ -37,7 +37,7 @@ export default function Workerhome() {
             const getBiddedwork = async () => {
 
                 try {
-                    const res = await axios.get('http://localhost:550/bidded/work/' + WUsername)
+                    const res = await axios.get('https://thekkapatta.herokuapp.com/bidded/work/' + WUsername)
                     setBiddedworks(res.data)
                 }
 
@@ -93,7 +93,7 @@ export default function Workerhome() {
                             <div class="row product-list">
                                 <section class="panel">
                                     <div class="pro-img-box">
-                                        <img src={"http://localhost:550/"+ mywork.WorkImg} alt="" />
+                                        <img src={"https://thekkapatta.herokuapp.com/"+ mywork.WorkImg} alt="" />
                                         <div className='openworkd'>
                                             <div class="sworkdescription">
                                                 <i class="fa fa-eye"></i>

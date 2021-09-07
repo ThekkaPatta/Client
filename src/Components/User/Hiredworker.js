@@ -20,10 +20,10 @@ export default function Hiredworker() {
 
     useEffect(async () => {
         try {
-            const res = await axios.get('http://localhost:550/work/single/' + workid)
+            const res = await axios.get('https://thekkapatta.herokuapp.com/work/single/' + workid)
             setWork(res.data)
 
-            const result = await axios.get('http://localhost:550/worker/one/' + WUsername)
+            const result = await axios.get('https://thekkapatta.herokuapp.com/worker/one/' + WUsername)
             setWUser(result.data)
         }
         catch (err) {
@@ -34,7 +34,7 @@ export default function Hiredworker() {
 
     const completework = async (workid, WUsername) => {
         try {
-            await axios.post('http://localhost:550/complete/work/' + workid)
+            await axios.post('https://thekkapatta.herokuapp.com/complete/work/' + workid)
             toast.success("Work has been successfully completed",{autoClose: 3000})
             routerHistory.push({
                 pathname: '/userlanding'
@@ -56,7 +56,7 @@ export default function Hiredworker() {
                         return (
                             <>
                                 <h2>Work Title <br></br>{work.WorkTitle}</h2>
-                                <img className='wimg' src={"http://localhost:550/" + work.WorkImg}></img>
+                                <img className='wimg' src={"https://thekkapatta.herokuapp.com/" + work.WorkImg}></img>
 
                                 <h3>Worker: {work.WFullName}</h3>
                                 <h3> Time Remaining: Some time </h3>
@@ -73,7 +73,7 @@ export default function Hiredworker() {
                             <>
                                 <h5>This work has been completed</h5>
                                 <h2>Work Title: {work.WorkTitle}</h2>
-                                <img src={"http://localhost:550/" + work.WorkImg}></img>
+                                <img src={"https://thekkapatta.herokuapp.com/" + work.WorkImg}></img>
                                 <h3>Work Completed by: {WUser.WFullName}</h3>
                             </>
                         )

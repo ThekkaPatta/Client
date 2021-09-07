@@ -17,7 +17,7 @@ class WorkersProfile extends Component {
 
     componentDidMount() {
         var _id = localStorage.getItem('_id');
-        axios.get("http://localhost:550/worker/single/" + _id)
+        axios.get("https://thekkapatta.herokuapp.com/worker/single/" + _id)
             .then((response) => {
                 console.log(response);
                 this.setState({
@@ -30,7 +30,7 @@ class WorkersProfile extends Component {
                 });
 
             }).then(() => {
-                axios.get("http://localhost:550/notifications/worker/" + this.state.WUsername)
+                axios.get("https://thekkapatta.herokuapp.com/notifications/worker/" + this.state.WUsername)
                     .then((response) => {
                         this.setState({
                             rates: response.data.Ratenum
@@ -55,7 +55,7 @@ class WorkersProfile extends Component {
                     <h3 className="bg-light p-4" id="projectAnchor"> !! Your Profile !!</h3>
 
 
-                    <img src={`http://localhost:550/${this.state.ProfileImg}`}
+                    <img src={`https://thekkapatta.herokuapp.com/${this.state.ProfileImg}`}
                         className="img-fluid rounded-circle hoverable"
                         style={{ height: "200px", width: "200px", objectFit: "cover", justifyContent: 'center' }} />
 

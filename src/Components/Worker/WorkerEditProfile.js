@@ -35,7 +35,7 @@ class WorkerEditProfile extends Component {
         }
         
         axios
-            .post("http://localhost:550/worker/update/" + this.state._id, data)
+            .post("https://thekkapatta.herokuapp.com/worker/update/" + this.state._id, data)
             .then((response) => {
                 console.log(response);
                 window.location.replace("/workersprofile");
@@ -50,7 +50,7 @@ class WorkerEditProfile extends Component {
     componentDidMount() {
         this.setState({ _id: localStorage.getItem("_id") }, () => {
             axios
-                .get("http://localhost:550/worker/single/" + this.state._id)
+                .get("https://thekkapatta.herokuapp.com/worker/single/" + this.state._id)
                 .then((response) => {
                     console.log(response);
                     this.setState({
@@ -79,7 +79,7 @@ class WorkerEditProfile extends Component {
 
                                 <h3 className="bg-light p-4" id="projectAnchor">!!Edit Your Profile !!</h3>
                                 <img
-                                    src={`http://localhost:550/${this.state.ProfileImg}`}
+                                    src={`https://thekkapatta.herokuapp.com/${this.state.ProfileImg}`}
                                     className="img-fluid rounded-circle hoverable"
                                     style={{ height: "200px", width: "200px", objectFit: "cover" }}
                                     alt=""
