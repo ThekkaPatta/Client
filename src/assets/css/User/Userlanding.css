@@ -4,9 +4,13 @@
     font-family:'Teko', sans-serif;
     font-size: 20px !important;
   }
+  .card-img-top{
+    height:250px;
+    width: 100%;
+  }
 
 .card:hover{
-    transform:scale(1.05); 
+    transform:scale(1.03); 
   }
 
   .workloader{

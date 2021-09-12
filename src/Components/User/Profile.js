@@ -2,6 +2,10 @@ import { Component } from "react";
 import axios from 'axios';
 import '../../assets/css/viewprofile.css';
 import ReactStars from "react-rating-stars-component"
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 class Profile extends Component {
     state = {
@@ -83,13 +87,16 @@ class Profile extends Component {
         axios.post("http://localhost:550/favworker/insert", data)
             .then((response) => {
                 console.log(response)
-                alert("worker Added To Your Favorites")
-                window.location.href = '/fav'
+                toast.success("Worker has been added to your favourites", { autoClose: 1500 });
+                window.setTimeout(() => {
+                    window.location.href = '/fav';
+                }, 1500);
+
             })
 
             .catch((err) => {
                 console.log(err.response)
-                alert("!!! Something Went Wrong !!!")
+                toast.error("Failed to add worker to your favourites", { autoClose: 1500 })
             })
 
     }
