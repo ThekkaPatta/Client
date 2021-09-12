@@ -1,7 +1,10 @@
 import axios from "axios";
 import { Component } from "react";
 import '../../assets/css/User/workpost.css'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
 class Workpost extends Component {
     state = {
         FullName: "",
@@ -10,7 +13,7 @@ class Workpost extends Component {
         Tags: "",
         Workdescription: "",
         WorkTitle: "",
-        ProfileImg: [],
+        WorkImg: [],
     }
 
     componentDidMount() {
@@ -31,7 +34,7 @@ class Workpost extends Component {
 
     fileHandler = (e) => {
         this.setState({
-            ProfileImg: e.target.files[0]
+            WorkImg: e.target.files[0]
         })
     }
 
@@ -44,17 +47,19 @@ class Workpost extends Component {
         data.append('Tags', this.state.Tags)
         data.append('WorkTitle', this.state.WorkTitle)
         data.append('Workdescription', this.state.Workdescription)
-        data.append('ProfileImg', this.state.ProfileImg)
+        data.append('WorkImg', this.state.WorkImg)
 
         axios.post("http://localhost:550/work/post", data)
             .then((response) => {
                 console.log(response)
-                alert(" Work Posted Successfully ")
-                window.location.href = '/userlanding';
+                toast.success("Work Posted Successfully", { autoClose: 1500 });
+                window.setTimeout(() => {
+                    window.location.href = '/userlanding';
+                }, 1500);
             })
             .catch((err) => {
                 console.log(err.response)
-                alert("!!! Fields Must Not Leave Empty !!!")
+                toast.error("Work could not be posted", { autoClose: 1500 })
             })
 
     }

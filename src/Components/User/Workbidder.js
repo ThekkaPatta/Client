@@ -43,12 +43,11 @@ function Workbidder() {
         const data = new FormData()
         data.append('WUsername', WUsername)
         data.append('Wid', id._id)
-        alert(WUsername)
 
         axios.post("http://localhost:550/hire/worker", data)
             .then(() => {
                 toast.success("Worker Successfully Hired",{autoClose: 3000})
-                startconversation(WUsername)
+                getWUsername(WUsername)
             })
             .catch((err) => {
                 console.log(err)

@@ -1,7 +1,10 @@
 import { Component } from "react";
 import axios from 'axios';
 import '../assets/css/Login.css';
-import { Alert } from "bootstrap";
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 class Adminlogin extends Component {
     state = {
@@ -11,22 +14,22 @@ class Adminlogin extends Component {
     }
     sendUserData = (e) => {
         e.preventDefault();
-        axios.post("https://thekkapatta.herokuapp.com/admin/login", this.state)
+        axios.post("http://localhost:550/admin/login", this.state)
             .then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
                 localStorage.setItem('_id', response.data._id)
                 localStorage.setItem('userType', 'admin')
-                window.location.href = "/adminpost";
-                alert("Login success")
-                this.setState({
-                    loginChk: true
-                })
+
+                toast.success("Admin Login Successful", { autoClose: 2000 });
+                window.setTimeout(() => {
+                    window.location.href = '/adminpost';
+                }, 2000);
 
             })
             .catch((err) => {
                 console.log(err.response)
-                alert("Invalid Credential")
+                toast.error("Failed to Login", { autoClose: 2000 })
             })
     }
 

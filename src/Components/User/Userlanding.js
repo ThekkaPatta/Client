@@ -62,7 +62,7 @@ function Userhome() {
             <div className="card-deck p-2">
                 <div className='workloader'>
                     <button id='btnwork'className="btn btn-outline-info" onClick={() => { setWorkstatus('Pending') }}>Pending works</button>
-                    <button id='btnwork' className="btn btn-outline-info" onClick={() => { setWorkstatus('On-going') }}>Ongoing-works</button>
+                    <button id='btnworks' className="btn btn-outline-info" onClick={() => { setWorkstatus('On-going') }}>Ongoing-works</button>
                     <button id='btnwork'className="btn btn-outline-info" onClick={() => { setWorkstatus('Completed') }}>Comleted Works</button>
                 </div>
                 {
@@ -91,7 +91,7 @@ function Userhome() {
 
                                                 else if (myworks.status === 'On-going') {
                                                     return (
-                                                        <button className="btn btn-outline-info p-3" onClick={() => { hiredworker(myworks._id, myworks.Worker) }}> See Worker</button>
+                                                        <button id="seebtn" className="btn btn-outline-info p-3" onClick={() => { hiredworker(myworks._id, myworks.Worker) }}> See Worker</button>
                                                     )
 
                                                 }

@@ -88,7 +88,7 @@ class Ownuserprofile extends Component {
                         <input type="text" class="straight" value={this.state.UUsername} />
                     </div>
 
-                    <button className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
+                    <button id="edtbn" className="btn btn-info"><Link to={"/useredit/"}> Edit Profile </Link></button>
                     <button className="btn btn-danger" onClick={this.deleteprofile.bind(this, this.state._id)}>Delete</button>
                 </div>
             </div>

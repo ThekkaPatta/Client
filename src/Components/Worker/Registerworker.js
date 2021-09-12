@@ -1,6 +1,10 @@
 import { Component } from "react";
 import '../../assets/css/register.css';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 class Registerworker extends Component {
     state = {
@@ -27,12 +31,13 @@ class Registerworker extends Component {
         axios.post("http://localhost:550/worker/insert", data)
             .then((response)=>{
 
-                window.location.href = "/loginworker";
-                alert('Your Account is verifying !!')
+                toast.success("Your Worker Account is being verified", { autoClose: 1500 });
+                window.setTimeout(() => {
+                    window.location.href = '/loginworker';
+                }, 1500);
             })
             .catch(err => {
-                console.log(err)
-                alert("err")
+                toast.error("Failed to create your Worker account", { autoClose: 1500 })
             })
     }
     imageHandler = (e) => {
