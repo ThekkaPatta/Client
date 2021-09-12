@@ -16,11 +16,11 @@ class Registerworker extends Component {
         e.preventDefault();
         const data = new FormData()
 
-        data.append('ProfileImg', this.state.ProfileImg)
+        // data.append('ProfileImg', this.state.ProfileImg)
         data.append('WFullName', this.state.WFullName)
         data.append('WAddress', this.state.WAddress)
         data.append('WPhoneNo', this.state.WPhoneNo)
-        data.append('WSkills', this.state.WSkills)
+        // data.append('WSkills', this.state.WSkills)
         data.append('WUsername', this.state.WUsername)
         data.append('WPassword', this.state.WPassword)
 
@@ -32,6 +32,7 @@ class Registerworker extends Component {
             })
             .catch(err => {
                 console.log(err)
+                alert("err")
             })
     }
     imageHandler = (e) => {
@@ -49,20 +50,20 @@ class Registerworker extends Component {
             <p>Please enter your credentials to Sign Up.</p>
           </div>
         </div>
-        <form class="login-form">
+        <form class="login-form" id="wrkrfrms">
         <div class="col-md-6 form-line">
-            <div class="form-group"><input type="text" placeholder="Full Name" value={this.state.WFullName}
+            <div class="form-group"><input type="text" id="wfname" placeholder="Full Name" value={this.state.WFullName}
              onChange={(event) => { this.setState({ WFullName: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Address" value={this.state.WAddress}
+            <div class="form-group"><input type="text" id="wAddresss" placeholder="Address" value={this.state.WAddress}
             onChange={(event) => { this.setState({ WAddress: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Phone No." value={this.state.WPhoneNo}
+            <div class="form-group"><input type="text" id="wPhoneNos"placeholder="Phone No." value={this.state.WPhoneNo}
             onChange={(event) => { this.setState({ WPhoneNo: event.target.value }) }} /></div>
             <div class="form-group">
                                         <label for="exampleInputtext">Tags</label><br/>
                                         <h4><select name="tags" id="tags" value={this.state.WSkills} 
                                         onChange={(event) => { this.setState({ WSkills: event.target.value }) }}>
                                             <option value="Choose">Choose One</option>
-                                            <option value="plumber">Plumber</option>
+                                            <option value="plumber" >Plumber</option>
                                             <option value="mechanic">Mechanic</option>
                                             <option value="Construction">Construction</option>
                                         </select>
@@ -70,14 +71,14 @@ class Registerworker extends Component {
                                     </div>
             </div>
             <div class="col-md-6">
-             <div class="form-group"><input type="text" placeholder="Username" autoComplete="off" value={this.state.WUsername}
+             <div class="form-group"><input type="text" id="wUsernames" placeholder="Username" autoComplete="off" value={this.state.WUsername}
             onChange={(event) => { this.setState({ WUsername: event.target.value }) }} /></div>
-            <div class="form-group"><input type="Password" placeholder="Password" autoComplete="off" value={this.state.WPassword}
+            <div class="form-group"><input type="Password" id="wPasswords" placeholder="Password" autoComplete="off" value={this.state.WPassword}
             onChange={(event) => { this.setState({ WPassword: event.target.value }) }} /></div>
             <div class="form-group"><p><input type="file" placeholder="Upload photo" name="ProfileImg"
             onChange={this.imageHandler} /></p></div>
             </div>
-          <button type="submit" onClick={this.sendUserData}>Sign Up</button>
+          <button type="submit" id="btnsumit" onClick={this.sendUserData}>Sign Up</button>
           <p class="message">Already Have an Account? <a href="/loginworker">Login</a></p>
         </form>
       </div>

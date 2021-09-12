@@ -30,12 +30,13 @@ class Registeruser extends Component {
         axios.post("http://localhost:550/user/insert", data)
             .then((response)=>{
                 window.location.href = "/loginuser"
-                alert('Welcome ! You Are Registered As A User')
+            
+alert("register succesfull")
+
                
             })
             .catch(err => {
                 console.log(err)
-                alert("!! Field Must Not Be Empty !!")
             })
     }
     imageHandler = (e) => {
@@ -55,24 +56,24 @@ class Registeruser extends Component {
             <p>Please enter your credentials to Sign Up.</p>
           </div>
         </div>
-        <form class="login-form">
+        <form class="login-form" id="userregisterfrm">
         <div class="col-md-6 form-line">
-            <div class="form-group"><input type="text" placeholder="Full Name" value={this.state.UFullName}
+            <div class="form-group"><input type="text" id="UFullNames" placeholder="Full Name" value={this.state.UFullName}
              onChange={(event) => { this.setState({ UFullName: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Address" value={this.state.UAddress}
+            <div class="form-group"><input type="text" id="UAddresss" placeholder="Address" value={this.state.UAddress}
             onChange={(event) => { this.setState({ UAddress: event.target.value }) }} /></div>
-            <div class="form-group"><input type="text" placeholder="Phone No." value={this.state.UPhoneNo}
+            <div class="form-group"><input type="text" id="UPhoneNos" placeholder="Phone No." value={this.state.UPhoneNo}
             onChange={(event) => { this.setState({ UPhoneNo: event.target.value }) }} /></div>
             </div>
             <div class="col-md-6">
-             <div class="form-group"><input type="text" placeholder="Username" autoComplete="off" value={this.state.UUsername}
+             <div class="form-group"><input type="text" id="UUsernames" placeholder="Username" autoComplete="off" value={this.state.UUsername}
             onChange={(event) => { this.setState({ UUsername: event.target.value }) }} /></div>
-            <div class="form-group"><input type="Password" placeholder="Password" autoComplete="off" value={this.state.UPassword}
+            <div class="form-group"><input type="Password" id="UPasswords" placeholder="Password" autoComplete="off" value={this.state.UPassword}
             onChange={(event) => { this.setState({ UPassword: event.target.value }) }} /></div>
             <div class="form-group"><p><input type="file" placeholder="Upload photo" name="ProfileImg"
             onChange={this.imageHandler} /></p></div>
             </div>
-          <button type="submit" onClick={this.sendUserData}>Sign Up</button>
+          <button type="submit" id="btnsubmit" onClick={this.sendUserData}>Sign Up</button>
           <p class="message">Already Have an Account? <a href="/loginuser">Login</a></p>
         </form>
       </div>

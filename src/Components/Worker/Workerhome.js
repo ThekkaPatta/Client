@@ -68,8 +68,8 @@ export default function Workerhome() {
 
     return (
         <div className="containerworkerhome">
-            <div className='worksearch-box'>
-                <input className='worksearch-text' type='text' name='' placeholder='Type to search'
+            <div className='worksearch-box' id="srchfrm">
+                <input className='worksearch-text' type='text' id="srchwrk" name='' placeholder='Type to search'
                     value={search} onChange={(event) => { setSearch(event.target.value) }}></input>
                 <a className='worksearch-btn' href='#'><i className='fa fa-search'></i></a>
             </div>
@@ -107,7 +107,7 @@ export default function Workerhome() {
 
 
 
-                                    <div class="panel-body text-center">
+                                    <div class="panel-body text-center" id="thisid">
                                         <p class="wTitle">{mywork.WorkTitle}</p>
                                         <Link to={"/bidwork/"+mywork._id}><button id='btnbid' className="btn btn-outline-success" > Bid</button></Link>
                                     </div>

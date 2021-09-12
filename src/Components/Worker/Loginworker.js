@@ -41,10 +41,10 @@ class Loginworker extends Component {
             <p>Please enter your credentials to login.</p>
           </div>
         </div>
-        <form class="login-form">
-                        <input type="text" placeholder="username" onChange={(event) => { this.setState({ WUsername: event.target.value }) }}/>
-        <input type="password" placeholder="password" onChange={(event) => { this.setState({ WPassword: event.target.value }) }}/>
-          <button type="submit" onClick={this.sendUserData2}>login</button>
+        <form class="login-form" id="lgnworkerfrm">
+                        <input type="text" id="usrnm" placeholder="username" onChange={(event) => { this.setState({ WUsername: event.target.value }) }}/>
+        <input type="password" id="psswrd" placeholder="password" onChange={(event) => { this.setState({ WPassword: event.target.value }) }}/>
+          <button type="submit" id="usrsb" onClick={this.sendUserData2}>login</button>
           <p class="message">Not registered? <a href="/registerworker">Create an account</a></p>
           </form>
       </div>

@@ -71,7 +71,7 @@ class Bidwork extends Component {
             <div className='Bidpage'>
                 <div className='Bidform'>
                 
-                    <form method="POST" enctype="multipart/form-data" className='col-md-12'>
+                    <form method="POST" enctype="multipart/form-data" className='col-md-12' id="bidfrm">
 
                         <p classname='label'>Worker Username</p>
                         <input type="text" className='bidval' value={this.state.WUsername} />
@@ -80,15 +80,15 @@ class Bidwork extends Component {
                         <p classname='label'>User Username</p>
                         <input type="text" className='bidval' value={this.state.UUsername} />
 
-                        <p classname='label'>Bid Price (RS.)</p>
-                        <input type="text" className='bidval' value={this.state.Bidprice}
+                        <p classname='label'>Bid Price (RS.)</p> 
+                        <input type="text" className='bidval' id="bidp" value={this.state.Bidprice}
                             onChange={(event) => { this.setState({ Bidprice: event.target.value }) }} />
 
-                        <p classname='label'>Work Time (In Hours)</p>
-                        <input type="text" className='bidval' value={this.state.Worktime}
+                        <p classname='label'>Work Time (In Hours)</p> 
+                        <input type="text" className='bidval' id="workt" value={this.state.Worktime}
                             onChange={(event) => { this.setState({ Worktime: event.target.value }) }} />
                         <div>
-                            <button className='btnbid' type="submit" onClick={this.sendUserData}> Bid </button>
+                            <button className='btnbid' id="bidbtn" type="submit" onClick={this.sendUserData}> Bid </button>
                         </div>
                     </form>
                 </div>

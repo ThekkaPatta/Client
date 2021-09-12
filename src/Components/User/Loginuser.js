@@ -49,10 +49,10 @@ class Loginuser extends Component {
               <p>Please enter your credentials to login.</p>
             </div>
           </div>
-          <form class="login-form">
-            <input type="text" placeholder="username" onChange={(event) => { this.setState({ UUsername: event.target.value }) }} />
-            <input type="password" placeholder="password" onChange={(event) => { this.setState({ UPassword: event.target.value }) }} />
-            <button type="submit" onClick={this.sendUserData}>login</button>
+          <form class="login-form" id="lgnuserfr">
+            <input type="text" id="usrnm" placeholder="username" onChange={(event) => { this.setState({ UUsername: event.target.value }) }} />
+            <input type="password" id="psswrd" placeholder="password" onChange={(event) => { this.setState({ UPassword: event.target.value }) }} />
+            <button type="submit"id="usrsb" onClick={this.sendUserData}>login</button>
             <p class="message">Not registered? <a href="/registeruser">Create an account</a></p>
           </form>
         </div>

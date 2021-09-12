@@ -75,7 +75,7 @@ class WorkerEditProfile extends Component {
                     <div class="row">
                         <div class="col">
 
-                            <div class="contact_form_container">
+                            <div class="contact_form_container" id ="edtfrm">
 
                                 <h3 className="bg-light p-4" id="projectAnchor">!!Edit Your Profile !!</h3>
                                 <img
@@ -97,6 +97,7 @@ class WorkerEditProfile extends Component {
                 <input
                                             type="text"
                                             class="form-control text-center"
+                                            id="wfname"
                                             value={this.state.WFullName}
                                             name="WFullName"
                                             onChange={this.changeHandler}
